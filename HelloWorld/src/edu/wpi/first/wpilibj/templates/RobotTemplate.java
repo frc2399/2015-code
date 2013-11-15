@@ -37,6 +37,8 @@ public class RobotTemplate extends SimpleRobot {
     Joystick leftStick = new Joystick(1);
     Joystick rightStick = new Joystick(2);
     Joystick driveyStick = new Joystick(3);
+    
+    // TODO: connect shooter motor
 
     public RobotTemplate() throws CANTimeoutException {
         this.frontLeft = new CANJaguar(7);
