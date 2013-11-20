@@ -41,10 +41,10 @@ public class RobotTemplate extends SimpleRobot {
     // TODO: connect shooter motor
 
     public RobotTemplate() throws CANTimeoutException {
-        this.frontLeft = new CANJaguar(7);
-        this.rearLeft = new CANJaguar(8);
-        this.frontRight = new CANJaguar(6);
-        this.rearRight = new CANJaguar(5);
+        this.frontLeft = new CANJaguar(7); // reverse
+        this.rearLeft = new CANJaguar(8); //reverse
+        this.frontRight = new CANJaguar(6); // reverse
+        this.rearRight = new CANJaguar(5); //reverse
         this.chassis = new RobotDrive(frontLeft, rearLeft, frontRight, rearRight);
     }
 
@@ -69,18 +69,31 @@ public class RobotTemplate extends SimpleRobot {
             double x = driveyStick.getX();
             x = Math.min(1.0, x);
             x = Math.max(-1.0, x);
-            x *= 0.6;
+            x *= -0.6;
             double y = driveyStick.getY();
             y = Math.min(1.0, y);
             y = Math.max(-1.0, y);
-            y *= 0.6;
+            y *= -0.6;
             double rotation = driveyStick.getTwist();
             rotation = Math.min(1.0, rotation);
             rotation = Math.max(-1.0, rotation);
-            rotation *= 0.6;
+            rotation *= -0.6;
             
             chassis.mecanumDrive_Cartesian(x, y, rotation, 0);
             //chassis.tankDrive(leftStick, rightStick);
+            
+            /*
+            if (driveyStick.getTrigger()) {
+                try {
+                    this.rearRight.setX(0.3);
+                } catch (CANTimeoutException ex) {
+                    System.out.println(ex);
+                }
+                
+            }
+            */
+            
+            
             Timer.delay(0.1);
         }
     }
