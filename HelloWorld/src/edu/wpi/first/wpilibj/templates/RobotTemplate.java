@@ -53,9 +53,27 @@ public class RobotTemplate extends SimpleRobot {
      * This function is called once each time the robot enters autonomous mode.
      */
     public void autonomous() {
-        System.out.println("Hello world.");
-        // TODO: write the loop
-    }
+     chassis.setSafetyEnabled(false);
+     //this makes it box-step instead of waltzing because we are lazy
+     //deal with it
+     
+     chassis.mecanumDrive_Cartesian(0.5, 0, 0, 0);
+     Timer.delay(2.0); 
+     //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
+     
+     chassis.mecanumDrive_Cartesian(0, 0.5, 0, 0);
+     Timer.delay(2.0);
+     //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
+     
+     chassis.mecanumDrive_Cartesian(-0.5, 0, 0, 0);
+     Timer.delay(2.0);
+     //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
+     
+     chassis.mecanumDrive_Cartesian(0, -0.5, 0, 0);
+     Timer.delay(2.0);
+     chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
+     
+    } 
 
     /**
      * This function is called once each time the robot enters operator control.
