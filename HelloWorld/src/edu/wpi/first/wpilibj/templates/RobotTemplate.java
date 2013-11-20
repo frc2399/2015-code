@@ -57,20 +57,20 @@ public class RobotTemplate extends SimpleRobot {
      //this makes it box-step instead of waltzing because we are lazy
      //deal with it
      
-     chassis.mecanumDrive_Cartesian(0.5, 0, 0, 0);
-     Timer.delay(2.0); 
+     chassis.mecanumDrive_Cartesian(0.2, 0, 0, 0);
+     Timer.delay(1.0); 
      //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
      
-     chassis.mecanumDrive_Cartesian(0, 0.5, 0, 0);
-     Timer.delay(2.0);
+     chassis.mecanumDrive_Cartesian(0, 0.2, 0, 0);
+     Timer.delay(1.0);
      //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
      
-     chassis.mecanumDrive_Cartesian(-0.5, 0, 0, 0);
-     Timer.delay(2.0);
+     chassis.mecanumDrive_Cartesian(-0.2, 0, 0, 0);
+     Timer.delay(1.0);
      //chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
      
-     chassis.mecanumDrive_Cartesian(0, -0.5, 0, 0);
-     Timer.delay(2.0);
+     chassis.mecanumDrive_Cartesian(0, -0.2, 0, 0);
+     Timer.delay(1.0);
      chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
      
     } 
