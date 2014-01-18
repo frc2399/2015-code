@@ -218,4 +218,3 @@ pip-log.txt
 core
 nbproject/*
 !nbproject/project.properties
-!nbproject/project.xml
