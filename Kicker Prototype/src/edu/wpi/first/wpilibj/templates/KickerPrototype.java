@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 public class KickerPrototype extends IterativeRobot {
     
     Joystick leftStick = new Joystick(1);
+    Joystick rightStick = new Joystick(2);
     Jaguar motor1 = new Jaguar(1);
     Jaguar motor2 = new Jaguar(2);
 
@@ -51,12 +52,18 @@ public class KickerPrototype extends IterativeRobot {
             motor1.set(1);
             motor2.set(1);
             
+        }       
+        
+        if (rightStick.getTrigger()){
+            
+            motor1.set(-0.1);
+            motor2.set(-0.1);
+         
         } else {
             
             motor1.set(0);
             motor2.set(0);
         }
-        
    
     }
     
