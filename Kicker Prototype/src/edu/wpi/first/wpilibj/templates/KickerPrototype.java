@@ -65,8 +65,10 @@ public class KickerPrototype extends IterativeRobot {
             motor2.set(0);
         }
         
-        double x = leftStick.getThrottle();
-        System.out.println(x);
+        //double x = leftStick.getThrottle();
+        double y = leftStick.getRawAxis(3);
+        //System.out.print(x);
+        System.out.println(y);
         
    
    
