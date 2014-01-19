@@ -11,6 +11,8 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,12 +27,9 @@ public class KickerPrototype extends IterativeRobot {
     Joystick rightStick = new Joystick(2);
     Jaguar motor1 = new Jaguar(1);
     Jaguar motor2 = new Jaguar(2);
-
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
     
+    //JoystickButton throttle = new JoystickButton(leftStick, 5);//fix port number
+
     public void robotInit() {
 
     }
@@ -65,6 +64,11 @@ public class KickerPrototype extends IterativeRobot {
             motor1.set(0);
             motor2.set(0);
         }
+        
+        double x = leftStick.getThrottle();
+        System.out.println(x);
+        
+   
    
     }
     
@@ -73,6 +77,12 @@ public class KickerPrototype extends IterativeRobot {
      */
     public void testPeriodic() {
     
+    }
+    
+    
+    public double getThrottle(){
+      double x = leftStick.getThrottle();
+      return x;
     }
     
 }
