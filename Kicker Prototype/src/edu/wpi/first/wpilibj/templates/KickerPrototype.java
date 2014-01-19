@@ -48,8 +48,8 @@ public class KickerPrototype extends IterativeRobot {
         
         if (leftStick.getTrigger()) {
             
-            motor1.set(1);
-            motor2.set(1);
+            motor1.set(getSpeed());
+            motor2.set(getSpeed());
             
         }       
         
@@ -65,10 +65,7 @@ public class KickerPrototype extends IterativeRobot {
             motor2.set(0);
         }
         
-        //double x = leftStick.getThrottle();
-        double y = leftStick.getRawAxis(3);
-        //System.out.print(x);
-        System.out.println(y);
+       
         
    
    
@@ -82,9 +79,16 @@ public class KickerPrototype extends IterativeRobot {
     }
     
     
-    public double getThrottle(){
-      double x = leftStick.getThrottle();
-      return x;
+    public double getSpeed() {
+        double rawSpeed = leftStick.getRawAxis(3);
+        double speed = (.5  * rawSpeed) + .5;
+        System.out.println(speed);
+        
+        return speed;
     }
+    
+    
+    
+    
     
 }
