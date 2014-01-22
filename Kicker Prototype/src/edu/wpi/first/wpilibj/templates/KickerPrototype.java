@@ -56,8 +56,8 @@ public class KickerPrototype extends IterativeRobot {
         
         if (rightStick.getTrigger()){
             
-            motor1.set(-0.1);
-            motor2.set(-0.1);
+            motor1.set(-0.5);
+            motor2.set(-0.5);
          
         } else {
             
