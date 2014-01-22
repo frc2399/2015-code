@@ -9,6 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.Timer;
@@ -27,6 +28,12 @@ import edu.wpi.first.wpilibj.image.NIVisionException;
 public class RobotTemplate extends IterativeRobot {
     
     AxisCamera camera;
+
+    public Solenoid solenoidRed = new Solenoid(1);
+    public Solenoid solenoidBlue = new Solenoid(2);
+    public Solenoid solenoidGreen = new Solenoid(3);
+    public Solenoid solenoidAmber = new Solenoid(4);
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -35,9 +42,7 @@ public class RobotTemplate extends IterativeRobot {
         // instantiate the command used for the autonomous period
         //autonomousCommand = new ExampleCommand();
         
-        camera = AxisCamera.getInstance("10.23.99.11");
-            
-        camera.writeMaxFPS(15);
+        camera = AxisCamera.getInstance();
         
     }
 
@@ -70,23 +75,23 @@ public class RobotTemplate extends IterativeRobot {
         
         System.out.println("Execute VisionTest is running.");
         
+        solenoidAmber.set(true);
+        solenoidRed.set(false);
+        solenoidGreen.set(false);
+        solenoidBlue.set(false);
+        
                 // wait until we have a fresh image
-        while (!camera.freshImage()) {
-            System.out.println("Waiting for fresh image");
-            Timer.delay(0.02);
-        }
         //if( camera.freshImage()){
             //System.out.println("in freshimage");
-            camera.writeResolution(AxisCamera.ResolutionT.k320x240);   //will not work with a lower reolution
 
             //if no delay, then AXIS CAMERA EXCEPTION!!!!
             //only runs first time through execute
 
             try {
-
+                camera = AxisCamera.getInstance();
                 System.out.println("Writing image...");
                 ColorImage image = camera.getImage();
-                image.write("C:/Users/Lauren/Documents/Robotics/images/newImage.bmp");
+                image.write("/newImage.bmp");
                 System.out.println("image wrote!");
                 image.free();
                 
