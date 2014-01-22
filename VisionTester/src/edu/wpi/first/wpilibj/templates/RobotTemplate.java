@@ -9,10 +9,6 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,15 +17,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-public class KickerPrototype extends IterativeRobot {
-    
-    Joystick leftStick = new Joystick(1);
-    Joystick rightStick = new Joystick(2);
-    Jaguar motor1 = new Jaguar(1);
-    Jaguar motor2 = new Jaguar(2);
-    
-    //JoystickButton throttle = new JoystickButton(leftStick, 5);//fix port number
-
+public class RobotTemplate extends IterativeRobot {
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */
     public void robotInit() {
 
     }
@@ -46,28 +38,6 @@ public class KickerPrototype extends IterativeRobot {
      */
     public void teleopPeriodic() {
         
-        if (leftStick.getTrigger()) {
-            
-            motor1.set(getSpeed());
-            motor2.set(getSpeed());
-            
-        }       
-        
-        if (rightStick.getTrigger()){
-            
-            motor1.set(-0.5);
-            motor2.set(-0.5);
-         
-        } else {
-            
-            motor1.set(0);
-            motor2.set(0);
-        }
-        
-       
-        
-   
-   
     }
     
     /**
@@ -76,18 +46,5 @@ public class KickerPrototype extends IterativeRobot {
     public void testPeriodic() {
     
     }
-    
-    
-    public double getSpeed() {
-        double rawSpeed = leftStick.getRawAxis(3);
-        double speed = (.5  * rawSpeed) + .5;
-        System.out.println(speed);
-        
-        return speed;
-    }
-    
-    
-    
-    
     
 }
