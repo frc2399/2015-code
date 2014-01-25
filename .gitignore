@@ -216,5 +216,5 @@ pip-log.txt
 
 #netbeans specific
 core
-nbproject/*
+nbproject/
 !nbproject/project.properties
