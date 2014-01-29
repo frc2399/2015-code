@@ -13,8 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
-import edu.wpi.first.wpilibj.templates.commands.UseVision;
-import edu.wpi.first.wpilibj.templates.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.templates.commands.RapidSnap;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,11 +31,12 @@ public class JMARobot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new UseVision();
-
         // Initialize all subsystems
         CommandBase.init();
+        
+        // instantiate the command used for the autonomous period
+        autonomousCommand = new RapidSnap();
+
     }
 
     public void autonomousInit() {

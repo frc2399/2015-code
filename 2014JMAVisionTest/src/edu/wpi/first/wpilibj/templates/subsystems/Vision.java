@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.image.ColorImage;
 import edu.wpi.first.wpilibj.image.Image;
 import edu.wpi.first.wpilibj.image.NIVisionException;
 import edu.wpi.first.wpilibj.templates.RobotMap;
-import edu.wpi.first.wpilibj.templates.commands.UseVision;
+import edu.wpi.first.wpilibj.templates.commands.RapidSnap;
 
 /**
  *
@@ -27,6 +27,10 @@ public class Vision extends Subsystem {
     Solenoid amberLed = new Solenoid(RobotMap.amberLedSolenoid);
 
     AxisCamera camera = AxisCamera.getInstance();
+    
+    public Vision() {
+        camera.writeMaxFPS(30);
+    }
 
     public void setLeds(boolean red, boolean green, boolean blue, boolean amber) {
         setLed(redLed, red);
@@ -58,7 +62,10 @@ public class Vision extends Subsystem {
     public void turnOff() {
         setLeds(false, false, false, false);
     }
-
+    
+    public void turnOn() {
+        setLeds(true, true, true, true);
+    }
     /**
      * Make sure to call free() when you are done with the image!
      *
@@ -67,7 +74,11 @@ public class Vision extends Subsystem {
     public ColorImage getImage() throws NIVisionException, AxisCameraException {
         return camera.getImage();
     }
-
+    
+    public boolean hasImage() throws NIVisionException, AxisCameraException {
+        return camera.freshImage();
+    }
+    
     public void saveImage(Image img, String filename) throws NIVisionException {
         img.write(filename);
     }
@@ -77,6 +88,5 @@ public class Vision extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-        setDefaultCommand(new UseVision());
     }
 }
