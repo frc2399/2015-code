@@ -93,7 +93,7 @@ public class VisionSampleProject2014 extends SimpleRobot {
                  * 
                  */
                 ColorImage image = camera.getImage();     // comment if using stored images
-               //ColorImage image;                           // next 2 lines read image from flash on cRIO
+                //ColorImage image;                           // next 2 lines read image from flash on cRIO
                 //image = new RGBImage("/testImage.jpg");		// get the sample image from the cRIO flash
                 image.write("/image.bmp");
                 BinaryImage thresholdImage = image.thresholdHSV(105, 137, 230, 255, 133, 183);   // keep only green objects
