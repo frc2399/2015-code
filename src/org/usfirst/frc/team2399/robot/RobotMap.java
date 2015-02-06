@@ -51,3 +51,4 @@ public class RobotMap {
 // void is for methods that have no return
 // static= only one
 // final= cannot change
+//for limit switches telling things- see code we created when experimenting with limit switches
