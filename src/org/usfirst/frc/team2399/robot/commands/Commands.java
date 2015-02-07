@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CommandTest extends Command {
+public class Commands extends Command {
 
-    public CommandTest() {
+    public Commands() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -32,5 +32,14 @@ public class CommandTest extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+ 
+    protected void setMaxPeriod() {	
+    }
+    
+    protected void setMinRate() {
+    }
+    
+    protected void setDistancePerPulse() {
     }
 }
