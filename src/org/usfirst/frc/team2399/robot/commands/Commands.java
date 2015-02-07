@@ -42,4 +42,38 @@ public class Commands extends Command {
     
     protected void setDistancePerPulse() {
     }
+    
+    protected boolean setReverseDirection(){
+    	return true;
+    }
+    
+    protected void setSamplesToAverage(){
+    }
+    
+    protected void stop(){
+    }
+    
+    public void start(){
+    }
+    
+    protected void reset(){
+    }
+    
+    protected void get(){
+    }
+    
+    protected void getRaw(){
+    }
+    
+    protected void getDistance(){
+    }
+    
+    protected void getRate(){
+    }
+    
+    protected void getDirection(){
+    }
+    
+    protected void getStopped(){
+    }
 }
