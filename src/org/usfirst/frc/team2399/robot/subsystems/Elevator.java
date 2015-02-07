@@ -36,6 +36,27 @@ public class Elevator extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	
 	}
 
-}
+
+	if (elevatorSwitch.isPressed == true) //this is the command for stopping the slides
+										 //so they don't fly off the robot or fall off
+		{
+			elevatorMotor.set(0);       //this will stop the motor controlling the slides 
+		}
+	
+	else 
+		{
+			elevatorMotor.set(); // this will be the speed the slides are traveling at when
+			                     // when the switches are not pressed
+		}
+	
+	
+	
+	
+
+
+
+
+
