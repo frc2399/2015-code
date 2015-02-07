@@ -22,6 +22,8 @@ public class OI {
 	Button strafeLeftButt = new JoystickButton(driveStick, 4);
 	Button strafeRightButt = new JoystickButton(driveStick, 5);
 
+	Button slideUpButt = new JoystickButton(driveStick,3);
+	Button slideDownButt = new JoystickButton(driveStick,2);
 	
 	public double getForwardSpeeds()
 	{

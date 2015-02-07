@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Encoder;
 public class RobotMap {
 	
 
-	public static final int ELEVATOR_JAGUARID = 1; // est elevator jaguar (all
+	public static final int ELEVATOR_JAGUARID = 9; // est elevator jaguar (all
 													// caps is recommended) and
 													// sets it = to 1; in
 													// reality, =1 is unlikely												

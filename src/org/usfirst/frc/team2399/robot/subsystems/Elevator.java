@@ -48,7 +48,7 @@ public class Elevator extends Subsystem {
 	
 	else 
 		{
-			elevatorMotor.set(); // this will be the speed the slides are traveling at when
+			elevatorMotor.set(0); // this will be the speed the slides are traveling at when
 			                     // when the switches are not pressed. WILL NEED TO INPUT VALUE
 		}
 	
