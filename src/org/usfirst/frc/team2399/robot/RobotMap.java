@@ -11,12 +11,11 @@ import edu.wpi.first.wpilibj.Encoder;
  * floating around.
  */
 public class RobotMap {
-	
 
 	public static final int ELEVATOR_JAGUARID = 9; // est elevator jaguar (all
 													// caps is recommended) and
 													// sets it = to 1; in
-													// reality, =1 is unlikely												
+													// reality, =1 is unlikely
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	public static final int SWITCHPORT = 2; // assigned to ports
@@ -28,15 +27,18 @@ public class RobotMap {
 															// to ports
 	public static final DigitalInput ELEVATOR_SWITCH = new DigitalInput(
 			SWITCHPORT);// assigns limit switch to ports
-	
-	
-	public static final int MOTOR_JAGUARID = 5;//assign actual ports once the robot is a thing/jag # are a thing
+
+	public static final int driveLeftFront = 2;// assign actual ports once the
+	public static final int driveRightFront= 12;
+	public static final int	driveLeftBack= 3;
+	public static final int driveRightBack= 13;
+												// thing
 	public static final int MOTOR_ENCODERPORT_A = 0;
 	public static final int MOTOR_ENCODERPORT_B = 1;
-	
-	public static final CANJaguar MOTOR_JAGUAR = new CANJaguar(MOTOR_JAGUARID);
-	public static final Encoder MOTOR_ENCODER = new Encoder(MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
-	
+
+
+	public static final Encoder MOTOR_ENCODER = new Encoder(
+			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
 
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
@@ -52,4 +54,5 @@ public class RobotMap {
 // void is for methods that have no return
 // static= only one
 // final= cannot change
-//for limit switches telling things- see code we created when experimenting with limit switches
+// for limit switches telling things- see code we created when experimenting
+// with limit switches

@@ -12,7 +12,7 @@ public class OI {
 	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
 	//minor change testing
 	
-	Joystick driveStick = new Joystick (0);
+	static Joystick driveStick = new Joystick (0);
 	
 	Button slideOneButt = new JoystickButton(driveStick, 6);
 	Button slideTwoButt = new JoystickButton(driveStick, 7);
@@ -25,14 +25,42 @@ public class OI {
 	Button slideUpButt = new JoystickButton(driveStick,3);
 	Button slideDownButt = new JoystickButton(driveStick,2);
 	
-	public double getForwardSpeeds()
+	double x;
+	double y;
+	double twist;
+	
+	
+	public double getForwardSpeed()
 	{
 		return driveStick.getY();
 	}
 	
-	public double getSideSpeed()
+	public static double getSideSpeed()
 	{
 		return driveStick.getX();
+	}
+
+	public static boolean shouldStrafe() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public static double getTwistSpeed() {
+		return 0;
+		// TODO Auto-generated method stub
+	
+	}
+
+	public static double getForwardSpeed1() {
+		return 0;
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static double getSideSpeed(int i, Object forwardSpeed,
+			Object twistSpeed, int j) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	
