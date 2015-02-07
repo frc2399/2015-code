@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Encoder;
  * floating around.
  */
 public class RobotMap {
+	
 
 	public static final int ELEVATOR_JAGUARID = 1; // est elevator jaguar (all
 													// caps is recommended) and

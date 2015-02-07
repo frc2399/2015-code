@@ -22,7 +22,7 @@ public class Elevator extends Subsystem {
 									// visible in this class
 	private Encoder elevatorEncoder;
 	private DigitalInput elevatorSwitch;
-
+	
 	public Elevator() {// () bc value needs to be put in
 		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
 													// one created in RobotMap
@@ -49,8 +49,9 @@ public class Elevator extends Subsystem {
 	else 
 		{
 			elevatorMotor.set(); // this will be the speed the slides are traveling at when
-			                     // when the switches are not pressed
+			                     // when the switches are not pressed. WILL NEED TO INPUT VALUE
 		}
+	
 	}
 	
 }
