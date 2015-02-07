@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+<<<<<<< Updated upstream
 	
 	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
 	
@@ -35,6 +36,40 @@ public class OI {
 	
 	
     //// CREATING BUTTONS
+=======
+	public double getForwardSpeed(){
+		return driveStick.getRawAxis();
+	}
+	
+	public double getSideSpeed(){
+		return driveStick.getRawAxis();
+	}
+	
+	public double getTwistSpeed(){
+		return driveyStick.getRawAxis(3);
+	}
+	
+	public double getDriveyStickThrottle(){
+		return driveyStick.getRawAxis(4);
+	}
+	public double getLeftStickThrottle(){
+		return leftStick.getRawAxis(3);
+	}
+	public double getRightStickThrottle(){
+		return rightStick.getRawAxis(3);
+	}
+	public boolean shouldStrafe() {
+		if(strafeButt.get()==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	
+	//// CREATING BUTTONS
+>>>>>>> Stashed changes
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
     // number it is.
@@ -60,5 +95,7 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	
+	
 }
 

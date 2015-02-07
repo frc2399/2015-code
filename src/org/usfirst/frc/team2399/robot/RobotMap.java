@@ -3,6 +3,7 @@ package org.usfirst.frc.team2399.robot;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -35,6 +36,7 @@ public class RobotMap {
 	
 	public static final CANJaguar MOTOR_JAGUAR = new CANJaguar(MOTOR_JAGUARID);
 	public static final Encoder MOTOR_ENCODER = new Encoder(MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
+
 	
 
 	// For example to map the left and right motors, you could define the

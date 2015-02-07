@@ -4,6 +4,7 @@ import org.usfirst.frc.team2399.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {
 	private CANJaguar drivetrainMotor;
 	private Encoder drivetrainEncoder;
+	
 	
 	public DriveTrain(){
 		drivetrainMotor = RobotMap.MOTOR_JAGUAR;

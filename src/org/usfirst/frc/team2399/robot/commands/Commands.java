@@ -34,6 +34,8 @@ public class Commands extends Command {
     protected void interrupted() {
     }
  
+    
+    //optical encoder commands (see google doc for more info)
     protected void setMaxPeriod() {	
     }
     
@@ -76,4 +78,27 @@ public class Commands extends Command {
     
     protected void getStopped(){
     }
+    
+    
+    //lift motor commands
+    public void driveForward(){
+    }
+    
+    public void driveBackward(){
+    }
+    
+    
+    //gyro commands
+    protected void resetGyro1(){
+    }
+    
+    protected void getAngle(){
+    }
+    
+    protected void resetGyro(){
+    }
+    
+ 
+    
+    
 }
