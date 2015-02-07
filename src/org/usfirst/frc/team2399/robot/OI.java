@@ -1,12 +1,39 @@
 package org.usfirst.frc.team2399.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
-
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
+	
+	Joystick driveStick = new Joystick (0);
+	
+	Button slideOneButt = new JoystickButton(driveStick, 6);
+	Button slideTwoButt = new JoystickButton(driveStick, 7);
+	Button slideThreeButt = new JoystickButton(driveStick, 11);
+	Button slideFourButt = new JoystickButton(driveStick, 10);
+
+	Button strafeLeftButt = new JoystickButton(driveStick, 4);
+	Button strafeRightButt = new JoystickButton(driveStick, 5);
+
+	
+	public double getForwardSpeeds()
+	{
+		return driveStick.getY();
+	}
+	
+	public double getSideSpeed()
+	{
+		return driveStick.getX();
+	}
+
+	
+	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
