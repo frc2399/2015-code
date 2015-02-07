@@ -1,12 +1,42 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import java.sql.Driver;
+
+import org.usfirst.frc.team2399.robot.OI;
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2399.robot.subsystems.Elevator;
+
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.templates.OI;
+//import edu.wpi.first.wpilibj.templates.subsystems.*;
 
 /**
  *
  */
-public class CommandBase extends Command {
 
+
+
+public abstract class CommandBase extends Command {
+	
+
+	//static instances of all subsystems
+	public static OI oi;
+	public static DriveTrain driveTrain;
+	public static Elevator elevator;
+
+	
+	public static void init()
+	{
+		driveTrain = new DriveTrain();//driveTain
+		elevator = new Elevator();
+		
+		oi= new OI();//oi orange juice
+		SmartDashboard.putData("Drive Train", driveTrain);
+		SmartDashboard.putData("Elevator", elevator);
+		
+	}
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -33,4 +63,6 @@ public class CommandBase extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
+    
 }

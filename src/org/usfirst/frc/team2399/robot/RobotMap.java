@@ -30,7 +30,7 @@ public class RobotMap {
 			SWITCHPORT);// assigns limit switch to ports
 	
 	
-	public static final int MOTOR_JAGUARID = 1;//assign actual ports once the robot is a thing/jag # are a thing
+	public static final int MOTOR_JAGUARID = 5;//assign actual ports once the robot is a thing/jag # are a thing
 	public static final int MOTOR_ENCODERPORT_A = 0;
 	public static final int MOTOR_ENCODERPORT_B = 1;
 	

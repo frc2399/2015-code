@@ -53,8 +53,15 @@ public class Elevator extends Subsystem {
 		}
 	
 	}
+
+	public static void set(double d) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+	}
 	
-}
+
 	
 	
 	
