@@ -5,6 +5,8 @@ import org.usfirst.frc.team2399.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,6 +20,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 // for encoders)
 
 public class Elevator extends Subsystem {
+	
+	private RobotDrive drive;
+	private Gyro elevatorGyro;
 	private CANJaguar elevatorMotor;// private sets them so that they're only
 									// visible in this class
 	private Encoder elevatorEncoder;//encoder and switch est
@@ -28,6 +33,16 @@ public class Elevator extends Subsystem {
 													// one created in RobotMap
 		elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch = ones in RobotMap
 		elevatorSwitch = RobotMap.ELEVATOR_SWITCH;
+	
+	}
+	
+	public void elevatorUp(double x, double y, double twist) {
+		double gyroAngle= 0;
+		drive.mecanumDrive_Cartesian(x, y, 0, gyroAngle);
+	}
+	
+	public void elevatorDown(double x, double y, double twist){
+		drive.mecanumDrive_Cartesian(-x, -y, 0, 0);
 	}
 
 	// Put methods for controlling this subsystem
@@ -40,17 +55,6 @@ public class Elevator extends Subsystem {
 	
 	
 
-	if (elevatorSwitch.get() == true) //this is the command for stopping the slides
-										 //so they don't fly off the robot or fall off
-		{
-			elevatorMotor.set(0);       //this will stop the motor controlling the slides 
-		}
-	
-	else 
-		{
-			elevatorMotor.set(0); // this will be the speed the slides are traveling at when
-			                     // when the switches are not pressed. WILL NEED TO INPUT VALUE
-		}
 	
 	}
 

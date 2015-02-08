@@ -1,5 +1,9 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,17 +12,26 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Autonomous extends Command {
 
     public Autonomous() {
+    	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	DriveTrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
+    	double x;
+    	double y;
+    
+    	DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);
+    	
+    	}
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

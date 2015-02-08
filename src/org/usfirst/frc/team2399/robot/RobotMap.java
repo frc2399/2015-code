@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.GyroReset;
+
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -40,6 +42,10 @@ public class RobotMap {
 	public static final Encoder MOTOR_ENCODER = new Encoder(
 			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
 	
+	Gyro= new gyro(0); //TODO find actual port
+	Gyro.initGyro();
+	GyroReset gyroReset = new GyroReset();
+	
 	
 
 	// For example to map the left and right motors, you could define the
@@ -51,7 +57,7 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-}
+
 // wants you to declare constants for ports and speed controllers
 // void is for methods that have no return
 // static= only one

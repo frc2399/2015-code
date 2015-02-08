@@ -4,6 +4,7 @@ import org.usfirst.frc.team2399.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -13,12 +14,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {//extends DriveTrain
 	private Encoder drivetrainEncoder;//encoder est
 	
-	public CANJaguar leftfront;//Jags est
-	public CANJaguar rightfront;
-	public CANJaguar leftback;
-	public CANJaguar rightback;
+	private CANJaguar leftfront;//Jags est
+	private CANJaguar rightfront;
+	private CANJaguar leftback;
+	private CANJaguar rightback;
 	
-	public static RobotDrive drive;//drive est as static
+	private RobotDrive drive;//drive est as static
+	
+	private Gyro drivetrainGyro;
+	
 	
 	
 	public DriveTrain(){
@@ -31,6 +35,16 @@ public class DriveTrain extends Subsystem {//extends DriveTrain
 		
 		//set up smartdash later
 		drivetrainEncoder=RobotMap.MOTOR_ENCODER;//what the drivetrain encoder is
+		
+	}
+	
+	public void driveStrafe(double x, double y, double twist) {
+		double gyroAngle= 0;
+		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
+	}
+	
+	public void drive(double x, double y, double twist){
+		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
     
     // Put methods for controlling this subsystem
@@ -44,6 +58,28 @@ public class DriveTrain extends Subsystem {//extends DriveTrain
 	public static double getGyroAngle() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public static void resetGyro() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void set(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void mechanumDrive_Cartesian(double y, double x, int i,
+			double angle) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void Strafe(double sideSpeed, int i, double twistSpeed,
+			double gyroAngle) {
+		// TODO Auto-generated method stub
+		
 	}
     
 

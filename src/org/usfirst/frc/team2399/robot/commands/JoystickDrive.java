@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
+import org.usfirst.frc.team2399.robot.Robot;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Gyro;
@@ -14,7 +15,7 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 
 	public JoystickDrive() {
 
-		requires(CommandBase.driveTrain);// requires driveTrain from CommandBase
+		requires(Robot.driveTrain);// requires driveTrain from CommandBase
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

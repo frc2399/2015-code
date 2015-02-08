@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
+import org.usfirst.frc.team2399.robot.Robot;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,8 +22,8 @@ public abstract class SlideMovement extends Command {
 		this.slideDownButt = slideDownButt;//what those buttons mean
 		this.slideUpButt = slideUpButt;
 
-		requires(CommandBase.elevator);//requires these things from CommandBase
-		requires(CommandBase.oi);
+		requires(Robot.elevator);//requires these things from CommandBase
+		requires(Robot.oi);
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

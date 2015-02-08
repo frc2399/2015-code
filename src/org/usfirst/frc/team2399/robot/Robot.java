@@ -1,10 +1,15 @@
 
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.Autonomous;
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2399.robot.subsystems.Elevator;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -16,17 +21,30 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 
+	public static  OI oi;
+	public static  DriveTrain driveTrain;
+	public static  Elevator elevator;
 	
-	public static OI oi;//est operator interface
-
-    Command autonomousCommand;//est autocommand
+	
+	
+	
+  
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();//new oi
+    	driveTrain = new DriveTrain();//driveTain
+		elevator = new Elevator();//elevator
+		
+		oi= new OI();//oi orange juice
+		SmartDashboard.putData("Drive Train", driveTrain);//smartdash values
+		SmartDashboard.putData("Elevator", elevator);
+	
+		Command autonomousCommand;//est autocommand
+
+	
 		//frontLeft = new drivetrainMotor
         // instantiate the command used for the autonomous period
     
@@ -38,7 +56,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+    
     }
 
     /**
@@ -53,7 +71,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+      
     }
 
     /**

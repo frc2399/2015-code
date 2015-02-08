@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveForward extends Command {//extends driveForward
 
     public DriveForward() {
-    	requires(CommandBase.driveTrain);//requires the value driveTrain from CommandBase
+    	requires(Robot.driveTrain);
   
     	
         // Use requires() here to declare subsystem dependencies

@@ -1,8 +1,12 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.GyroReset;
+
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -18,9 +22,12 @@ public class OI {
 	Button slideTwoButt = new JoystickButton(driveStick, 7);//buttons are assigned to ports
 	Button slideThreeButt = new JoystickButton(driveStick, 11);
 	Button slideFourButt = new JoystickButton(driveStick, 10);
+	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
 	static Button strafeButt = new JoystickButton(driveStick, 4);
 	
+	
+
 
 	Button slideUpButt = new JoystickButton(driveStick,3);
 	Button slideDownButt = new JoystickButton(driveStick,2);
@@ -29,6 +36,12 @@ public class OI {
 	double y;
 	double twist;
 	
+	
+	
+	
+	public OI(){
+		
+	}
 
 	
 	
