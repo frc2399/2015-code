@@ -30,7 +30,7 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {// THERE ARE ERRORS HERE
 
-		driveTrain.drive(Robot.oi.getSideSpeed(), Robot.oi.getForwardSpeed(),
+		driveTrain.driveFieldOriented(Robot.oi.getSideSpeed(), Robot.oi.getForwardSpeed(),
 				Robot.oi.getTwistSpeed());
 		
 		System.out.println("is running");

@@ -42,19 +42,19 @@ public abstract class SlideMovement extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		if (slideUpButt.get() == true) {//if up is pressed, elevator moves up
-			Elevator.set(.1);
-		} 
-		else {
-			Elevator.set(0);//otherwise stopped
-		}
-		
-		if (slideDownButt.get()== true){//if down is pressed, elevator moves down
-			Elevator.set(-.1);
-		}
-		else{
-			Elevator.set(0);//otherwise is stopped
-		}
+//		if (slideUpButt.get() == true) {//if up is pressed, elevator moves up
+//			Elevator.set(.1);
+//		} 
+//		else {
+//			Elevator.set(0);//otherwise stopped
+//		}
+//		
+//		if (slideDownButt.get()== true){//if down is pressed, elevator moves down
+//			Elevator.set(-.1);
+//		}
+//		else{
+//			Elevator.set(0);//otherwise is stopped
+//		}
 			
 
 	}

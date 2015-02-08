@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
 	
 	private RobotDrive drive;
-	private Gyro elevatorGyro;
 	private CANJaguar elevatorMotor;// private sets them so that they're only
 									// visible in this class
 	private Encoder elevatorEncoder;//encoder and switch est
@@ -36,13 +35,8 @@ public class Elevator extends Subsystem {
 	
 	}
 	
-	public void elevatorUp(double x, double y, double twist) {
-		double gyroAngle= 0;
-		drive.mecanumDrive_Cartesian(x, y, 0, gyroAngle);
-	}
-	
-	public void elevatorDown(double x, double y, double twist){
-		drive.mecanumDrive_Cartesian(-x, -y, 0, 0);
+	public void setSpeed(double elevatorUpSpeed){
+		elevatorMotor.set(elevatorUpSpeed);
 	}
 
 	// Put methods for controlling this subsystem
@@ -51,17 +45,9 @@ public class Elevator extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-	
-	
-	
-
-	
 	}
 
-	public static void set(double d) {
-		// TODO Auto-generated method stub
-		
-	}
+
 		
 	}
 	

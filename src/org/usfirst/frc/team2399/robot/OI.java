@@ -37,6 +37,7 @@ public class OI {
 	double twist;
 
 	public OI() {
+		resetGyroButt.whenPressed(new GyroReset());
 
 	}
 

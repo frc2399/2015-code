@@ -1,13 +1,18 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class GyroReset extends Command {
+	private DriveTrain driveTrain = Robot.driveTrain;
 
     public GyroReset() {
+    	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -18,11 +23,12 @@ public class GyroReset extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

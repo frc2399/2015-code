@@ -25,34 +25,36 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	private Gyro drivetrainGyro;
 
 	public DriveTrain() {
-		leftfront = new CANJaguar(RobotMap.driveLeftFront);// Jags take values
-															// from RobotMap
-		rightfront = new CANJaguar(RobotMap.driveRightFront);// est new CANJags
-		leftback = new CANJaguar(RobotMap.driveLeftBack);
-		rightback = new CANJaguar(RobotMap.driveRightBack);
-		
-		
+		leftfront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
+		rightfront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
+		leftback = new CANJaguar(RobotMap.LEFTBACK_JAGUARID);
+		rightback = new CANJaguar(RobotMap.RIGHTBACK_JAGUARID);
 
-		drive = new RobotDrive(leftfront, leftback, rightfront, rightback);// says
-																			// what
-																			// Drive
-																			// is
+		drive = new RobotDrive(leftfront, leftback, rightfront, rightback);
+		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
+
 		drive.setCANJaguarSyncGroup((byte) 7);
-		//drive.set
-		// set up smartdash later
-		//drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
-													// encoder is
 
-	//	drivetrainGyro = RobotMap.gyro;
+		// drive.set
+		// set up smartdash later
+		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
+		// encoder is
+
+		//drivetrainGyro = RobotMap.gyro;
 
 	}
 
-	public void driveStrafe(double x, double y, double twist) {
-		double gyroAngle = 0;
+	public void resetGyro() {
+		drivetrainGyro.reset();
+	}
+
+	public void driveFieldOriented(double x, double y, double twist) {
+		double gyroAngle = 0;//drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
 	}
 
-	public void drive(double x, double y, double twist) {
+	public void driveRobotOriented(double x, double y, double twist) {
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
 
