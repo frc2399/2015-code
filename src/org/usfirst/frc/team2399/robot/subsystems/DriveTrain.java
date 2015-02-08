@@ -36,6 +36,8 @@ public class DriveTrain extends Subsystem {//extends DriveTrain
 		//set up smartdash later
 		drivetrainEncoder=RobotMap.MOTOR_ENCODER;//what the drivetrain encoder is
 		
+		drivetrainGyro=RobotMap.gyro;
+		
 	}
 	
 	public void driveStrafe(double x, double y, double twist) {

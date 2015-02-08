@@ -5,6 +5,7 @@ import org.usfirst.frc.team2399.robot.commands.GyroReset;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -42,9 +43,10 @@ public class RobotMap {
 	public static final Encoder MOTOR_ENCODER = new Encoder(
 			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
 	
-	Gyro= new gyro(0); //TODO find actual port
-	Gyro.initGyro();
-	GyroReset gyroReset = new GyroReset();
+	
+	public static final int GYRO_PORT= 0;
+	public static final Gyro gyro = new Gyro(GYRO_PORT);
+
 	
 	
 
@@ -64,3 +66,4 @@ public class RobotMap {
 // final= cannot change
 // for limit switches telling things- see code we created when experimenting
 // with limit switches
+}

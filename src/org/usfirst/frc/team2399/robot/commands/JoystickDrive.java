@@ -29,16 +29,9 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {// THERE ARE ERRORS HERE
 
-		if (OI.shouldStrafe()) {
+		DriveTrain.Strafe(OI.getSideSpeed(), 0, OI.getTwistSpeed(),
+				DriveTrain.getGyroAngle());
 
-			DriveTrain.drive.mecanumDrive_Cartesian(OI.getSideSpeed(), 0,
-					OI.getTwistSpeed(), DriveTrain.getGyroAngle());
-		} else {
-			DriveTrain.drive.mecanumDrive_Cartesian(OI.getSideSpeed(),
-					OI.getForwardSpeed(), OI.getTwistSpeed(), 0);// otherwise
-																	// get
-																	// speeds
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
