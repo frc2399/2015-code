@@ -37,10 +37,10 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 																			// is
 
 		// set up smartdash later
-		drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
+		//drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
 													// encoder is
 
-		drivetrainGyro = RobotMap.gyro;
+	//	drivetrainGyro = RobotMap.gyro;
 
 	}
 

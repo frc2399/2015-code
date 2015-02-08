@@ -29,10 +29,10 @@ public class Elevator extends Subsystem {
 	private DigitalInput elevatorSwitch;
 	
 	public Elevator() {// () bc value needs to be put in
-		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
+		//elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
 													// one created in RobotMap
-		elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch = ones in RobotMap
-		elevatorSwitch = RobotMap.ELEVATOR_SWITCH;
+		//elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch = ones in RobotMap
+		//elevatorSwitch = RobotMap.ELEVATOR_SWITCH;
 	
 	}
 	

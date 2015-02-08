@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.Gyro;
  */
 public class RobotMap {
 
-	public static final int ELEVATOR_JAGUARID = 9; // est elevator jaguar (all
+	//public static final int ELEVATOR_JAGUARID = 9; // est elevator jaguar (all
 													// caps is recommended) and
 													// sets it = to 1; in
 													// reality, =1 is unlikely
@@ -23,8 +23,8 @@ public class RobotMap {
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	public static final int SWITCHPORT = 2; // assigned to ports
 
-	public static final CANJaguar ELEVATOR_JAGUAR = new CANJaguar(
-			ELEVATOR_JAGUARID); // assigns which jaguar
+	public static final CANJaguar ELEVATOR_JAGUAR = null;//new CANJaguar(
+			//ELEVATOR_JAGUARID); // assigns which jaguar
 	public static final Encoder ELEVATOR_ENCODER = new Encoder(
 			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);// assigns encoder
 															// to ports
