@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
 import org.usfirst.frc.team2399.robot.RobotMap;
+import org.usfirst.frc.team2399.robot.commands.JoystickDrive;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
@@ -53,6 +54,8 @@ public class DriveTrain extends Subsystem {//extends DriveTrain
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
+    	
+    	setDefaultCommand(new JoystickDrive());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
