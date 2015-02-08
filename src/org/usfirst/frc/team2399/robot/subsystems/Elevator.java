@@ -20,13 +20,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Elevator extends Subsystem {
 	private CANJaguar elevatorMotor;// private sets them so that they're only
 									// visible in this class
-	private Encoder elevatorEncoder;
+	private Encoder elevatorEncoder;//encoder and switch est
 	private DigitalInput elevatorSwitch;
 	
 	public Elevator() {// () bc value needs to be put in
 		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
 													// one created in RobotMap
-		elevatorEncoder = RobotMap.ELEVATOR_ENCODER;
+		elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch = ones in RobotMap
 		elevatorSwitch = RobotMap.ELEVATOR_SWITCH;
 	}
 

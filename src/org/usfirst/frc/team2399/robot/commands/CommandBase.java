@@ -30,10 +30,10 @@ public abstract class CommandBase extends Command {
 	public static void init()
 	{
 		driveTrain = new DriveTrain();//driveTain
-		elevator = new Elevator();
+		elevator = new Elevator();//elevator
 		
 		oi= new OI();//oi orange juice
-		SmartDashboard.putData("Drive Train", driveTrain);
+		SmartDashboard.putData("Drive Train", driveTrain);//smartdash values
 		SmartDashboard.putData("Elevator", elevator);
 		
 	}

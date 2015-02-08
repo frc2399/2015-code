@@ -10,13 +10,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class JoystickDrive extends Command {
-	
-
+public class JoystickDrive extends Command {// extension of JoystickDrive
 
 	public JoystickDrive() {
-		
-		requires(CommandBase.driveTrain);
+
+		requires(CommandBase.driveTrain);// requires driveTrain from CommandBase
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -24,18 +22,18 @@ public class JoystickDrive extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-	
+
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
-		
-		
+	protected void execute() {//THERE ARE ERRORS HERE
+
 		if (OI.shouldStrafe()) {
-			DriveTrain.drive.mecanumDrive_Cartesian(y, x, twist, Gyro.getAngle());
+			DriveTrain.drive.mecanumDrive_Cartesian(y, x, twist,
+					Gyro.getAngle());// if it's strafing, get the angles
 		} else {
 			DriveTrain.drive.mecanumDrive_Cartesian(OI.getSideSpeed(),
-					OI.getForwardSpeed(), OI.getTwistSpeed(), 0);
+					OI.getForwardSpeed(), OI.getTwistSpeed(), 0);//otherwise get speeds
 		}
 	}
 

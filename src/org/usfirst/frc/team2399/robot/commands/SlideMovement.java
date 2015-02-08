@@ -12,16 +12,16 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public abstract class SlideMovement extends Command {
 
-	JoystickButton slideUpButt;
+	JoystickButton slideUpButt;//joystick buttons
 	JoystickButton slideDownButt;
 
 	public SlideMovement(JoystickButton slideUpButt,
-			JoystickButton slideDownButt) {
+			JoystickButton slideDownButt) {//public class applying to the buttons
 
-		this.slideDownButt = slideDownButt;
+		this.slideDownButt = slideDownButt;//what those buttons mean
 		this.slideUpButt = slideUpButt;
 
-		requires(CommandBase.elevator);
+		requires(CommandBase.elevator);//requires these things from CommandBase
 		requires(CommandBase.oi);
 
 		// Use requires() here to declare subsystem dependencies
@@ -41,18 +41,18 @@ public abstract class SlideMovement extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		if (slideUpButt.get() == true) {
+		if (slideUpButt.get() == true) {//if up is pressed, elevator moves up
 			Elevator.set(.1);
 		} 
 		else {
-			Elevator.set(0);
+			Elevator.set(0);//otherwise stopped
 		}
 		
-		if (slideDownButt.get()== true){
+		if (slideDownButt.get()== true){//if down is pressed, elevator moves down
 			Elevator.set(-.1);
 		}
 		else{
-			Elevator.set(0);
+			Elevator.set(0);//otherwise is stopped
 		}
 			
 

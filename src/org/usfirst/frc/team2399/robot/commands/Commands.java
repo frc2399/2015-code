@@ -34,7 +34,7 @@ public class Commands extends Command {
     // subsystems is scheduled to run
 
     
-    protected boolean isPressed()
+    protected boolean isPressed()//if joystick button is pressed
     {
     	return true;
     }
@@ -42,6 +42,7 @@ public class Commands extends Command {
     protected void interrupted() {
     }
  
+    //see optical encoders/limit switches google doc for more info
     protected void setMaxPeriod() {	
     }
     

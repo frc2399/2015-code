@@ -12,10 +12,10 @@ public class OI {
 	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
 	//minor change testing
 	
-	static Joystick driveStick = new Joystick (0);
+	static Joystick driveStick = new Joystick (0);//new joystick
 	
-	Button slideOneButt = new JoystickButton(driveStick, 6);
-	Button slideTwoButt = new JoystickButton(driveStick, 7);
+	Button slideOneButt = new JoystickButton(driveStick, 6);//all the buttons yayyy
+	Button slideTwoButt = new JoystickButton(driveStick, 7);//buttons are assigned to ports
 	Button slideThreeButt = new JoystickButton(driveStick, 11);
 	Button slideFourButt = new JoystickButton(driveStick, 10);
 
@@ -25,39 +25,39 @@ public class OI {
 	Button slideUpButt = new JoystickButton(driveStick,3);
 	Button slideDownButt = new JoystickButton(driveStick,2);
 	
-	double x;
+	double x;//est doubles so we can use them in other parts of the program
 	double y;
 	double twist;
 	
 	
-	public double getForwardSpeed()
+	public double getForwardSpeed()//forward speed returns the y value from the joystick
 	{
 		return driveStick.getY();
 	}
 	
-	public static double getSideSpeed()
+	public static double getSideSpeed()//side speed returns the x value from the joystick
 	{
 		return driveStick.getX();
 	}
 
-	public static boolean shouldStrafe() {
+	public static boolean shouldStrafe() {//if it strafes, return the value false
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public static double getTwistSpeed() {
+	public static double getTwistSpeed() {//
 		return 0;
 		// TODO Auto-generated method stub
 	
 	}
 
-	public static double getForwardSpeed1() {
+	public static double getForwardSpeed1() {//gets the forward speed
 		return 0;
 		// TODO Auto-generated method stub
 		
 	}
 
-	public static double getSideSpeed(int i, Object forwardSpeed,
+	public static double getSideSpeed(int i, Object forwardSpeed,//gets the side speed
 			Object twistSpeed, int j) {
 		// TODO Auto-generated method stub
 		return 0;

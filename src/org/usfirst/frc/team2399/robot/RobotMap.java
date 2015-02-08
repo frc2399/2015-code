@@ -28,11 +28,11 @@ public class RobotMap {
 	public static final DigitalInput ELEVATOR_SWITCH = new DigitalInput(
 			SWITCHPORT);// assigns limit switch to ports
 
-	public static final int driveLeftFront = 2;// assign actual ports once the
+	public static final int driveLeftFront = 2;// ports have been assigned
 	public static final int driveRightFront= 12;
 	public static final int	driveLeftBack= 3;
 	public static final int driveRightBack= 13;
-												// thing
+											
 	public static final int MOTOR_ENCODERPORT_A = 0;
 	public static final int MOTOR_ENCODERPORT_B = 1;
 
