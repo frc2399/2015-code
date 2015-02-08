@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class JoystickDrive extends Command {// extension of JoystickDrive
+	private DriveTrain driveTrain = Robot.driveTrain;
 
 	public JoystickDrive() {
 
@@ -29,8 +30,8 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {// THERE ARE ERRORS HERE
 
-		DriveTrain.Strafe(OI.getSideSpeed(), 0, OI.getTwistSpeed(),
-				DriveTrain.getGyroAngle());
+		driveTrain.drive(Robot.oi.getSideSpeed(), Robot.oi.getForwardSpeed(),
+				Robot.oi.getTwistSpeed());
 
 	}
 

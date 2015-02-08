@@ -20,7 +20,7 @@ public class Autonomous extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	DriveTrain.resetGyro();
+    	//DriveTrain.resetGyro();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +28,7 @@ public class Autonomous extends Command {
     	double x;
     	double y;
     
-    	DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);
+    	//DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);
     	
     	}
     
