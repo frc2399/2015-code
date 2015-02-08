@@ -10,27 +10,27 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class DriveTrain extends Subsystem {
-	private Encoder drivetrainEncoder;
+public class DriveTrain extends Subsystem {//extends DriveTrain
+	private Encoder drivetrainEncoder;//encoder est
 	
-	public CANJaguar leftfront;
+	public CANJaguar leftfront;//Jags est
 	public CANJaguar rightfront;
 	public CANJaguar leftback;
 	public CANJaguar rightback;
 	
-	public static RobotDrive drive;
+	public static RobotDrive drive;//drive est as static
 	
 	
 	public DriveTrain(){
-		leftfront = new CANJaguar(RobotMap.driveLeftFront);
-		rightfront = new CANJaguar(RobotMap.driveRightFront);
+		leftfront = new CANJaguar(RobotMap.driveLeftFront);//Jags take values from RobotMap
+		rightfront = new CANJaguar(RobotMap.driveRightFront);//est new CANJags
 		leftback = new CANJaguar(RobotMap.driveLeftBack);
 		rightback= new CANJaguar(RobotMap.driveRightBack);
 		
-		drive= new RobotDrive(leftfront, leftback, rightfront, rightback);
+		drive= new RobotDrive(leftfront, leftback, rightfront, rightback);//says what Drive is
 		
 		//set up smartdash later
-		drivetrainEncoder=RobotMap.MOTOR_ENCODER;
+		drivetrainEncoder=RobotMap.MOTOR_ENCODER;//what the drivetrain encoder is
 	}
     
     // Put methods for controlling this subsystem

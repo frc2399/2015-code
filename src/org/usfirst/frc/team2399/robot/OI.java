@@ -19,8 +19,8 @@ public class OI {
 	Button slideThreeButt = new JoystickButton(driveStick, 11);
 	Button slideFourButt = new JoystickButton(driveStick, 10);
 
-	Button strafeLeftButt = new JoystickButton(driveStick, 4);
-	Button strafeRightButt = new JoystickButton(driveStick, 5);
+	static Button strafeButt = new JoystickButton(driveStick, 4);
+	
 
 	Button slideUpButt = new JoystickButton(driveStick,3);
 	Button slideDownButt = new JoystickButton(driveStick,2);
@@ -29,8 +29,10 @@ public class OI {
 	double y;
 	double twist;
 	
+
 	
-	public double getForwardSpeed()//forward speed returns the y value from the joystick
+	
+	public static double getForwardSpeed()//forward speed returns the y value from the joystick
 	{
 		return driveStick.getY();
 	}
@@ -39,16 +41,26 @@ public class OI {
 	{
 		return driveStick.getX();
 	}
+	
+
 
 	public static boolean shouldStrafe() {//if it strafes, return the value false
-		// TODO Auto-generated method stub
-		return false;
+		if (strafeButt.get() == true){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	public static double getTwistSpeed() {//
-		return 0;
-		// TODO Auto-generated method stub
-	
+		double x = driveStick.getX();
+		if (x>0){
+			return x * x;
+		}
+		else{
+			return -(x * x);
+		}
 	}
 
 	public static double getForwardSpeed1() {//gets the forward speed
@@ -57,11 +69,7 @@ public class OI {
 		
 	}
 
-	public static double getSideSpeed(int i, Object forwardSpeed,//gets the side speed
-			Object twistSpeed, int j) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	
 	

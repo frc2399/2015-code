@@ -39,6 +39,8 @@ public class RobotMap {
 
 	public static final Encoder MOTOR_ENCODER = new Encoder(
 			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
+	
+	
 
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

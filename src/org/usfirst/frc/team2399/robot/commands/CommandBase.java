@@ -22,12 +22,12 @@ public abstract class CommandBase extends Command {
 	
 
 	//static instances of all subsystems
-	public static OI oi;
-	public static DriveTrain driveTrain;
-	public static Elevator elevator;
-
+	public static  OI oi;
+	public static  DriveTrain driveTrain;
+	public static  Elevator elevator;
 	
-	public static void init()
+	
+	public void init()
 	{
 		driveTrain = new DriveTrain();//driveTain
 		elevator = new Elevator();//elevator
