@@ -30,12 +30,15 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		rightfront = new CANJaguar(RobotMap.driveRightFront);// est new CANJags
 		leftback = new CANJaguar(RobotMap.driveLeftBack);
 		rightback = new CANJaguar(RobotMap.driveRightBack);
+		
+		
 
 		drive = new RobotDrive(leftfront, leftback, rightfront, rightback);// says
 																			// what
 																			// Drive
 																			// is
-
+		drive.setCANJaguarSyncGroup((byte) 7);
+		//drive.set
 		// set up smartdash later
 		//drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
 													// encoder is

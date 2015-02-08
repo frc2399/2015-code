@@ -32,6 +32,8 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 
 		driveTrain.drive(Robot.oi.getSideSpeed(), Robot.oi.getForwardSpeed(),
 				Robot.oi.getTwistSpeed());
+		
+		System.out.println("is running");
 
 	}
 
