@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 
 	private RobotDrive drive;// drive est as static
 
-	private Gyro drivetrainGyro;
+	private Gyro drivetrainGyro = new Gyro(0);
 
 	public DriveTrain() {
 		leftfront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);

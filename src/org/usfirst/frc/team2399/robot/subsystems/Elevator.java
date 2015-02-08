@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
 import org.usfirst.frc.team2399.robot.RobotMap;
+import org.usfirst.frc.team2399.robot.commands.ElevateNot;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -39,10 +40,13 @@ public class Elevator extends Subsystem {
 		elevatorMotor.set(elevatorUpSpeed);
 	}
 
+	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
+		
+		setDefaultCommand(new ElevateNot());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}

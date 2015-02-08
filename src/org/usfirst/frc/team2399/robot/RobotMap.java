@@ -35,8 +35,8 @@ public class RobotMap {
 	public static final int	LEFTBACK_JAGUARID= 4;
 	public static final int RIGHTBACK_JAGUARID= 3;
 											
-	public static final int MOTOR_ENCODERPORT_A = 2;
-	public static final int MOTOR_ENCODERPORT_B = 3;
+	public static final int MOTOR_ENCODERPORT_A = 3;
+	public static final int MOTOR_ENCODERPORT_B = 4;
 
 
 	public static final Encoder MOTOR_ENCODER = new Encoder(

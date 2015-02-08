@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.ElevateDown;
+import org.usfirst.frc.team2399.robot.commands.ElevateUp;
 import org.usfirst.frc.team2399.robot.commands.GyroReset;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -38,6 +40,8 @@ public class OI {
 
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
+		slideUpButt.whileHeld(new ElevateUp());
+		slideDownButt.whileHeld(new ElevateDown());
 
 	}
 
