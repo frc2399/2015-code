@@ -11,12 +11,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class JoystickDrive extends Command {// extension of JoystickDrive
+
+public class JoystickDrive extends Command {
+	//private instance of drivetrain and brings in drivetrain from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 
 	public JoystickDrive() {
 
-		requires(Robot.driveTrain);// requires driveTrain from CommandBase
+		requires(Robot.driveTrain);
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -28,7 +30,8 @@ public class JoystickDrive extends Command {// extension of JoystickDrive
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {// THERE ARE ERRORS HERE
+	//sets drivetrain to get values from joysticks
+	protected void execute() {
 
 		driveTrain.driveFieldOriented(Robot.oi.getSideSpeed(), Robot.oi.getForwardSpeed(),
 				Robot.oi.getTwistSpeed());

@@ -13,29 +13,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-// things to do: subsystems and commands for subsystems; elevator should be
-// done; do drive train; make a mecanum drive obj so you can use the library
-// method for if limit switch is pressed, driving motor
-// speed; config encoders, possibly jaguars
-// by tomorrow night: do the same process for drivetrain system (4 CANJaguars
-// for encoders)
 
+//ALL LIMIT SWITCH THINGS HAVE BEEN REMOVED BC JAGS DO IT FOR US
 public class Elevator extends Subsystem {
-
+	//private instances of drive, elevatormotor/encoder
 	private RobotDrive drive;
-	private CANJaguar elevatorMotor;// private sets them so that they're only
-									// visible in this class
-	private Encoder elevatorEncoder;// encoder and switch est
+	private CANJaguar elevatorMotor;
+	private Encoder elevatorEncoder;
 	
-	public Elevator() {// () bc value needs to be put in
-		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
-													// one created in RobotMap
-		// elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch =
-		// ones in RobotMap
+	//sets elevator to one from Robot Map
+	public Elevator() {
+		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;
 		
 
 	}
-
+	//elevator motor is set to the up speed
 	public void setSpeed(double elevatorUpSpeed) {
 		elevatorMotor.set(elevatorUpSpeed);
 	}
@@ -43,6 +35,7 @@ public class Elevator extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
+	//default command is no movement
 	public void initDefaultCommand() {
 
 		setDefaultCommand(new ElevateNot());

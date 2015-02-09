@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class GyroReset extends Command {
+	//private instance of driveTrain, brings in driveTrain from Robot.java, sets gyro to 0 
+	//when executed
 	private DriveTrain driveTrain = Robot.driveTrain;
 
     public GyroReset() {

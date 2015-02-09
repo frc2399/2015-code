@@ -18,13 +18,12 @@ public class OI {
 
 	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
 	// minor change testing
+	//buttons have been assigned (elevators and gyro reset have been tested)
 
 	Joystick driveStick = new Joystick(0);// new joystick
 
-	Button slideOneButt = new JoystickButton(driveStick, 6);// all the buttons
-															// yayyy
-	Button slideTwoButt = new JoystickButton(driveStick, 7);// buttons are
-															// assigned to ports
+	Button slideOneButt = new JoystickButton(driveStick, 6);
+	Button slideTwoButt = new JoystickButton(driveStick, 7);
 	Button slideThreeButt = new JoystickButton(driveStick, 11);
 	Button slideFourButt = new JoystickButton(driveStick, 10);
 	Button resetGyroButt = new JoystickButton(driveStick, 5);
@@ -38,26 +37,25 @@ public class OI {
 	double y;
 	double twist;
 
+	//buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
 		slideUpButt.whileHeld(new ElevateUp());
 		slideDownButt.whileHeld(new ElevateDown());
 
 	}
-
-	public double getForwardSpeed()// forward speed returns the y value from the
-									// joystick
+	//doubles and booleans for joystick values
+	public double getForwardSpeed()
 	{
 		return driveStick.getY();
 	}
 
-	public double getSideSpeed()// side speed returns the x value from the
-								// joystick
+	public double getSideSpeed()
 	{
 		return driveStick.getX();
 	}
 
-	public boolean shouldStrafe() {// if it strafes, return the value false
+	public boolean shouldStrafe() {
 		if (strafeButt.get() == true) {
 			return true;
 		} else {
@@ -65,11 +63,11 @@ public class OI {
 		}
 	}
 
-	public double getTwistSpeed() {//	
+	public double getTwistSpeed() {	
 		return driveStick.getTwist();
 	}
 
-	public static double getForwardSpeed1() {// gets the forward speed
+	public static double getForwardSpeed1() {
 		return 0;
 		// TODO Auto-generated method stub
 

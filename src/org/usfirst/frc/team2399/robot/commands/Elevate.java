@@ -11,15 +11,20 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  *
  */
+
+//PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
+	//est variables for use 
 	private double speed;
 	private Elevator elevator = Robot.elevator;
 
+	//protected so not affected by other commands, etc.
 	protected Elevate(double speed) {
+		//makes sure we can interrupt it
 		setInterruptible(true);
 
 		requires(Robot.elevator);// requires these things from CommandBase
-		this.speed = speed;
+		this.speed = speed;//TODO ask why we need to set it like this, I can't remember rn
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -31,6 +36,7 @@ public abstract class Elevate extends Command {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
+	//set the speed to "speed"
 	protected void execute() {
 		elevator.setSpeed(speed);
 	}

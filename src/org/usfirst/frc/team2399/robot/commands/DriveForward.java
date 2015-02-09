@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveForward extends Command {//extends driveForward
-
+	//requires driveTrain from Robot.java
     public DriveForward() {
     	requires(Robot.driveTrain);
   

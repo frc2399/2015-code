@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Autonomous extends Command {
-
+	//requires driveTrain from Robot.java
     public Autonomous() {
     	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies

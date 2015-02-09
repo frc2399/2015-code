@@ -14,22 +14,20 @@ import edu.wpi.first.wpilibj.Gyro;
  * floating around.
  */
 public class RobotMap {
-
-	public static final int ELEVATOR_JAGUARID = 9; // est elevator jaguar (all
-													// caps is recommended) and
-													// sets it = to 1; in
-													// reality, =1 is unlikely
+	//all caps and underscores is recommended
+	//elevatorjagid, motor encoderports, and gyro are set correctly
+	//motorjags are assigned correctly
+	public static final int ELEVATOR_JAGUARID = 9; 
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	
 
-	public static final CANJaguar ELEVATOR_JAGUAR = new CANJaguar(ELEVATOR_JAGUARID); // assigns which jaguar
+	public static final CANJaguar ELEVATOR_JAGUAR = new CANJaguar(ELEVATOR_JAGUARID); 
 	public static final Encoder ELEVATOR_ENCODER = new Encoder(
-			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);// assigns encoder
-															// to ports
+			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);
 	
 
-	public static final int LEFTFRONT_JAGUARID = 2;// ports have been assigned
+	public static final int LEFTFRONT_JAGUARID = 2;
 	public static final int RIGHTFRONT_JAGUARID= 6;
 	public static final int	LEFTBACK_JAGUARID= 4;
 	public static final int RIGHTBACK_JAGUARID= 3;
@@ -41,7 +39,7 @@ public class RobotMap {
 	public static final Encoder MOTOR_ENCODER = new Encoder(
 			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
 	
-	
+	//gyro currently set to null/port 0
 	public static final int GYRO_PORT= 0;
 	public static final Gyro gyro = null;//new Gyro(GYRO_PORT);
 

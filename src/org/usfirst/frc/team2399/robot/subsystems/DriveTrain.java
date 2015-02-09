@@ -13,17 +13,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveTrain extends Subsystem {// extends DriveTrain
+	//encoders, jags, and drive est; new Gyro at port 0
 	private Encoder drivetrainEncoder;// encoder est
 
-	private CANJaguar leftfront;// Jags est
+	private CANJaguar leftfront;
 	private CANJaguar rightfront;
 	private CANJaguar leftback;
 	private CANJaguar rightback;
 
-	private RobotDrive drive;// drive est as static
+	private RobotDrive drive;
 
 	private Gyro drivetrainGyro = new Gyro(0);
 
+	//est jags/their motors as vales from RobotMap
+	//est new drive and invert motors; sync motors (this was a bug fix)
 	public DriveTrain() {
 		leftfront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 		rightfront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
@@ -48,13 +51,15 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public void resetGyro() {
 		drivetrainGyro.reset();
 	}
-
+	//field oriented drive is currently not working
+	//prints out gyro values
+	//INVERTED BECAUSE GYRO IS UPSIDE DOWN
 	public void driveFieldOriented(double x, double y, double twist) {
-		double gyroAngle = -drivetrainGyro.getAngle();//INVERTED BECAUSE GYRO IS UPSIDE DOWN
+		double gyroAngle = -drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
 		System.out.println(gyroAngle);
 	}
-
+	//robotoriented is gucci
 	public void driveRobotOriented(double x, double y, double twist) {
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
