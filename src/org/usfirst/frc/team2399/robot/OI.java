@@ -29,10 +29,10 @@ public class OI {
 	Button slideFourButt = new JoystickButton(driveStick, 10);
 	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
-	Button strafeButt = new JoystickButton(driveStick, 4);
+	Button strafeButt = new JoystickButton(driveStick, 2);
 
 	Button slideUpButt = new JoystickButton(driveStick, 3);
-	Button slideDownButt = new JoystickButton(driveStick, 2);
+	Button slideDownButt = new JoystickButton(driveStick, 4);
 
 	double x;// est doubles so we can use them in other parts of the program
 	double y;

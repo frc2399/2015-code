@@ -21,46 +21,33 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 // for encoders)
 
 public class Elevator extends Subsystem {
-	
+
 	private RobotDrive drive;
 	private CANJaguar elevatorMotor;// private sets them so that they're only
 									// visible in this class
-	private Encoder elevatorEncoder;//encoder and switch est
-	private DigitalInput elevatorSwitch;
+	private Encoder elevatorEncoder;// encoder and switch est
 	
 	public Elevator() {// () bc value needs to be put in
-		//elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
+		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;// sets elevator motor= to the
 													// one created in RobotMap
-		//elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch = ones in RobotMap
-		//elevatorSwitch = RobotMap.ELEVATOR_SWITCH;
-	
+		// elevatorEncoder = RobotMap.ELEVATOR_ENCODER;//encoder and switch =
+		// ones in RobotMap
+		
+
 	}
-	
-	public void setSpeed(double elevatorUpSpeed){
+
+	public void setSpeed(double elevatorUpSpeed) {
 		elevatorMotor.set(elevatorUpSpeed);
 	}
 
-	
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
-		
+
 		setDefaultCommand(new ElevateNot());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-
-		
-	}
-	
-
-	
-	
-	
-
-
-
-
-
+}

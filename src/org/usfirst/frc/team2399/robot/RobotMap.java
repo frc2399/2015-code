@@ -21,14 +21,13 @@ public class RobotMap {
 													// reality, =1 is unlikely
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
-	public static final int SWITCHPORT = 2; // assigned to ports
+	
 
 	public static final CANJaguar ELEVATOR_JAGUAR = new CANJaguar(ELEVATOR_JAGUARID); // assigns which jaguar
 	public static final Encoder ELEVATOR_ENCODER = new Encoder(
 			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);// assigns encoder
 															// to ports
-	public static final DigitalInput ELEVATOR_SWITCH = new DigitalInput(
-			SWITCHPORT);// assigns limit switch to ports
+	
 
 	public static final int LEFTFRONT_JAGUARID = 2;// ports have been assigned
 	public static final int RIGHTFRONT_JAGUARID= 6;
