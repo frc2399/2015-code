@@ -17,12 +17,13 @@ public class RobotMap {
 	//all caps and underscores is recommended
 	//elevatorjagid, motor encoderports, and gyro are set correctly
 	//motorjags are assigned correctly
+	//
 	public static final int ELEVATOR_JAGUARID = 9; 
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	
 
-	public static final CANJaguar ELEVATOR_JAGUAR = new CANJaguar(ELEVATOR_JAGUARID); 
+	
 	public static final Encoder ELEVATOR_ENCODER = new Encoder(
 			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);
 	
@@ -41,7 +42,7 @@ public class RobotMap {
 	
 	//gyro currently set to null/port 0
 	public static final int GYRO_PORT= 0;
-	public static final Gyro gyro = null;//new Gyro(GYRO_PORT);
+	public static final Gyro gyro = new Gyro(GYRO_PORT);
 
 	
 	

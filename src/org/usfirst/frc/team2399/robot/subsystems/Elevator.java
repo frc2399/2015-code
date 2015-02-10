@@ -22,8 +22,9 @@ public class Elevator extends Subsystem {
 	private Encoder elevatorEncoder;
 	
 	//sets elevator to one from Robot Map
+	//this was moved from RobotMap to here to fix an error- working fine now!
 	public Elevator() {
-		elevatorMotor = RobotMap.ELEVATOR_JAGUAR;
+		elevatorMotor = new CANJaguar(RobotMap.ELEVATOR_JAGUARID);
 		
 
 	}

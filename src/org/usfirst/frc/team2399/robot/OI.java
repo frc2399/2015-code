@@ -20,7 +20,7 @@ public class OI {
 	// minor change testing
 	//buttons have been assigned (elevators and gyro reset have been tested)
 
-	Joystick driveStick = new Joystick(0);// new joystick
+	 Joystick driveStick = new Joystick(0);// new joystick
 
 	Button slideOneButt = new JoystickButton(driveStick, 6);
 	Button slideTwoButt = new JoystickButton(driveStick, 7);
