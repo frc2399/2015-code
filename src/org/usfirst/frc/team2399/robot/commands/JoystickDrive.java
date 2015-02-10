@@ -38,13 +38,12 @@ public class JoystickDrive extends Command {
 		double x;
 		double y;
 
-		driveTrain.driveFieldOriented(Robot.oi.getSideSpeed(),
-				Robot.oi.getForwardSpeed(), Robot.oi.getTwistSpeed());
+		// deadbands set individually to their values
+		twist = deadband(Robot.oi.getTwistSpeed(), .25, .25);
+		x = deadband(Robot.oi.getSideSpeed(), .05, 1);
+		y = deadband(Robot.oi.getForwardSpeed(), .05, 1);
 
-		//deadbands set individually to their values
-		twist = deadband(driveStick.getTwist(), .25);
-		x= deadband(driveStick.getX(), .05);
-		y= deadband(driveStick.getY(), .05);
+		driveTrain.driveFieldOriented(x, y, twist);
 
 		// System.out.println("is running");
 
@@ -64,10 +63,15 @@ public class JoystickDrive extends Command {
 	protected void interrupted() {
 	}
 
-	//est constant deadbandpercent so calcs can be made for different motions individually
-	public static double deadband(double input, double deadbandpercent) // static because the values
-												// don't change
-	{
+	// est constant deadbandpercent so different calcs can be made for different motions individually
+	//est deadbandscale so twist motor power can be scaled (makes turns less jerky)
+	//ask drivers if they want the scaling on a switch/button (later)
+	//scaling for drive as well that can be turned on and off
+	
+
+
+	public static double deadband(double input, double deadbandpercent,
+			double deadbandscale) {
 		double deadbandconstant = deadbandpercent;
 
 		if (Math.abs(input) < deadbandconstant) { // abs = absolute value
@@ -75,7 +79,8 @@ public class JoystickDrive extends Command {
 		}
 
 		else {
-			return (input / (Math.abs(input)) * (((Math.abs(input) - deadbandconstant)) / (1 - deadbandconstant)));
+			return (deadbandscale * (input / (Math.abs(input)) * (((Math
+					.abs(input) - deadbandconstant)) / (1 - deadbandconstant))));
 		}
 	}
 }
