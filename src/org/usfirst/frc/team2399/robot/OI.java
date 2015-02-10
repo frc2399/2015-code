@@ -18,40 +18,48 @@ public class OI {
 
 	// EVERYTHING HERE WILL BE CHANGED AT A LATER DATE
 	// minor change testing
-	//buttons have been assigned (elevators and gyro reset have been tested)
+	// buttons have been assigned (elevators and gyro reset have been tested)
 
-	 Joystick driveStick = new Joystick(0);// new joystick
+	Joystick driveStick = new Joystick(0);// new joystick
 
-	Button slideOneButt = new JoystickButton(driveStick, 6);
-	Button slideTwoButt = new JoystickButton(driveStick, 7);
-	Button slideThreeButt = new JoystickButton(driveStick, 11);
-	Button slideFourButt = new JoystickButton(driveStick, 10);
 	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
 	Button strafeButt = new JoystickButton(driveStick, 2);
 
-	Button slideUpButt = new JoystickButton(driveStick, 3);
-	Button slideDownButt = new JoystickButton(driveStick, 4);
+	Button slideUpFrontButt = new JoystickButton(driveStick, 3);
+	Button slideDownFrontButt = new JoystickButton(driveStick, 4);
+	Button slideUpRearButt = new JoystickButton(driveStick, 12);
+	Button slideDownRearButt = new JoystickButton(driveStick, 13);
+	//Button slideUpRightButt = new JoystickButton(driveStick, 6);
+	//Button slideDownRightButt = new JoystickButton(driveStick, 7);
+	//Button slideUpLeftButt = new JoystickButton(driveStick, 8);
+	//Button slideDownLeftButt = new JoystickButton(driveStick, 9);
+	
 
 	double x;// est doubles so we can use them in other parts of the program
 	double y;
 	double twist;
 
-	//buttons for gyro reset, elevator up and down
+	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
-		slideUpButt.whileHeld(new ElevateUp());
-		slideDownButt.whileHeld(new ElevateDown());
+		slideUpFrontButt.whileHeld(new ElevateUp());
+		slideDownFrontButt.whileHeld(new ElevateDown());
+		slideUpRearButt.whileHeld(new ElevateUp());
+		slideDownRearButt.whileHeld(new ElevateDown());
+		//slideUpRightButt.whileHeld(new ElevateUp());
+		//slideDownRightButt.whileHeld(new ElevateDown());
+		//slideUpLeftButt.whileHeld(new ElevateUp());
+		//slideDownLeftButt.whileHeld(new ElevateDown());
 
 	}
-	//doubles and booleans for joystick values
-	public double getForwardSpeed()
-	{
+
+	// doubles and booleans for joystick values
+	public double getForwardSpeed() {
 		return driveStick.getY();
 	}
 
-	public double getSideSpeed()
-	{
+	public double getSideSpeed() {
 		return driveStick.getX();
 	}
 
@@ -63,7 +71,7 @@ public class OI {
 		}
 	}
 
-	public double getTwistSpeed() {	
+	public double getTwistSpeed() {
 		return driveStick.getTwist();
 	}
 

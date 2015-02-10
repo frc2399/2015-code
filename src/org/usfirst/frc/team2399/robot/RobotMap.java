@@ -15,10 +15,12 @@ import edu.wpi.first.wpilibj.Gyro;
  */
 public class RobotMap {
 	//all caps and underscores is recommended
-	//elevatorjagid, motor encoderports, and gyro are set correctly
-	//motorjags are assigned correctly
-	//
-	public static final int ELEVATOR_JAGUARID = 9; 
+	//TODO encoders bc Sara and Amanda don't feel like it right now. Chloe does not care as per usual.
+	//TODO comment shit out
+	public static final int ELEVATORFRONT_JAGUARID = 9; 
+	public static final int ELEVATORREAR_JAGUARID = 5;
+	public static final int ELEVATORRIGHT_JAGUARID = 7;
+	public static final int ELEVATORLEFT_JAGUARID = 8;
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	
