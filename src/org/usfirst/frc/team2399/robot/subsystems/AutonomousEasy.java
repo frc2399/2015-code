@@ -42,12 +42,12 @@ public class AutonomousEasy {
 	//doubles are for SPEEDS
 	public void driveFieldOriented(double x, double y, double twist) {
 		double gyroAngle = -drivetrainGyro.getAngle();
-		Timer timeLord = new Timer();
+		Timer timer = new Timer();
 		System.out.println(gyroAngle);
 		
 		drive.mecanumDrive_Cartesian(0, 0.25, 0, gyroAngle);
 		try {
-			timeLord.wait(200);
+			timer.wait(2000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
