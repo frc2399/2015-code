@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 
+//TODO check this code w/mentors so we dont accidentally kill the robot
 public class AutonomousMedium extends Subsystem {
 	private Encoder drivetrainEncoder;// encoder est
 
@@ -79,10 +80,37 @@ public class AutonomousMedium extends Subsystem {
 		} 
 		drive.stopMotor();
 		
-		Elevator.setSpeed(2);
+		//elevator up at .5 speed and stop
+		elevatorFrontMotor.set(.5);
+		try{
+			timer.wait(1500);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
+		//drive backward -.2 speed and stop
+		drive.mecanumDrive_Cartesian(0, -.2, 0, gyroAngle);
+		try{
+			timer.wait(4000);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
+		//elevator down at -.5 speed and stop
+		elevatorFrontMotor.set(-.5);
+		try{
+			timer.wait(2000);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
+		//drive backward at -.2 speed and stop
+		drive.mecanumDrive_Cartesian(0, -.2, 0, gyroAngle);
+		try{
+			timer.wait(1000);
+		}catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		
 		
