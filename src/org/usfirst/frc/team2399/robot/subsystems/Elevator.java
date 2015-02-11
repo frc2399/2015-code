@@ -19,26 +19,26 @@ public class Elevator extends Subsystem {
 	//private instances of drive, elevatormotor/encoder
 	private RobotDrive drive;
 	private CANJaguar elevatorFrontMotor;
-	private CANJaguar elevatorRearMotor;
-	private CANJaguar elevatorRightMotor;
-	private CANJaguar elevatorLeftMotor;
+	//private CANJaguar elevatorRearMotor;
+	//private CANJaguar elevatorRightMotor;
+	//private CANJaguar elevatorLeftMotor;
 	private Encoder elevatorEncoder;
 	
 	//sets elevator to one from Robot Map
 	//this was moved from RobotMap to here to fix an error- working fine now!
 	public Elevator() {
 		elevatorFrontMotor = new CANJaguar(RobotMap.ELEVATORFRONT_JAGUARID);
-		elevatorRearMotor = new CANJaguar(RobotMap.ELEVATORREAR_JAGUARID);
-		elevatorRightMotor = new CANJaguar(RobotMap.ELEVATORRIGHT_JAGUARID);
-		elevatorLeftMotor = new CANJaguar(RobotMap.ELEVATORLEFT_JAGUARID);
+		//elevatorRearMotor = new CANJaguar(RobotMap.ELEVATORREAR_JAGUARID);
+		//elevatorRightMotor = new CANJaguar(RobotMap.ELEVATORRIGHT_JAGUARID);
+		//elevatorLeftMotor = new CANJaguar(RobotMap.ELEVATORLEFT_JAGUARID);
 
 	}
 	//elevator motor is set to the up speed 
 	public void setSpeed(double elevatorUpSpeed) {
 		elevatorFrontMotor.set(elevatorUpSpeed);
-		elevatorRearMotor.set(elevatorUpSpeed);
-		elevatorRightMotor.set(elevatorUpSpeed);
-		elevatorLeftMotor.set(elevatorUpSpeed);
+		//elevatorRearMotor.set(elevatorUpSpeed);
+		//elevatorRightMotor.set(elevatorUpSpeed);
+		//elevatorLeftMotor.set(elevatorUpSpeed);
 	}
 
 	// Put methods for controlling this subsystem
