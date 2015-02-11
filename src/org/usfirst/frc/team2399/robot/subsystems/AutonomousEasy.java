@@ -19,6 +19,8 @@ public class AutonomousEasy {
 	private RobotDrive drive;
 
 	private Gyro drivetrainGyro = new Gyro(0);
+	
+	
 
 	
 	public AutonomousEasy() {

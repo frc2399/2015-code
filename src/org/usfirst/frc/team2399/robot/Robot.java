@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2399.robot;
 
-import org.usfirst.frc.team2399.robot.commands.AutonomousEasy;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
@@ -21,28 +20,27 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 
-//THIS CLASS HAS REPLACED COMMANDBASE/COMMANDS
+// THIS CLASS HAS REPLACED COMMANDBASE/COMMANDS
 public class Robot extends IterativeRobot {
-	//est static variables
+	// est static variables
 	public static OI oi;
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static Joystick joystick;
 	public static Gyro gyro;
 
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		//est new instances of drivetrain and elevator
+		// est new instances of drivetrain and elevator
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		oi = new OI();// oi orange juice
-		gyro= new Gyro(0);
-		
-		//smartdash values for drivetrain and elevator
+		gyro = new Gyro(0);
+
+		// smartdash values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);// smartdash values
 		SmartDashboard.putData("Elevator", elevator);
 
