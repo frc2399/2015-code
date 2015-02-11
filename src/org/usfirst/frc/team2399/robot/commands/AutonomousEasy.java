@@ -14,6 +14,7 @@ public class AutonomousEasy extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
 	private Gyro gyro = Robot.gyro;
+	
 	//requires driveTrain from Robot.java
     public AutonomousEasy() {
     	requires(Robot.driveTrain);
@@ -24,15 +25,13 @@ public class AutonomousEasy extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	driveTrain.resetGyro();
-    
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	double x;
-    	double y;
+    protected void execute(double x, double y, double twist, double gyro) {
+    	
     
-    	//DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);//TODO figure out problem with mentors and a less lazy Amanda
+    	driveTrain.mechanumDrive_Cartesian(x, y, twist,gyro);//TODO figure out problem with mentors and a less lazy Amanda
     	//no, Sara, DO NOT USE AUTOFILL. Will has said this. It is not good for our code.
     	
     	}
