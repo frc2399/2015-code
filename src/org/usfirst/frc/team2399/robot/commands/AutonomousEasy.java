@@ -4,14 +4,18 @@ import org.usfirst.frc.team2399.robot.Robot;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Autonomous extends Command {
+public class AutonomousEasy extends Command {
+	private DriveTrain driveTrain = Robot.driveTrain;
+	private Joystick driveStick = Robot.joystick;
+	private Gyro gyro = Robot.gyro;
 	//requires driveTrain from Robot.java
-    public Autonomous() {
+    public AutonomousEasy() {
     	requires(Robot.driveTrain);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,8 +23,8 @@ public class Autonomous extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	//DriveTrain.resetGyro();
+    	driveTrain.resetGyro();
+    
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +32,8 @@ public class Autonomous extends Command {
     	double x;
     	double y;
     
-    	//DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);
+    	//DriveTrain.mechanumDrive_Cartesian(15, 0, 0, 0);//TODO figure out problem with mentors and a less lazy Amanda
+    	//no, Sara, DO NOT USE AUTOFILL. Will has said this. It is not good for our code.
     	
     	}
     

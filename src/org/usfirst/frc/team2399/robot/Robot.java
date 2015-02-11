@@ -1,13 +1,15 @@
 package org.usfirst.frc.team2399.robot;
 
-import org.usfirst.frc.team2399.robot.commands.Autonomous;
+import org.usfirst.frc.team2399.robot.commands.AutonomousEasy;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,6 +28,8 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain;
 	public static Elevator elevator;
 	public static Joystick joystick;
+	public static Gyro gyro;
+
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -36,6 +40,7 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		oi = new OI();// oi orange juice
+		gyro= new Gyro(0);
 		
 		//smartdash values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);// smartdash values
