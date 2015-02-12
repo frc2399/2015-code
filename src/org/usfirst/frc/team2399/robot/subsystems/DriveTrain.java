@@ -13,29 +13,30 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 
-//subsytems are parts of the robot that move
+// subsytems are parts of the robot that move
 public class DriveTrain extends Subsystem {// extends DriveTrain
-	//encoders, jags, and drive est; new Gyro at port 0
-	private Encoder drivetrainEncoder;// encoder est
-
-	private CANJaguar leftfront;
-	private CANJaguar rightfront;
-	private CANJaguar leftback;
-	private CANJaguar rightback;
-
+	// encoders, jags, and drive est; new Gyro at port 0
+	private Encoder driveTrainEncoder;// encoder est
+	private CANJaguar driveTrainMotor;
 	private RobotDrive drive;
-
 	private Gyro drivetrainGyro = new Gyro(0);
+	
 
-	//est jags/their motors as vales from RobotMap
-	//est new drive and invert motors; sync motors (this was a bug fix)
+
+	public DriveTrain(CANJaguar driveTrainMotor) {
+		this.driveTrainMotor = driveTrainMotor;
+	}
+	
+
+	// est jags/their motors as vales from RobotMap
+	// est new drive and invert motors; sync motors (this was a bug fix)
+	
 	public DriveTrain() {
-		leftfront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
-		rightfront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
-		leftback = new CANJaguar(RobotMap.LEFTBACK_JAGUARID);
-		rightback = new CANJaguar(RobotMap.RIGHTBACK_JAGUARID);
-
-		drive = new RobotDrive(leftfront, leftback, rightfront, rightback);
+		
+		//CHECK WITH WILL ABOUT THIS IT DID A THING THAT MIGHT BE RIGHT???
+		drive = new RobotDrive(driveTrainMotor, driveTrainMotor);
+		
+		//check w/Will about these
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
@@ -53,15 +54,17 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public void resetGyro() {
 		drivetrainGyro.reset();
 	}
-	//field oriented drive is currently not working
-	//prints out gyro values
-	//INVERTED BECAUSE GYRO IS UPSIDE DOWN
+
+	// field oriented drive is currently not working
+	// prints out gyro values
+	// INVERTED BECAUSE GYRO IS UPSIDE DOWN
 	public void driveFieldOriented(double x, double y, double twist) {
 		double gyroAngle = -drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
 		System.out.println(gyroAngle);
 	}
-	//robotoriented is gucci
+
+	// robotoriented is gucci
 	public void driveRobotOriented(double x, double y, double twist) {
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}

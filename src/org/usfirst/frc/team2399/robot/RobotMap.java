@@ -28,6 +28,7 @@ public class RobotMap {
 	public static final CANJaguar ELEVATORRIGHT_JAGUAR = new CANJaguar(ELEVATORRIGHT_JAGUARID);
 	public static final CANJaguar ELEVATORLEFT_JAGUAR = new CANJaguar(ELEVATORLEFT_JAGUARID);
 	
+	
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	
@@ -41,6 +42,11 @@ public class RobotMap {
 	public static final int RIGHTFRONT_JAGUARID= 6;
 	public static final int	LEFTBACK_JAGUARID= 4;
 	public static final int RIGHTBACK_JAGUARID= 3;
+	
+	public static final CANJaguar LEFTFRONT_JAGUAR = new CANJaguar(LEFTFRONT_JAGUARID);
+	public static final CANJaguar RIGHTFRONT_JAGUAR = new CANJaguar(RIGHTFRONT_JAGUARID);
+	public static final CANJaguar LEFTBACK_JAGUAR = new CANJaguar(LEFTBACK_JAGUARID);
+	public static final CANJaguar RIGHTBACK_JAGUAR = new CANJaguar(RIGHTBACK_JAGUARID);
 											
 	public static final int MOTOR_ENCODERPORT_A = 3;
 	public static final int MOTOR_ENCODERPORT_B = 4;

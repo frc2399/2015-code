@@ -28,10 +28,8 @@ public class Elevator extends Subsystem {
 	//this refers to the current instance of the class
 	public Elevator(CANJaguar elevatorMotor) {
 		this.elevatorMotor = elevatorMotor;
-		
-	
-
 	}
+	
 	//elevator motor is set to the up speed 
 	//elevator depend on the motor thats been passed to it- now works for all of the motors
 	public void setSpeed(double elevatorUpSpeed) {
