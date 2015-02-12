@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
@@ -28,23 +29,28 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevator;
 	public static Joystick joystick;
 	public static Gyro gyro;
+	
+	private Command autoncommand;
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+	
+	//if you want to take out an auton mode, comment out autoncommand = new
 	public void robotInit() {
 		// est new instances of drivetrain and elevator
 		driveTrain = new DriveTrain();
 		elevator = new Elevator();
 		oi = new OI();// oi orange juice
 		gyro = new Gyro(0);
+		autoncommand= new DriveAutoZone();
 
 		// smartdash values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);// smartdash values
 		SmartDashboard.putData("Elevator", elevator);
 
-		Command autonomousCommand;// est autocommand
+	
 
 		// frontLeft = new drivetrainMotor
 		// instantiate the command used for the autonomous period
@@ -56,6 +62,10 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		if (autoncommand != null){
+			autoncommand.start();
+		}
+	
 		// schedule the autonomous command (example)
 
 	}

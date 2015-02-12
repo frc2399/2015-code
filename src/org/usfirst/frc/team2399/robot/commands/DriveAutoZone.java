@@ -8,6 +8,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveAutoZone extends CommandGroup {
     
     public  DriveAutoZone() {
+    	addSequential(new GyroReset());
+    	addSequential(new DriveForward());
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

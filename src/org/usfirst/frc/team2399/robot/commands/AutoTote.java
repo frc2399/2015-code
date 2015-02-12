@@ -8,7 +8,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoTote extends CommandGroup {
     
     public  AutoTote() {
-        // Add Commands here:
+    	addSequential(new GyroReset());
+    	addSequential(new DriveForward());
+    	addSequential(new PickUpTote());
+    	addSequential(new DriveBackward());
+    	addSequential(new PutDownTote());
+    	addSequential(new DriveBackward());
+    
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
