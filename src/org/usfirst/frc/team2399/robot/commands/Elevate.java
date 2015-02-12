@@ -11,19 +11,26 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  *
  */
-
+//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
+//pulls new values from Robot.java/ests private instances and sets speeds
 //PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
 	//est variables for use 
 	private double speed;
-	private Elevator elevator = Robot.elevator;
+	private Elevator elevatorFront = Robot.elevatorFront;
+	private Elevator elevatorRear = Robot.elevatorRear;
+	private Elevator elevatorRight = Robot.elevatorRight;
+	private Elevator elevatorLeft = Robot.elevatorLeft;
 
 	//protected so not affected by other commands, etc.
 	protected Elevate(double speed) {
 		//makes sure we can interrupt it
 		setInterruptible(true);
 
-		requires(Robot.elevator);// requires these things from CommandBase
+		requires(Robot.elevatorFront);
+		requires(Robot.elevatorRear);
+		requires(Robot.elevatorRight);
+		requires(Robot.elevatorLeft);
 		this.speed = speed;//TODO ask why we need to set it like this, I can't remember rn
 
 		// Use requires() here to declare subsystem dependencies
@@ -38,7 +45,10 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	//set the speed to "speed"
 	protected void execute() {
-		elevator.setSpeed(speed);
+		elevatorFront.setSpeed(speed);
+		elevatorRear.setSpeed(speed);
+		elevatorRight.setSpeed(speed);
+		elevatorLeft.setSpeed(speed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

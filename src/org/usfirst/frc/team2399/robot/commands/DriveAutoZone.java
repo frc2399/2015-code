@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
+//THIS IS NEW. YOU SHOULD LOOK AT THE THING
+//please read the comments below- they explain what's going on in the code
 public class DriveAutoZone extends CommandGroup {
     
     public  DriveAutoZone() {

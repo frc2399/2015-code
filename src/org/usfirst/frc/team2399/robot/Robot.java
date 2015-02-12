@@ -20,13 +20,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-
+//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
+//new public static elevators here/ they have been assigned to their ID's from RobotMap
+//have also been added to SmartDash
 // THIS CLASS HAS REPLACED COMMANDBASE/COMMANDS
 public class Robot extends IterativeRobot {
 	// est static variables
 	public static OI oi;
 	public static DriveTrain driveTrain;
-	public static Elevator elevator;
+	public static Elevator elevatorFront;
+	public static Elevator elevatorRear;
+	public static Elevator elevatorRight;
+	public static Elevator elevatorLeft;
 	public static Joystick joystick;
 	public static Gyro gyro;
 	
@@ -38,17 +43,23 @@ public class Robot extends IterativeRobot {
 	 */
 	
 	//if you want to take out an auton mode, comment out autoncommand = new
+	//gyro deleted bc assigned to driveTrain
 	public void robotInit() {
 		// est new instances of drivetrain and elevator
 		driveTrain = new DriveTrain();
-		elevator = new Elevator();
+		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUAR);
+		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUAR);
+		elevatorRight = new Elevator(RobotMap.ELEVATORRIGHT_JAGUAR);
+		elevatorLeft = new Elevator(RobotMap.ELEVATORLEFT_JAGUAR);
 		oi = new OI();// oi orange juice
-		gyro = new Gyro(0);
 		autoncommand= new DriveAutoZone();
 
 		// smartdash values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);// smartdash values
-		SmartDashboard.putData("Elevator", elevator);
+		SmartDashboard.putData("Elevator", elevatorFront);
+		SmartDashboard.putData("Elevator", elevatorRear);
+		SmartDashboard.putData("Elevator", elevatorRight);
+		SmartDashboard.putData("Elevator", elevatorLeft);
 
 	
 

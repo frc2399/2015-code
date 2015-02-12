@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
+//THIS IS NEW. YOU SHOULD LOOK AT THE THING
+//applies to AutoTote and DriveAutoZone
 public class DriveForward extends CommandGroup {
     
     public  DriveForward() {

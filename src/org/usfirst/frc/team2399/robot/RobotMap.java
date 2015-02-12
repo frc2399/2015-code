@@ -13,14 +13,21 @@ import edu.wpi.first.wpilibj.Gyro;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
 public class RobotMap {
 	//all caps and underscores is recommended
 	//TODO encoders bc Sara and Amanda don't feel like it right now. Chloe does not care as per usual.
-	//TODO comment shit out
+	//ele jags have been assigned to their ID's
 	public static final int ELEVATORFRONT_JAGUARID = 9; 
 	public static final int ELEVATORREAR_JAGUARID = 5;
 	public static final int ELEVATORRIGHT_JAGUARID = 7;
 	public static final int ELEVATORLEFT_JAGUARID = 8;
+	
+	public static final CANJaguar ELEVATORFRONT_JAGUAR = new CANJaguar(ELEVATORFRONT_JAGUARID);
+	public static final CANJaguar ELEVATORREAR_JAGUAR = new CANJaguar(ELEVATORREAR_JAGUARID);
+	public static final CANJaguar ELEVATORRIGHT_JAGUAR = new CANJaguar(ELEVATORRIGHT_JAGUARID);
+	public static final CANJaguar ELEVATORLEFT_JAGUAR = new CANJaguar(ELEVATORLEFT_JAGUARID);
+	
 	public static final int ELEVATOR_ENCODERPORT_A = 0;
 	public static final int ELEVATOR_ENCODERPORT_B = 1;
 	
@@ -42,7 +49,7 @@ public class RobotMap {
 	public static final Encoder MOTOR_ENCODER = new Encoder(
 			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
 	
-	//gyro currently set to null/port 0
+	
 	public static final int GYRO_PORT= 0;
 	public static final Gyro gyro = new Gyro(GYRO_PORT);
 
