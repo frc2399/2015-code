@@ -6,20 +6,15 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 /**
  *
  */
-public class DriveForward extends CommandGroup {
+public class DriveBackward extends CommandGroup {
     
-    public  DriveForward() {
-    	addSequential(new DriveTrainForward());
-    	addSequential(new WaitCommand(2));
-    	addSequential(new DriveTrainBackward());
+    public  DriveBackward() {
     	
+    	addSequential(new DriveTrainBackward());
+    	addSequential(new WaitCommand(2));
+    	addSequential(new StopDrive());
     	
         // Add Commands here:
-    	/*
-    	 * motorsOn write myself
-    	 * wait given by library
-    	 * motorsOff write myself
-    	 */
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
@@ -35,6 +30,5 @@ public class DriveForward extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
     }
 }
