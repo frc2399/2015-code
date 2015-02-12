@@ -1,4 +1,4 @@
-/*package org.usfirst.frc.team2399.robot.subsystems;
+package org.usfirst.frc.team2399.robot.subsystems;
 
 import org.usfirst.frc.team2399.robot.RobotMap;
 
@@ -57,4 +57,4 @@ public class AutonomousEasy {
 		drive.stopMotor();
 	}
 
-}*/
+}

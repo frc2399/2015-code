@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
+
+//subsytems are parts of the robot that move
 public class DriveTrain extends Subsystem {// extends DriveTrain
 	//encoders, jags, and drive est; new Gyro at port 0
 	private Encoder drivetrainEncoder;// encoder est
