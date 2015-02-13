@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.Gyro;
 //THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
 public class RobotMap {
 	//all caps and underscores is recommended
-	//TODO encoders bc Sara and Amanda don't feel like it right now. Chloe does not care as per usual.
 	//ele jags have been assigned to their ID's
+	//TODO make sure encoders are assigned to the correct ports/we're not doubling up
 	public static final int ELEVATORFRONT_JAGUARID = 9; 
 	public static final int ELEVATORREAR_JAGUARID = 5;
 	public static final int ELEVATORRIGHT_JAGUARID = 7;
@@ -48,12 +48,24 @@ public class RobotMap {
 	public static final CANJaguar LEFTBACK_JAGUAR = new CANJaguar(LEFTBACK_JAGUARID);
 	public static final CANJaguar RIGHTBACK_JAGUAR = new CANJaguar(RIGHTBACK_JAGUARID);
 											
-	public static final int MOTOR_ENCODERPORT_A = 3;
-	public static final int MOTOR_ENCODERPORT_B = 4;
+	public static final int LEFTFRONT_MOTOR_ENCODERPORT_A = 3;
+	public static final int LEFTFRONT_MOTOR_ENCODERPORT_B = 4;
+	public static final int RIGHTFRONT_MOTOR_ENCODERPORT_A = 5;
+	public static final int RIGHTFRONT_MOTOR_ENCODERPORT_B = 6;
+	public static final int LEFTBACK_MOTOR_ENCODERPORT_A = 7;
+	public static final int LEFTBACK_MOTOR_ENCODERPORT_B = 8;
+	public static final int RIGHTBACK_MOTOR_ENCODERPORT_A = 9;
+	public static final int RIGHTBACK_MOTOR_ENCODERPORT_B = 10;
 
 
-	public static final Encoder MOTOR_ENCODER = new Encoder(
-			MOTOR_ENCODERPORT_A, MOTOR_ENCODERPORT_B);
+	public static final Encoder LEFTFRONT_MOTOR_ENCODER = new Encoder(
+			LEFTFRONT_MOTOR_ENCODERPORT_A, LEFTFRONT_MOTOR_ENCODERPORT_B);
+	public static final Encoder RIGHTFRONT_MOTOR_ENCODER = new Encoder(
+			RIGHTFRONT_MOTOR_ENCODERPORT_A, RIGHTFRONT_MOTOR_ENCODERPORT_B);
+	public static final Encoder LEFTBACK_MOTOR_ENCODER = new Encoder(
+			LEFTBACK_MOTOR_ENCODERPORT_A, LEFTBACK_MOTOR_ENCODERPORT_B);
+	public static final Encoder RIGHTBACK_MOTOR_ENCODER = new Encoder(
+			RIGHTBACK_MOTOR_ENCODERPORT_A, RIGHTBACK_MOTOR_ENCODERPORT_B);
 	
 	
 	public static final int GYRO_PORT= 0;

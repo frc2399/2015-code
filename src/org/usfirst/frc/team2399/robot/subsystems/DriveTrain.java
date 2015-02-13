@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,27 +16,39 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 // subsytems are parts of the robot that move
 public class DriveTrain extends Subsystem {// extends DriveTrain
+	
 	// encoders, jags, and drive est; new Gyro at port 0
 	private Encoder driveTrainEncoder;// encoder est
-	//private CANJaguar driveTrainMotor;
+	// private CANJaguar driveTrainMotor;
 	private RobotDrive drive;
-	//private Gyro drivetrainGyro = new Gyro(0);
-	
+	// private Gyro drivetrainGyro = new Gyro(0);
 
+	Encoder leftFrontEncoder = new Encoder(
+			RobotMap.LEFTFRONT_MOTOR_ENCODERPORT_A,
+			RobotMap.LEFTFRONT_MOTOR_ENCODERPORT_B);
+	Encoder rightFrontEncoder = new Encoder(
+			RobotMap.RIGHTFRONT_MOTOR_ENCODERPORT_A,
+			RobotMap.RIGHTFRONT_MOTOR_ENCODERPORT_B);
+	Encoder leftBackEncoder = new Encoder(
+			RobotMap.LEFTBACK_MOTOR_ENCODERPORT_A,
+			RobotMap.LEFTBACK_MOTOR_ENCODERPORT_B);
+	Encoder rightBackEncoder = new Encoder(
+			RobotMap.RIGHTBACK_MOTOR_ENCODERPORT_A,
+			RobotMap.RIGHTBACK_MOTOR_ENCODERPORT_B);
 
 	public DriveTrain(CANJaguar driveTrainMotor) {
 		this.driveTrainMotor = driveTrainMotor;
 	}
-	
 
 	// est jags/their motors as vales from RobotMap
 	// est new drive and invert motors; sync motors (this was a bug fix)
-	
+
 	public DriveTrain() {
-		
-		//CHECK WITH WILL ABOUT THIS IT DID A THING THAT MIGHT BE RIGHT???
-		drive = new RobotDrive(LEFTFRONT_JAGAUR, RIGHTFRONT_JAGUAR, LEFTBACK_JAGUAR, RIGHTBACK_JAGUAR);
-		//check w/Will about these
+
+		// CHECK WITH WILL ABOUT THIS IT DID A THING THAT MIGHT BE RIGHT???
+		drive = new RobotDrive(LEFTFRONT_JAGAUR, RIGHTFRONT_JAGUAR,
+				LEFTBACK_JAGUAR, RIGHTBACK_JAGUAR);
+		// check w/Will about these
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
@@ -46,7 +59,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;// what the drivetrain
 		// encoder is
 
-		//drivetrainGyro = RobotMap.gyro;
+		// drivetrainGyro = RobotMap.gyro;
 
 	}
 
@@ -77,5 +90,42 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
+	
+	//reset encoders to 0
+	//don't need to start like in 2013 bc encoders now do that automatically
+	public void resetEncoders(){
+		leftFrontEncoder.reset();
+		rightBackEncoder.reset();
+		leftBackEncoder.reset();
+		rightBackEncoder.reset();
+	}
+
+	
+	//getdistance
+	public double getleftFrontEncoder(){
+		SmartDashboard.putDouble("leftFrontEncoder", leftFrontEncoder.getDistance());
+		return leftFrontEncoder.getDistance();
+	}
+	
+	public double getrightFrontEncoder(){
+		SmartDashboard.putDouble("rightFrontEncoder", rightFrontEncoder.getDistance());
+		return rightFrontEncoder.getDistance();
+	}
+	
+	public double getleftBackEncoder(){
+		SmartDashboard.putDouble("leftBackEncoder", leftBackEncoder.getDistance());
+		return leftBackEncoder.getDistance();
+	}
+	
+	public double getrightBackEncoder(){
+		SmartDashboard.putDouble("rightBackEncoder", rightBackEncoder.getDistance());
+		return rightBackEncoder.getDistance();
+		//return statement are like the end of a sentence
+		//if code is unreachable, put it above the return statement
+	}
+	
+	
+	
+
 
 }
