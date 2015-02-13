@@ -4,6 +4,7 @@ import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -35,6 +36,12 @@ public class Robot extends IterativeRobot {
 	public static Joystick joystick;
 	public static Gyro gyro;
 	
+	DigitalInput contactSwitchOne = new DigitalInput (RobotMap.CONTACT_SWITCH1ID);
+	DigitalInput contactSwitchTwo = new DigitalInput (RobotMap.CONTACT_SWITCH2ID);
+	DigitalInput contactSwitchThree = new DigitalInput (RobotMap.CONTACT_SWITCH3ID);
+	DigitalInput contactSwitchFour = new DigitalInput (RobotMap.CONTACT_SWITCH4ID);
+	
+	
 	private Command autoncommand;
 
 	/**
@@ -60,6 +67,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Elevator", elevatorRear);
 		SmartDashboard.putData("Elevator", elevatorRight);
 		SmartDashboard.putData("Elevator", elevatorLeft);
+		
+		
 
 	
 
@@ -67,6 +76,38 @@ public class Robot extends IterativeRobot {
 		// instantiate the command used for the autonomous period
 
 	}
+	
+	
+	public void contactSwitchOne (){
+		if(contactSwitchOne.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Contact Limit Switch One Pressed", contactSwitchOne.get());
+		}
+	}
+	private void WaitCommmand(double d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void contactSwitchTwo (){
+		if(contactSwitchTwo.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Contact Limit Switch Two Pressed", contactSwitchTwo.get());
+		}
+	}
+	public void contactSwitchThree (){
+		if(contactSwitchThree.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Contact Limit Switch Three Pressed", contactSwitchThree.get());
+		}
+	}
+	public void contactSwitchFour (){
+		if(contactSwitchFour.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Contact Switch Four Pressed", contactSwitchFour.get());
+		}
+	}+
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
