@@ -3,14 +3,27 @@ import org.usfirst.frc.team2399.robot.subsystems.*;
 import org.usfirst.frc.team2399.robot.Robot;
 
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 public class DriveTrainForward extends Command{
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Gyro gyro;
 	private double twist;
+//	private double a;
+//	private double v;
+//	private double vPrev = 0;
+//	private double x;
+//	private double xPrev = 0;
+//	private double t = 0;
+//	private Accelerometer acceleromter;
+//	private Timer timer;
+	
+	
 	public DriveTrainForward(){
 		requires(Robot.driveTrain);
+		//acceleromter = new Accelerometer(RobotMap.accelerometer);
 	}
 
 	@Override

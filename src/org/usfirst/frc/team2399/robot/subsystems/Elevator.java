@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -55,5 +56,31 @@ public class Elevator extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-
+	
+	public void resetEncoders(){
+		frontEncoder.reset(); 
+		rearEncoder.reset();
+		leftEncoder.reset(); 
+		rightEncoder.reset(); 
+	}
+	public double getFrontEncoder(){ 
+		SmartDashboard.putDouble("Front Encoder", frontEncoder.getDistance()); 
+		return frontEncoder.getDistance();
+	}
+	public double getRearEncoder() { 
+		SmartDashboard.putDouble("Rear Encoder",rearEncoder.getDistance());
+		return rearEncoder.getDistance(); 
+	}
+	public double getLeftEncoder(){ 
+		SmartDashboard.putdouble("Left Encoder", leftEncoder.getDistance()); 
+		return leftEncoder.getDistance(); 	
+	}
+	public double getRightEncoder() { 
+		SmartDashboard.putdouble("Right Encoder", rightEncoder.getDistance()); 
+		return rightEncoder.getDistance(); 
+		}
 }
+	
+	
+
+
