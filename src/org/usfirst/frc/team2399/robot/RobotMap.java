@@ -29,13 +29,25 @@ public class RobotMap {
 	public static final CANJaguar ELEVATORLEFT_JAGUAR = new CANJaguar(ELEVATORLEFT_JAGUARID);
 	
 	
-	public static final int ELEVATOR_ENCODERPORT_A = 0;
-	public static final int ELEVATOR_ENCODERPORT_B = 1;
+	public static final int ELEVATORFRONT_ENCODERPORT_A = 0;
+	public static final int ELEVATORFRONT_ENCODERPORT_B = 1;
+	public static final int ELEVATORREAR_ENCODERPORT_A = 11;
+	public static final int ELEVATORREAR_ENCODERPORT_B = 12;
+	public static final int ELEVATORRIGHT_ENCODERPORT_A = 13;
+	public static final int ELEVATORRIGHT_ENCODERPORT_B = 14;
+	public static final int ELEVATORLEFT_ENCODERPORT_A = 15;
+	public static final int ELEVATORLEFT_ENCODERPORT_B = 16;
 	
 
 	
+	public static final Encoder ELEVATORFRONT_ENCODER = new Encoder(
+			ELEVATORFRONT_ENCODERPORT_A, ELEVATORFRONT_ENCODERPORT_B);
+	public static final Encoder ELEVATORREAR_ENCODER = new Encoder(
+			ELEVATORREAR_ENCODERPORT_A, ELEVATORREAR_ENCODERPORT_B);
+	public static final Encoder ELEVATORRIGHT_ENCODER = new Encoder(
+			ELEVATORRIGHT_ENCODERPORT_A, ELEVATORRIGHT_ENCODERPORT_B);
 	public static final Encoder ELEVATOR_ENCODER = new Encoder(
-			ELEVATOR_ENCODERPORT_A, ELEVATOR_ENCODERPORT_B);
+			ELEVATORLEFT_ENCODERPORT_A, ELEVATORLEFT_ENCODERPORT_B);
 	
 
 	public static final int LEFTFRONT_JAGUARID = 2;
