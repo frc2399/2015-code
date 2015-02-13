@@ -9,17 +9,24 @@ public class Auto3Tote extends CommandGroup {
     
     public  Auto3Tote() {
     	addSequential(new GyroReset());
+    	//TODO elevator reset- make sure it runs to a known position
     	addSequential(new DriveForward());
+    	addSequential(new PickUpTote());//use optical encoder to determine height necessary
+    	addSequential(new StrafeRight());
+    	addSequential(new PutDownTote());
+    	//go backwards
+    	//elevator run down
+    	//go forwards
     	addSequential(new PickUpTote());
     	addSequential(new StrafeRight());
     	addSequential(new PutDownTote());
-    	addSequential(new PickUpTote());
-    	addSequential(new StrafeRight());
-    	addSequential(new PutDownTote());
+    	//go backwards
+    	//elevator run down
+    	//go forwards
     	addSequential(new PickUpTote());
     	addSequential(new DriveBackward());
     	addSequential(new PutDownTote());
-    	addSequential(new PutDownTote());
+    	addSequential(new DriveBackward());
     	
     	
     	

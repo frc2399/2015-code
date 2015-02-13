@@ -17,9 +17,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveTrain extends Subsystem {// extends DriveTrain
 	// encoders, jags, and drive est; new Gyro at port 0
 	private Encoder driveTrainEncoder;// encoder est
-	private CANJaguar driveTrainMotor;
+	//private CANJaguar driveTrainMotor;
 	private RobotDrive drive;
-	private Gyro drivetrainGyro = new Gyro(0);
+	//private Gyro drivetrainGyro = new Gyro(0);
 	
 
 
@@ -34,8 +34,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public DriveTrain() {
 		
 		//CHECK WITH WILL ABOUT THIS IT DID A THING THAT MIGHT BE RIGHT???
-		drive = new RobotDrive(driveTrainMotor, driveTrainMotor);
-		
+		drive = new RobotDrive(LEFTFRONT_JAGAUR, RIGHTFRONT_JAGUAR, LEFTBACK_JAGUAR, RIGHTBACK_JAGUAR);
 		//check w/Will about these
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
