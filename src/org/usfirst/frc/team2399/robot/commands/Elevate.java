@@ -2,8 +2,10 @@ package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -19,8 +21,8 @@ public abstract class Elevate extends Command {
 	private double speed;
 	private Elevator elevatorFront = Robot.elevatorFront;
 	private Elevator elevatorRear = Robot.elevatorRear;
-	private Elevator elevatorRight = Robot.elevatorRight;
-	private Elevator elevatorLeft = Robot.elevatorLeft;
+	private CANJaguar ELEVATORFRONT_JAGUAR =RobotMap.ELEVATORFRONT_JAGUAR; 
+
 
 	//protected so not affected by other commands, etc.
 	protected Elevate(double speed) {
@@ -29,8 +31,9 @@ public abstract class Elevate extends Command {
 
 		requires(Robot.elevatorFront);
 		requires(Robot.elevatorRear);
-		requires(Robot.elevatorRight);
-		requires(Robot.elevatorLeft);
+	 
+		
+		
 		this.speed = speed;//TODO ask why we need to set it like this, I can't remember rn
 
 		// Use requires() here to declare subsystem dependencies
@@ -45,10 +48,17 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	//set the speed to "speed"
 	protected void execute() {
-		elevatorFront.setSpeed(speed);
-		elevatorRear.setSpeed(speed);
-		elevatorRight.setSpeed(speed);
-		elevatorLeft.setSpeed(speed);
+		int upTo = 3;//TODO: Figure out the exact number 
+		double finishPoint = (upTo - ELEVATORFRONT_JAGUAR.getPosition()); //saying how far we have to go yet to lift the tote
+		if(finishPoint > 0) {
+			ELEVATORFRONT_JAGUAR.set(speed);//says that if how far we have to go is more then 0
+			//then get the value of the variable speed
+			//from elevatorUp or elevatorDown and set the motor speed to that value
+			}
+		else if(ELEVATORFRONT_JAGUAR.getPosition() >= upTo) { 
+			ELEVATORFRONT_JAGUAR.set(0);
+			// if we have gone more then three rotations set the motors to 0
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

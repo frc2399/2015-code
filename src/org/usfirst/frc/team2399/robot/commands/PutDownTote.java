@@ -20,12 +20,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class PutDownTote extends CommandGroup {
 	private Elevator elevatorFront = Robot.elevatorFront;
 	private Elevator elevatorRear = Robot.elevatorRear;
-	private Elevator elevatorRight = Robot.elevatorRight;
-	private Elevator elevatorLeft = Robot.elevatorLeft;
     
     public  PutDownTote() {
     	addSequential(new ElevateDown());
-    	addSequential(new WaitCommand(2));
     	addSequential(new ElevateNot());
         // Add Commands here:
         // e.g. addSequential(new Command1());
