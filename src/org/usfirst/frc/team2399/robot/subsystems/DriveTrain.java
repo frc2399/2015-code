@@ -60,7 +60,6 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public void driveFieldOriented(double x, double y, double twist) {
 		double gyroAngle = -drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
-		System.out.println(gyroAngle);
 	}
 
 	public void driveRobotOriented(double x, double y, double twist) {

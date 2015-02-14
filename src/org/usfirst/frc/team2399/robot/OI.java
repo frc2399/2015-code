@@ -15,67 +15,45 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	// buttons have been assigned (elevators and gyro reset have been tested)
-
-	Joystick driveStick = new Joystick(0);// new joystick
-
+	
+	// new joystick
+	Joystick driveStick = new Joystick(0);
+	
+	// reset gyro button
 	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
-	Button strafeButt = new JoystickButton(driveStick, 2);
-
+	// buttons for sliding up and down are assigned, could be reassigned for
+	// clarity.
 	Button slideUpFrontButt = new JoystickButton(driveStick, 3);
 	Button slideDownFrontButt = new JoystickButton(driveStick, 4);
 	Button slideUpRearButt = new JoystickButton(driveStick, 12);
 	Button slideDownRearButt = new JoystickButton(driveStick, 13);
-	//Button slideUpRightButt = new JoystickButton(driveStick, 6);
-	//Button slideDownRightButt = new JoystickButton(driveStick, 7);
-	//Button slideUpLeftButt = new JoystickButton(driveStick, 8);
-	//Button slideDownLeftButt = new JoystickButton(driveStick, 9);
-	
 
-	double x;// est doubles so we can use them in other parts of the program
-	double y;
-	double twist;
-
+	// established doubles so we can use them in other parts of the
+	// program
 	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
+
 		slideUpFrontButt.whileHeld(new ElevateUp());
 		slideDownFrontButt.whileHeld(new ElevateDown());
 		slideUpRearButt.whileHeld(new ElevateUp());
 		slideDownRearButt.whileHeld(new ElevateDown());
-		//slideUpRightButt.whileHeld(new ElevateUp());
-		//slideDownRightButt.whileHeld(new ElevateDown());
-		//slideUpLeftButt.whileHeld(new ElevateUp());
-		//slideDownLeftButt.whileHeld(new ElevateDown());
 
 	}
 
 	// doubles and booleans for joystick values
+	// these get the "speed" from how far the joystick is pushed
 	public double getForwardSpeed() {
-		return driveStick.getY();
+		return -driveStick.getY();
 	}
 
 	public double getSideSpeed() {
-		return driveStick.getX();
-	}
-
-	public boolean shouldStrafe() {
-		if (strafeButt.get() == true) {
-			return true;
-		} else {
-			return false;
-		}
+		return -driveStick.getX();
 	}
 
 	public double getTwistSpeed() {
-		return driveStick.getTwist();
-	}
-
-	public static double getForwardSpeed1() {
-		return 0;
-		// TODO Auto-generated method stub
-
+		return -driveStick.getTwist();
 	}
 
 	// // CREATING BUTTONS
