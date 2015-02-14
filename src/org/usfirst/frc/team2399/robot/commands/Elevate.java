@@ -16,20 +16,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public abstract class Elevate extends Command {
 	// est variables for use
 	private double speed;
-	private Elevator elevatorFront = Robot.elevatorFront;
-	private Elevator elevatorRear = Robot.elevatorRear;
-	private Elevator elevatorRight = Robot.elevatorRight;
-	private Elevator elevatorLeft = Robot.elevatorLeft;
-
+	private Elevator elevator;
+	
+	
 	// protected so not affected by other commands, etc.
-	protected Elevate(double speed) {
+	protected Elevate(Elevator elevator, double speed) {
 		// makes sure we can interrupt it
 		setInterruptible(true);
-
-		requires(Robot.elevatorFront);
-		requires(Robot.elevatorRear);
-		requires(Robot.elevatorRight);
-		requires(Robot.elevatorLeft);
+		this.elevator = elevator;
+		requires(elevator);
+		
+		
 		this.speed = speed;// TODO ask why we need to set it like this, I can't
 							// remember rn
 
@@ -45,10 +42,8 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	// set the speed to "speed"
 	protected void execute() {
-		elevatorFront.setSpeed(speed);
-		elevatorRear.setSpeed(speed);
-		elevatorRight.setSpeed(speed);
-		elevatorLeft.setSpeed(speed);
+		elevator.setSpeed(speed);
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

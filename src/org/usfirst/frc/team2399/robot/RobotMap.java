@@ -17,19 +17,14 @@ import edu.wpi.first.wpilibj.Gyro;
 public class RobotMap {
 	// all caps and underscores is recommended
 	// elevator jags have been assigned to their ID's
-	public static final int ELEVATORFRONT_JAGUARID = 1;
-	public static final int ELEVATORREAR_JAGUARID = 5;
-	
-	public static final CANJaguar ELEVATORFRONT_JAGUAR = new CANJaguar(
-			ELEVATORFRONT_JAGUARID);
-	public static final CANJaguar ELEVATORREAR_JAGUAR = new CANJaguar(
-			ELEVATORREAR_JAGUARID);
+	public static final int ELEVATORFRONT_JAGUARID = 5;
+	public static final int ELEVATORREAR_JAGUARID = 1;
 	
 	// TODO change ContactSwitch ID's
-	public static final int CONTACT_SWITCH1ID = 3;
-	public static final int CONTACT_SWITCH2ID = 4;
-	public static final int CONTACT_SWITCH3ID = 5;
-	public static final int CONTACT_SWITCH4ID = 6;
+	public static final int CONTACT_SWITCH1ID = 0;
+	public static final int CONTACT_SWITCH2ID = 1;
+	public static final int CONTACT_SWITCH3ID = 2;
+	public static final int CONTACT_SWITCH4ID = 3;
 
 	
 	// DriveTrain motor Jaguar ID's
@@ -38,15 +33,7 @@ public class RobotMap {
 	public static final int LEFTBACK_JAGUARID = 2;
 	public static final int RIGHTBACK_JAGUARID = 8;
 
-	public static final CANJaguar LEFTFRONT_JAGUAR = new CANJaguar(
-			LEFTFRONT_JAGUARID);
-	public static final CANJaguar RIGHTFRONT_JAGUAR = new CANJaguar(
-			RIGHTFRONT_JAGUARID);
-	public static final CANJaguar LEFTBACK_JAGUAR = new CANJaguar(
-			LEFTBACK_JAGUARID);
-	public static final CANJaguar RIGHTBACK_JAGUAR = new CANJaguar(
-			RIGHTBACK_JAGUARID);
-
+	
 	// Gyro established
 	public static final int GYRO_PORT = 0;
 	public static final Gyro gyro = new Gyro(GYRO_PORT);

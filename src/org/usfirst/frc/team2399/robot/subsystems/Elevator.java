@@ -26,8 +26,8 @@ public class Elevator extends Subsystem {
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
-	public Elevator(CANJaguar elevatorMotor) {
-		this.elevatorMotor = elevatorMotor;
+	public Elevator(int elevatorMotorNum) {
+		this.elevatorMotor = new CANJaguar(elevatorMotorNum);
 	}
 
 	// elevator motor is set to the up speed
@@ -43,7 +43,7 @@ public class Elevator extends Subsystem {
 	// default command is no movement
 	public void initDefaultCommand() {
 
-		setDefaultCommand(new ElevateNot());
+		setDefaultCommand(new ElevateNot(this));
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}

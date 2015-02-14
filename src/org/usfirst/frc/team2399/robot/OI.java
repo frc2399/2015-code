@@ -20,14 +20,14 @@ public class OI {
 	Joystick driveStick = new Joystick(0);
 	
 	// reset gyro button
-	Button resetGyroButt = new JoystickButton(driveStick, 5);
+	Button resetGyroButt = new JoystickButton(driveStick, 12);
 
 	// buttons for sliding up and down are assigned, could be reassigned for
 	// clarity.
-	Button slideUpFrontButt = new JoystickButton(driveStick, 3);
-	Button slideDownFrontButt = new JoystickButton(driveStick, 4);
-	Button slideUpRearButt = new JoystickButton(driveStick, 12);
-	Button slideDownRearButt = new JoystickButton(driveStick, 13);
+	Button slideUpFrontButt = new JoystickButton(driveStick, 5);
+	Button slideDownFrontButt = new JoystickButton(driveStick, 3);
+	Button slideUpRearButt = new JoystickButton(driveStick, 6);
+	Button slideDownRearButt = new JoystickButton(driveStick, 4);
 
 	// established doubles so we can use them in other parts of the
 	// program
@@ -35,10 +35,10 @@ public class OI {
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
 
-		slideUpFrontButt.whileHeld(new ElevateUp());
-		slideDownFrontButt.whileHeld(new ElevateDown());
-		slideUpRearButt.whileHeld(new ElevateUp());
-		slideDownRearButt.whileHeld(new ElevateDown());
+		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
+		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
+		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
+		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
 
 	}
 
