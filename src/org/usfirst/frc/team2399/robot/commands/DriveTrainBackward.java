@@ -6,18 +6,17 @@ import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveTrainBackward extends Command {
-	
+
 	public DriveTrain driveTrain = Robot.driveTrain;
-	
-	public DriveTrainBackward(){
+
+	public DriveTrainBackward() {
 		requires(Robot.driveTrain);
 	}
-	
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -34,13 +33,13 @@ public class DriveTrainBackward extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

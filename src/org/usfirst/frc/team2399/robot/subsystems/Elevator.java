@@ -14,24 +14,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-// THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
 // sets this instance of elevatorMotor to the public instance of elevatorMotor
 // this code is much simpler and it's very nice
-// ALL LIMIT SWITCH THINGS HAVE BEEN REMOVED BC JAGS DO IT FOR US
+// All limit switch code has been removed, because limit switches stop Jags automatically when pressed.
 public class Elevator extends Subsystem {
 	// private instances of drive, elevatormotor/encoder
 	private RobotDrive drive;
 	private CANJaguar elevatorMotor;
 	private Encoder elevatorEncoder;
-	/*Encoder frontEncoder = new Encoder(RobotMap.ELEVATORFRONT_ENCODERPORT_A,
-			RobotMap.ELEVATORFRONT_ENCODERPORT_B);
-	Encoder rearEncoder = new Encoder(RobotMap.ELEVATORREAR_ENCODERPORT_A,
-			RobotMap.ELEVATORREAR_ENCODERPORT_B);
-	Encoder leftEncoder = new Encoder(RobotMap.ELEVATORLEFT_ENCODERPORT_A,
-			RobotMap.ELEVATORLEFT_ENCODERPORT_B);
-	Encoder rightEncoder = new Encoder(RobotMap.ELEVATORRIGHT_ENCODERPORT_A,
-			RobotMap.ELEVATORRIGHT_ENCODERPORT_B);
-*/
+
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
@@ -57,30 +48,3 @@ public class Elevator extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 }
-	/*public void resetEncoders(){
-		frontEncoder.reset(); 
-		rearEncoder.reset();
-		leftEncoder.reset(); 
-		rightEncoder.reset(); 
-	}
-	public double getFrontEncoder(){ 
-		SmartDashboard.putDouble("Front Encoder", frontEncoder.getDistance()); 
-		return frontEncoder.getDistance();
-	}
-	public double getRearEncoder() { 
-		SmartDashboard.putDouble("Rear Encoder",rearEncoder.getDistance());
-		return rearEncoder.getDistance(); 
-	}
-	public double getLeftEncoder(){ 
-		SmartDashboard.putdouble("Left Encoder", leftEncoder.getDistance()); 
-		return leftEncoder.getDistance(); 	
-	}
-	public double getRightEncoder() { 
-		SmartDashboard.putdouble("Right Encoder", rightEncoder.getDistance()); 
-		return rightEncoder.getDistance(); 
-		}
-}
-	
-	*/
-
-

@@ -12,9 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-
 public class JoystickDrive extends Command {
-	// private instance of drivetrain and brings in drivetrain from Robot.Java
+	// private instance of drive train and brings in drive train from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
 
@@ -38,7 +37,7 @@ public class JoystickDrive extends Command {
 		double x;
 		double y;
 
-		// deadbands set individually to their values
+		// dead-bands set individually to their values
 		twist = deadband(Robot.oi.getTwistSpeed(), .25, .25);
 		x = deadband(Robot.oi.getSideSpeed(), .05, 1);
 		y = deadband(Robot.oi.getForwardSpeed(), .05, 1);
@@ -63,12 +62,10 @@ public class JoystickDrive extends Command {
 	protected void interrupted() {
 	}
 
-	// est constant deadbandpercent so different calcs can be made for different motions individually
-	//est deadbandscale so twist motor power can be scaled (makes turns less jerky)
-	//ask drivers if they want the scaling on a switch/button (later)
-	//scaling for drive as well that can be turned on and off
-	
-
+	// establishes constant deadbandpercent so different calculations can be made for different motions individually.
+	// established deadbandscale so twist motor power can be scaled (makes turns less jerky)
+	// TODO ask drivers if they want the scaling on a switch/button (later)
+	// scaling for drive as well that can be turned on and off
 
 	public static double deadband(double input, double deadbandpercent,
 			double deadbandscale) {

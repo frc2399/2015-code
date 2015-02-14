@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2399.robot.commands;
+
 //EXTENSION OF ELEVATE
+//Elevates Up
+
 public class ElevateUp extends Elevate {
 
 	public ElevateUp() {
