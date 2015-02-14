@@ -60,7 +60,7 @@ public class DriveTrainForward extends Command{
 			 * that is because the contact switch code doesn't exist in this branch
 			 * when this branch is merged into SubsystemCreation2015 the code should be happy
 			 */
-			break; //
+			driveTrain.driveRobotOriented(0, 0, 0);
 		} else if (LEFTFRONT_JAGUAR.getPosition() >= driveTo){
 			/*
 			 * this pretty much says if the position of the robot is greater then or euqal to the
@@ -74,7 +74,7 @@ public class DriveTrainForward extends Command{
 			 * if it doesn't, we need to find what DOES
 			 * because this setup right now is really pretty and I like it
 			 */
-			break;
+			driveTrain.driveRobotOriented(0, 0, 0);
 		}
 		
 		
