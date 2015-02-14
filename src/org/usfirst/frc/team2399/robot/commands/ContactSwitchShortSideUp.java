@@ -22,7 +22,7 @@ public class ContactSwitchShortSideUp extends CommandGroup {
 	// 1 and 4 are pressed on the short side of the tote
 	// TODO see if this automatically activates in teleop.
 
-	public void ContactSwitchShortSideUp() {
+	public ContactSwitchShortSideUp() {
 		if (contactSwitchOne.get() == true && contactSwitchFour.get() == true) {
 			addSequential(new ElevateUp());
 			addSequential(new WaitCommand(2));

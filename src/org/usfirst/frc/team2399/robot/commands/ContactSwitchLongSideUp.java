@@ -25,7 +25,7 @@ public class ContactSwitchLongSideUp extends CommandGroup {
 	// TODO Find out the correct combination for Contact Switches that will lift
 	// the long side of the tote succesfully.
 
-	public void ContactSwitchLongSideUp() {
+	public ContactSwitchLongSideUp() {
 		/*
 		 * if (contactSwitchFoo.get()==true &&contactSwitchFoo.get()== true) {
 		 * addSequential(new ElevateUp()); addSequential(new WaitCommand(2));
