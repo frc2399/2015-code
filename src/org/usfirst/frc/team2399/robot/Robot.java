@@ -36,10 +36,10 @@ public class Robot extends IterativeRobot {
 	public static Joystick joystick;
 	public static Gyro gyro;
 	
-	DigitalInput contactSwitchOne = new DigitalInput (RobotMap.CONTACT_SWITCH1ID);
-	DigitalInput contactSwitchTwo = new DigitalInput (RobotMap.CONTACT_SWITCH2ID);
-	DigitalInput contactSwitchThree = new DigitalInput (RobotMap.CONTACT_SWITCH3ID);
-	DigitalInput contactSwitchFour = new DigitalInput (RobotMap.CONTACT_SWITCH4ID);
+	public static DigitalInput contactSwitchOne = new DigitalInput (RobotMap.CONTACT_SWITCH1ID);
+	public static DigitalInput contactSwitchTwo = new DigitalInput (RobotMap.CONTACT_SWITCH2ID);
+	public static DigitalInput contactSwitchThree = new DigitalInput (RobotMap.CONTACT_SWITCH3ID);
+	public static DigitalInput contactSwitchFour = new DigitalInput (RobotMap.CONTACT_SWITCH4ID);
 	
 	
 	private Command autoncommand;
@@ -191,3 +191,4 @@ public class Robot extends IterativeRobot {
 		LiveWindow.run();
 	}
 }
+
