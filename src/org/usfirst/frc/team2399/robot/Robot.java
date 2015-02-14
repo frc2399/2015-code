@@ -56,8 +56,6 @@ public class Robot extends IterativeRobot {
 		driveTrain = new DriveTrain();
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUAR);
 		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUAR);
-		elevatorRight = new Elevator(RobotMap.ELEVATORRIGHT_JAGUAR);
-		elevatorLeft = new Elevator(RobotMap.ELEVATORLEFT_JAGUAR);
 		oi = new OI();// oi orange juice
 		autoncommand= new DriveAutoZone();
 
@@ -77,7 +75,7 @@ public class Robot extends IterativeRobot {
 
 	}
 	
-	
+	//When Contact switches are pushed for at least 0.005 seconds, they will show up as Pressed on SmartDashboard.
 	public void contactSwitchOne (){
 		if(contactSwitchOne.get() == true) {
 			WaitCommmand(0.005);
@@ -107,7 +105,41 @@ public class Robot extends IterativeRobot {
 			WaitCommmand(0.005);
 			SmartDashboard.putBoolean("Contact Switch Four Pressed", contactSwitchFour.get());
 		}
-	}+
+	}
+	
+	protected boolean contactSwitchOneReturnTrue(){
+	if (contactSwitchOne.get()==true){
+	return true;
+			
+	} else {
+		return false;
+	}
+	}
+	protected boolean contactSwitchTwoReturnTrue(){
+		if (contactSwitchTwo.get()==true){
+		return true;
+				
+		} else {
+			return false;
+		}
+		}
+	protected boolean contactSwitchThreeReturnTrue(){
+		if (contactSwitchThree.get()==true){
+		return true;
+				
+		} else {
+			return false;
+		}
+		}
+	protected boolean contactSwitchFourReturnTrue(){
+		if (contactSwitchFour.get()==true){
+		return true;
+				
+		} else {
+			return false;
+		}
+		}
+	
 
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();

@@ -23,6 +23,13 @@ public class RobotMap {
 //	public static final int ELEVATORRIGHT_JAGUARID = 7;
 //	public static final int ELEVATORLEFT_JAGUARID = 8;
 	
+	public static final int CONTACT_SWITCH1ID = 3;
+	public static final int CONTACT_SWITCH2ID = 4;
+	public static final int CONTACT_SWITCH3ID = 5;
+	public static final int CONTACT_SWITCH4ID = 6;
+	
+	
+	
 	public static final CANJaguar ELEVATORFRONT_JAGUAR = new CANJaguar(ELEVATORFRONT_JAGUARID);
 	public static final CANJaguar ELEVATORREAR_JAGUAR = new CANJaguar(ELEVATORREAR_JAGUARID);
 //	public static final CANJaguar ELEVATORRIGHT_JAGUAR = new CANJaguar(ELEVATORRIGHT_JAGUARID);

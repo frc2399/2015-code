@@ -23,7 +23,7 @@ public class Elevator extends Subsystem {
 	private RobotDrive drive;
 	private CANJaguar elevatorMotor;
 	private Encoder elevatorEncoder;
-	Encoder frontEncoder = new Encoder(RobotMap.ELEVATORFRONT_ENCODERPORT_A,
+	/*Encoder frontEncoder = new Encoder(RobotMap.ELEVATORFRONT_ENCODERPORT_A,
 			RobotMap.ELEVATORFRONT_ENCODERPORT_B);
 	Encoder rearEncoder = new Encoder(RobotMap.ELEVATORREAR_ENCODERPORT_A,
 			RobotMap.ELEVATORREAR_ENCODERPORT_B);
@@ -31,7 +31,7 @@ public class Elevator extends Subsystem {
 			RobotMap.ELEVATORLEFT_ENCODERPORT_B);
 	Encoder rightEncoder = new Encoder(RobotMap.ELEVATORRIGHT_ENCODERPORT_A,
 			RobotMap.ELEVATORRIGHT_ENCODERPORT_B);
-
+*/
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
@@ -56,8 +56,8 @@ public class Elevator extends Subsystem {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-	
-	public void resetEncoders(){
+}
+	/*public void resetEncoders(){
 		frontEncoder.reset(); 
 		rearEncoder.reset();
 		leftEncoder.reset(); 
@@ -81,6 +81,6 @@ public class Elevator extends Subsystem {
 		}
 }
 	
-	
+	*/
 
 
