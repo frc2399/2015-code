@@ -32,7 +32,7 @@ public class OI {
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
-	public OI() {
+	private OI() {
 		resetGyroButt.whenPressed(new GyroReset());
 
 		slideUpFrontButt.whileHeld(new ElevateUp());
@@ -44,15 +44,15 @@ public class OI {
 
 	// doubles and booleans for joystick values
 	// these get the "speed" from how far the joystick is pushed
-	public double getForwardSpeed() {
+	private double getForwardSpeed() {
 		return -driveStick.getY();
 	}
 
-	public double getSideSpeed() {
+	private double getSideSpeed() {
 		return -driveStick.getX();
 	}
 
-	public double getTwistSpeed() {
+	private double getTwistSpeed() {
 		return -driveStick.getTwist();
 	}
 
