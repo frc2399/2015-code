@@ -25,25 +25,38 @@ public class Elevator extends Subsystem {
 	// private instances of drive, elevatormotor/encoder
 	private RobotDrive drive;
 	private CANJaguar elevatorMotor;
+
 	private boolean positionValid;
 	private double upperLimit;
-	private double lowerLimt;
+	private double lowerLimit;
+
+	private Encoder elevatorEncoder;
+	private DigitalInput leftOuterSwitch;
+	private DigitalInput leftInnerSwitch;
+	private DigitalInput rightInnerSwitch;
+	private DigitalInput rightOuterSwitch;
 
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
 	// encoder position is a double
-	public Elevator(int elevatorMotorNum, int encoderCounts, double upperLimit,
+	public Elevator(int elevatorMotorNum, 
+			int leftOuterSwitchNum,
+			int leftInnerSwitchNum, 
+			int rightInnerSwitchNum,
+			int rightOuterSwitchNum, 
+			int encoderCounts, 
+			double upperLimit,
 			double lowerLimit) {
 		elevatorMotor = new CANJaguar(elevatorMotorNum);
 		positionValid = false;
 		// this. refers to the object's variables
 		if (upperLimit > lowerLimit) {
 			this.upperLimit = upperLimit;
-			this.lowerLimt = lowerLimit;
+			this.lowerLimit = lowerLimit;
 		} else {
 			this.upperLimit = lowerLimit;
-			this.lowerLimt = upperLimit;
+			this.lowerLimit = upperLimit;
 		} // this if block checks to make sure that the two limit values are
 			// correct
 			// makes sure upperLimit is actually the bigger and vice versa with
@@ -52,6 +65,10 @@ public class Elevator extends Subsystem {
 		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
 		elevatorMotor.enableControl();
 
+		leftOuterSwitch = new DigitalInput(leftOuterSwitchNum);
+		leftInnerSwitch = new DigitalInput(leftInnerSwitchNum);
+		rightInnerSwitch = new DigitalInput(rightInnerSwitchNum);
+		rightOuterSwitch = new DigitalInput(rightOuterSwitchNum);
 	}
 
 	// elevator motor is set to the up speed
@@ -66,13 +83,13 @@ public class Elevator extends Subsystem {
 			positionValid = true;
 		}
 		if (positionValid == true) {
-			if(elevatorMotor.getSpeed() > 0){
-				if(elevatorMotor.getPosition() > upperLimit){
+			if (elevatorMotor.getSpeed() > 0) {
+				if (elevatorMotor.getPosition() > upperLimit) {
 					elevatorSpeed = 0;
 				}
 			}
-			if(elevatorMotor.getSpeed() < 0){
-				if(elevatorMotor.getPosition() < lowerLimit)
+			if (elevatorMotor.getSpeed() < 0) {
+				if (elevatorMotor.getPosition() < lowerLimit)
 					elevatorSpeed = 0;
 			}
 
@@ -89,5 +106,22 @@ public class Elevator extends Subsystem {
 		setDefaultCommand(new ElevateNot(this));
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	public void putSwitchesToDashboard(String prefix) {
+		SmartDashboard.putBoolean(prefix + " Left Outer Switch Pressed",
+				leftOuterSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Left Inner Switch Pressed",
+				leftInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Inner Switch Pressed",
+				rightInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Outer Switch Pressed",
+				rightOuterSwitch.get());
+
+	}
+
+	public boolean isTouchingTote() {
+		return leftOuterSwitch.get() && rightOuterSwitch.get()
+				&& !leftInnerSwitch.get() && !rightInnerSwitch.get();
 	}
 }

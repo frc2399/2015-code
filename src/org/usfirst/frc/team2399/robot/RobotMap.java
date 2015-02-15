@@ -20,11 +20,20 @@ public class RobotMap {
 	public static final int ELEVATORFRONT_JAGUARID = 5;
 	public static final int ELEVATORREAR_JAGUARID = 1;
 	
-	// TODO change ContactSwitch ID's
-	public static final int CONTACT_SWITCH1ID = 0;
-	public static final int CONTACT_SWITCH2ID = 1;
-	public static final int CONTACT_SWITCH3ID = 2;
-	public static final int CONTACT_SWITCH4ID = 3;
+	// TODO change ContactSwitch ID's as we now only have two on each side
+	public static final int FRONTCONTACT_SWITCH1ID = 4;
+	public static final int FRONTCONTACT_SWITCH2ID = 5;
+	public static final int FRONTCONTACT_SWITCH3ID = 6;
+	public static final int FRONTCONTACT_SWITCH4ID = 7;
+	
+	public static final int REARCONTACT_SWITCH1ID = 0;
+	public static final int REARCONTACT_SWITCH2ID = 1;
+	public static final int REARCONTACT_SWITCH3ID = 2;
+	public static final int REARCONTACT_SWITCH4ID = 3;
+	
+	
+	
+	
 
 	
 	// DriveTrain motor Jaguar ID's
@@ -40,6 +49,14 @@ public class RobotMap {
 	
 	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 250;
 	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;
+	
+	
+	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 13.251;
+	public static final double FRONT_ELEVATOR_LOWER_LIMIT = 0;
+	
+	public static final double REAR_ELEVATOR_UPPER_LIMIT = 13.083;
+	public static final double REAR_ELEVATOR_LOWER_LIMIT = 0;
+	
 	
 	public static final int ENCODER_COUNTS_DRIVETRAIN = 250;
 
