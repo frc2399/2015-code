@@ -17,17 +17,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	
 	// new joystick
-	Joystick driveStick = new Joystick(0);
+	public Joystick driveStick = new Joystick(0);
 	
 	// reset gyro button
-	Button resetGyroButt = new JoystickButton(driveStick, 12);
+	public Button resetGyroButt = new JoystickButton(driveStick, 12);
 
 	// buttons for sliding up and down are assigned, could be reassigned for
 	// clarity.
-	Button slideUpFrontButt = new JoystickButton(driveStick, 5);
-	Button slideDownFrontButt = new JoystickButton(driveStick, 3);
-	Button slideUpRearButt = new JoystickButton(driveStick, 6);
-	Button slideDownRearButt = new JoystickButton(driveStick, 4);
+	public Button slideUpFrontButt = new JoystickButton(driveStick, 5);
+	public Button slideDownFrontButt = new JoystickButton(driveStick, 3);
+	public Button slideUpRearButt = new JoystickButton(driveStick, 6);
+	public Button slideDownRearButt = new JoystickButton(driveStick, 4);
 
 	// established doubles so we can use them in other parts of the
 	// program
@@ -44,15 +44,15 @@ public class OI {
 
 	// doubles and booleans for joystick values
 	// these get the "speed" from how far the joystick is pushed
-	private double getForwardSpeed() {
+	public double getForwardSpeed() {
 		return -driveStick.getY();
 	}
 
-	private double getSideSpeed() {
+	public double getSideSpeed() {
 		return -driveStick.getX();
 	}
 
-	private double getTwistSpeed() {
+	public double getTwistSpeed() {
 		return -driveStick.getTwist();
 	}
 

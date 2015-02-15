@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -39,10 +40,14 @@ public class JoystickDrive extends Command {
 
 		// dead-bands set individually to their values
 		twist = deadband(Robot.oi.getTwistSpeed(), .1, .5);
-		x = deadband(Robot.oi.getSideSpeed(), 0, 1);
-		y = deadband(Robot.oi.getForwardSpeed(), 0, 1);
+		x = deadband(Robot.oi.getSideSpeed(), .1, 1);
+		y = deadband(Robot.oi.getForwardSpeed(), .1, 1);
+		SmartDashboard.putNumber("X is: ", x);
+		SmartDashboard.putNumber("Y is: ", y);
+		SmartDashboard.putNumber("Twist is: ", twist);
+		
 
-		driveTrain.driveFieldOriented(x, y, twist);
+		//driveTrain.driveFieldOriented(x, y, twist);
 
 		// System.out.println("is running");
 
