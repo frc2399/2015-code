@@ -38,9 +38,9 @@ public class JoystickDrive extends Command {
 		double y;
 
 		// dead-bands set individually to their values
-		twist = deadband(Robot.oi.getTwistSpeed(), .25, .25);
-		x = deadband(Robot.oi.getSideSpeed(), .05, 1);
-		y = deadband(Robot.oi.getForwardSpeed(), .05, 1);
+		twist = deadband(Robot.oi.getTwistSpeed(), .1, .5);
+		x = deadband(Robot.oi.getSideSpeed(), 0, 1);
+		y = deadband(Robot.oi.getForwardSpeed(), 0, 1);
 
 		driveTrain.driveFieldOriented(x, y, twist);
 
@@ -62,8 +62,10 @@ public class JoystickDrive extends Command {
 	protected void interrupted() {
 	}
 
-	// establishes constant deadbandpercent so different calculations can be made for different motions individually.
-	// established deadbandscale so twist motor power can be scaled (makes turns less jerky)
+	// establishes constant deadbandpercent so different calculations can be
+	// made for different motions individually.
+	// established deadbandscale so twist motor power can be scaled (makes turns
+	// less jerky)
 	// TODO ask drivers if they want the scaling on a switch/button (later)
 	// scaling for drive as well that can be turned on and off
 

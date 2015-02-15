@@ -24,9 +24,9 @@ public class ContactSwitchShortSideUp extends CommandGroup {
 
 	public ContactSwitchShortSideUp() {
 		if (contactSwitchOne.get() == true && contactSwitchFour.get() == true) {
-			addSequential(new ElevateUp());
+			addSequential(new ElevateUp(Robot.elevatorFront));
 			addSequential(new WaitCommand(2));
-			addSequential(new ElevateNot());
+			addSequential(new ElevateNot(Robot.elevatorFront));
 		}
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

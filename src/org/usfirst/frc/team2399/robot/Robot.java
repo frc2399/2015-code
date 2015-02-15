@@ -32,8 +32,6 @@ public class Robot extends IterativeRobot {
 
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
-	public static Elevator elevatorRight;
-	public static Elevator elevatorLeft;
 
 	public static Joystick joystick;
 
@@ -64,8 +62,8 @@ public class Robot extends IterativeRobot {
 
 		driveTrain = new DriveTrain();
 
-		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUAR);
-		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUAR);
+		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID);
+		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID);
 
 		oi = new OI();
 

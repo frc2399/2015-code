@@ -35,11 +35,10 @@ public class OI {
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
 
-		slideUpFrontButt.whileHeld(new ElevateUp());
-		slideDownFrontButt.whileHeld(new ElevateDown());
-		slideUpRearButt.whileHeld(new ElevateUp());
-		slideDownRearButt.whileHeld(new ElevateDown());
-
+		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
+		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
+		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
+		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
 	}
 
 	// doubles and booleans for joystick values
