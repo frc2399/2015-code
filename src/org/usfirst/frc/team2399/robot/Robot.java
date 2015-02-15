@@ -62,8 +62,8 @@ public class Robot extends IterativeRobot {
 
 		driveTrain = new DriveTrain();
 
-		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID);
-		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID);
+		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID, RobotMap.ENCODER_COUNTS_FRONT_ELEVATOR);
+		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID, RobotMap.ENCODER_COUNTS_REAR_ELEVATOR);
 
 		oi = new OI();
 
