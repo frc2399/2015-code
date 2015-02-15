@@ -60,14 +60,14 @@ public class Elevator extends Subsystem {
 	}
 
 	public void putSwitchesToDashboard(String prefix) {
-		SmartDashboard.putData(prefix + " Left Outer Switch Pressed",
-				leftOuterSwitch);
-		SmartDashboard.putData(prefix + " Left Inner Switch Pressed",
-				leftInnerSwitch);
-		SmartDashboard.putData(prefix + " Right Inner Switch Pressed",
-				rightInnerSwitch);
-		SmartDashboard.putData(prefix + " Right Outer Switch Pressed",
-				rightOuterSwitch);
+		SmartDashboard.putBoolean(prefix + " Left Outer Switch Pressed",
+				leftOuterSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Left Inner Switch Pressed",
+				leftInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Inner Switch Pressed",
+				rightInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Outer Switch Pressed",
+				rightOuterSwitch.get());
 
 	}
 	

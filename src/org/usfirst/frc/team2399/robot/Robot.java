@@ -76,8 +76,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Front Elevator", elevatorFront);
 		SmartDashboard.putData("Rear Elevator", elevatorRear);
 		
-		elevatorFront.putSwitchesToDashboard("Front");
-		// instantiate the command used for the autonomous period
+				// instantiate the command used for the autonomous period
 
 	}
 
@@ -140,6 +139,10 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		elevatorFront.putSwitchesToDashboard("Front");
+		elevatorRear.putSwitchesToDashboard("Rear");
+
 	}
 
 	/**
