@@ -26,6 +26,9 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	private CANJaguar rightFront;
 	private CANJaguar leftBack;
 	private CANJaguar rightBack;
+	private float FULL_SPEED =1;
+	private double HALF_SPEED =.5;
+	private double Speed = FULL_SPEED;
 
 	// established jags/their motors as vales from RobotMap
 	// established new drive and invert motors; sync motors (this was a bug fix)
@@ -74,6 +77,15 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		setDefaultCommand(new JoystickDrive());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	//TODO find out the true values for full speed and half speed (modified).
+	public double ToggleSpeed(){
+		if(Speed == 0){
+			return Speed = HALF_SPEED;
+		}else{
+			return Speed = FULL_SPEED;
+		}
+		
 	}
 
 	// reset encoders to 0

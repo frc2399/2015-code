@@ -49,6 +49,7 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
 		
+	
 //		if (reduceSpeedButt.get() == true){
 	//		x = .5 * x;
 		//	y = .5 * y;
@@ -94,6 +95,14 @@ public class JoystickDrive extends Command {
 		else {
 			return (deadbandscale * (input / (Math.abs(input)) * (((Math
 					.abs(input) - deadbandconstant)) / (1 - deadbandconstant))));
+		}
+	}
+	protected boolean HalfSpeed(){
+		if (reduceHalfSpeed.isPressed()){
+			return true;
+			
+		}else{
+			return false;
 		}
 	}
 }
