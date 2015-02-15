@@ -40,14 +40,24 @@ public class Robot extends IterativeRobot {
 
 	// established contact switches
 
-	public static DigitalInput contactSwitchOne = new DigitalInput(
-			RobotMap.CONTACT_SWITCH1ID);
-	public static DigitalInput contactSwitchTwo = new DigitalInput(
-			RobotMap.CONTACT_SWITCH2ID);
-	public static DigitalInput contactSwitchThree = new DigitalInput(
-			RobotMap.CONTACT_SWITCH3ID);
-	public static DigitalInput contactSwitchFour = new DigitalInput(
-			RobotMap.CONTACT_SWITCH4ID);
+	public static DigitalInput frontContactSwitchOne = new DigitalInput(
+			RobotMap.FRONTCONTACT_SWITCH1ID);
+	public static DigitalInput frontContactSwitchTwo = new DigitalInput(
+			RobotMap.FRONTCONTACT_SWITCH2ID);
+	public static DigitalInput frontContactSwitchThree = new DigitalInput(
+			RobotMap.FRONTCONTACT_SWITCH3ID);
+	public static DigitalInput frontContactSwitchFour = new DigitalInput(
+			RobotMap.FRONTCONTACT_SWITCH4ID);
+	
+	public static DigitalInput rearContactSwitchOne = new DigitalInput(
+			RobotMap.REARCONTACT_SWITCH1ID);
+	public static DigitalInput rearContactSwitchTwo = new DigitalInput(
+			RobotMap.REARCONTACT_SWITCH2ID);
+	public static DigitalInput rearContactSwitchThree = new DigitalInput(
+			RobotMap.REARCONTACT_SWITCH3ID);
+	public static DigitalInput rearContactSwitchFour = new DigitalInput(
+			RobotMap.REARCONTACT_SWITCH4ID);
+
 
 	private Command autoncommand;
 
@@ -102,41 +112,41 @@ public class Robot extends IterativeRobot {
 
 	
 	
-	public void contactSwitchOne() {
-		if (contactSwitchOne.get() == true) {
+	public void frontContactSwitchOne() {
+		if (frontContactSwitchOne.get() == true) {
 			WaitCommmand(0.005);
-			SmartDashboard.putBoolean("Contact Limit Switch One Pressed",
-					contactSwitchOne.get());
+			SmartDashboard.putBoolean("Front Contact Switch One Pressed",
+					frontContactSwitchOne.get());
 		}
 	}
 
-	public void contactSwitchTwo() {
-		if (contactSwitchTwo.get() == true) {
+	public void frontContactSwitchTwo() {
+		if (frontContactSwitchTwo.get() == true) {
 			WaitCommmand(0.005);
-			SmartDashboard.putBoolean("Contact Limit Switch Two Pressed",
-					contactSwitchTwo.get());
+			SmartDashboard.putBoolean("Front Contact Switch Two Pressed",
+					frontContactSwitchTwo.get());
 		}
 	}
 
-	public void contactSwitchThree() {
-		if (contactSwitchThree.get() == true) {
+	public void frontContactSwitchThree() {
+		if (frontContactSwitchThree.get() == true) {
 			WaitCommmand(0.005);
-			SmartDashboard.putBoolean("Contact Limit Switch Three Pressed",
-					contactSwitchThree.get());
+			SmartDashboard.putBoolean("Front Contact Switch Three Pressed",
+					frontContactSwitchThree.get());
 		}
 	}
 
-	public void contactSwitchFour() {
-		if (contactSwitchFour.get() == true) {
+	public void frontContactSwitchFour() {
+		if (frontContactSwitchFour.get() == true) {
 			WaitCommmand(0.005);
-			SmartDashboard.putBoolean("Contact Switch Four Pressed",
-					contactSwitchFour.get());
+			SmartDashboard.putBoolean("Front Contact Switch Four Pressed",
+					frontContactSwitchFour.get());
 		}
 	}
 
 	// made it so Contact Switches would return true when pressed
-	protected boolean contactSwitchOneReturnTrue() {
-		if (contactSwitchOne.get() == true) {
+	protected boolean frontContactSwitchOneReturnTrue() {
+		if (frontContactSwitchOne.get() == true) {
 			return true;
 
 		} else {
@@ -144,8 +154,8 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
-	protected boolean contactSwitchTwoReturnTrue() {
-		if (contactSwitchTwo.get() == true) {
+	protected boolean frontContactSwitchTwoReturnTrue() {
+		if (frontContactSwitchTwo.get() == true) {
 			return true;
 
 		} else {
@@ -153,8 +163,8 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
-	protected boolean contactSwitchThreeReturnTrue() {
-		if (contactSwitchThree.get() == true) {
+	protected boolean frontContactSwitchThreeReturnTrue() {
+		if (frontContactSwitchThree.get() == true) {
 			return true;
 
 		} else {
@@ -162,8 +172,76 @@ public class Robot extends IterativeRobot {
 		}
 	}
 
-	protected boolean contactSwitchFourReturnTrue() {
-		if (contactSwitchFour.get() == true) {
+	protected boolean frontContactSwitchFourReturnTrue() {
+		if (frontContactSwitchFour.get() == true) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+	public void rearContactSwitchOne() {
+		if (rearContactSwitchOne.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Rear Contact Switch One Pressed",
+					rearContactSwitchOne.get());
+		}
+	}
+
+	public void rearContactSwitchTwo() {
+		if (rearContactSwitchTwo.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Rear Contact Switch Two Pressed",
+					rearContactSwitchTwo.get());
+		}
+	}
+
+	public void rearContactSwitchThree() {
+		if (rearContactSwitchThree.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Rear Contact Switch Three Pressed",
+					rearContactSwitchThree.get());
+		}
+	}
+
+	public void rearContactSwitchFour() {
+		if (rearContactSwitchFour.get() == true) {
+			WaitCommmand(0.005);
+			SmartDashboard.putBoolean("Rear Contact Switch Four Pressed",
+					rearContactSwitchFour.get());
+		}
+	}
+
+	// made it so Contact Switches would return true when pressed
+	protected boolean rearContactSwitchOneReturnTrue() {
+		if (rearContactSwitchOne.get() == true) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+	protected boolean rearContactSwitchTwoReturnTrue() {
+		if (rearContactSwitchTwo.get() == true) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+	protected boolean rearContactSwitchThreeReturnTrue() {
+		if (rearContactSwitchThree.get() == true) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
+	protected boolean rearContactSwitchFourReturnTrue() {
+		if (rearContactSwitchFour.get() == true) {
 			return true;
 
 		} else {
