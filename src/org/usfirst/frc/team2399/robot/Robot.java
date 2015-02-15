@@ -75,8 +75,8 @@ public class Robot extends IterativeRobot {
 		// smartdashboard values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);
 
-		SmartDashboard.putData("Elevator", elevatorFront);
-		SmartDashboard.putData("Elevator", elevatorRear);
+		SmartDashboard.putData("Front Elevator", elevatorFront);
+		SmartDashboard.putData("Rear Elevator", elevatorRear);
 
 		// instantiate the command used for the autonomous period
 
