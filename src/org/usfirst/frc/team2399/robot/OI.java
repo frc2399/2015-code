@@ -20,15 +20,15 @@ public class OI {
 	private Joystick driveStick = new Joystick(0);
 	
 	// reset gyro button
-	private Button resetGyroButt = new JoystickButton(driveStick, 5);
+	private Button resetGyroButt = new JoystickButton(driveStick, 12);
 
 	// buttons for sliding up and down are assigned, could be reassigned for
 	// clarity.
-	private Button slideUpFrontButt = new JoystickButton(driveStick, 3);
-	private Button slideDownFrontButt = new JoystickButton(driveStick, 4);
-	private Button slideUpRearButt = new JoystickButton(driveStick, 12);
-	private Button slideDownRearButt = new JoystickButton(driveStick, 13);
-
+	private Button slideUpFrontButt = new JoystickButton(driveStick, 5);
+	private Button slideDownFrontButt = new JoystickButton(driveStick, 3);
+	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
+	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
+	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
@@ -52,7 +52,7 @@ public class OI {
 	}
 
 	public double getTwistSpeed() {
-		return -driveStick.getTwist();
+		return driveStick.getTwist();
 	}
 
 	// // CREATING BUTTONS
