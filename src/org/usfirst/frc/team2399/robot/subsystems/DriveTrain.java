@@ -29,8 +29,34 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 
 	// established jags/their motors as vales from RobotMap
 	// established new drive and invert motors; sync motors (this was a bug fix)
+	
 
-	public DriveTrain() {
+	public double getLeftFrontPosition(){
+		return (leftFront.getPosition());
+	}
+	public double getLeftFrontSpeed(){
+		return (leftFront.getSpeed());
+	}
+	public double getRightFrontPosition(){
+		return (rightFront.getPosition());
+	}
+	public double getRightFrontSpeed(){
+		return(rightFront.getSpeed());
+	}
+	public double getLeftBackPosition(){
+		return(leftBack.getPosition());
+	}
+	public double getLeftBackSpeed(){
+		return(leftBack.getSpeed());
+	}
+	public double getRightBackPosition(){
+		return(rightBack.getPosition());
+	}
+	public double getRightBackSpeed(){
+		return(rightBack.getSpeed());
+	}
+
+	public DriveTrain(int encoderCounts) {
 
 		leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 		rightFront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
@@ -38,11 +64,25 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		rightBack = new CANJaguar(RobotMap.RIGHTBACK_JAGUARID);
 
 		drive = new RobotDrive(leftFront, leftBack, rightFront, rightBack);
-
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
 		drive.setCANJaguarSyncGroup((byte) 7);
+		
+		// four lines below enable the encoders to work on the jags
+		leftFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		leftBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		
+		//four lines below put the jags into encoder control
+		leftFront.enableControl();
+		rightFront.enableControl();
+		leftBack.enableControl();
+		rightBack.enableControl();
+
+
+		
 
 		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
 		// what the drivetrain encoder is
@@ -75,40 +115,4 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-
-	// reset encoders to 0
-	// don't need to start like in 2013 bc encoders now do that automatically
-	// TODO REDO WITH CORRECT ENCODER CODE
-	// public void resetEncoders(){
-	// leftFrontEncoder.reset();
-	// rightBackEncoder.reset();
-	// leftBackEncoder.reset();
-	// rightBackEncoder.reset();
-	// }
-
-	// //get distance
-	// public double getleftFrontEncoder(){
-	// SmartDashboard.putDouble("leftFrontEncoder",
-	// leftFrontEncoder.getDistance());
-	// return leftFrontEncoder.getDistance();
-	// }
-	//
-	// public double getrightFrontEncoder(){
-	// SmartDashboard.putDouble("rightFrontEncoder",
-	// rightFrontEncoder.getDistance());
-	// return rightFrontEncoder.getDistance();
-	// }
-	//
-	// public double getleftBackEncoder(){
-	// SmartDashboard.putDouble("leftBackEncoder",
-	// leftBackEncoder.getDistance());
-	// return leftBackEncoder.getDistance();
-	// }
-	//
-	// public double getrightBackEncoder(){
-	// SmartDashboard.putDouble("rightBackEncoder",
-	// rightBackEncoder.getDistance());
-	// return rightBackEncoder.getDistance();
-	// return statement are like the end of a sentence
-	// if code is unreachable, put it above the return statement
 }

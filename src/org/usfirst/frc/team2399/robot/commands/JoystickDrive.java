@@ -2,8 +2,10 @@ package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -49,6 +51,15 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
 		
+		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
+		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
+		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
+		SmartDashboard.putNumber("Right front motor speed", driveTrain.getRightFrontSpeed());
+		SmartDashboard.putNumber("Left back motor position", driveTrain.getLeftBackPosition());
+		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
+		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
+		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
+		//SmartDashboard.putDouble("left front motor speed", leftFront.getSpeed());
 //		if (reduceSpeedButt.get() == true){
 	//		x = .5 * x;
 		//	y = .5 * y;

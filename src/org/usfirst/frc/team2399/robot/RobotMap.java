@@ -40,6 +40,8 @@ public class RobotMap {
 	
 	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 250;
 	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;
+	
+	public static final int ENCODER_COUNTS_DRIVETRAIN = 250;
 
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

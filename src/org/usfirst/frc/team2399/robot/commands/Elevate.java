@@ -42,8 +42,7 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	// set the speed to "speed"
 	protected void execute() {
-		elevator.setSpeed(speed);
-		
+		elevator.setSpeed(speed);	
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

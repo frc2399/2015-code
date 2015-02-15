@@ -5,6 +5,7 @@ import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -35,6 +36,8 @@ public class Robot extends IterativeRobot {
 
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
+	
+	public static CANJaguar leftFront;
 
 	public static Joystick joystick;
 
@@ -63,10 +66,11 @@ public class Robot extends IterativeRobot {
 		// established new instances of drivetrain, elevator, OI and an
 		// autonomus command
 
-		driveTrain = new DriveTrain();
+		driveTrain = new DriveTrain(RobotMap.ENCODER_COUNTS_DRIVETRAIN);
 
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID, RobotMap.ENCODER_COUNTS_FRONT_ELEVATOR);
 		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID, RobotMap.ENCODER_COUNTS_REAR_ELEVATOR);
+		//leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 
 		oi = new OI();
 
@@ -77,6 +81,7 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Elevator", elevatorFront);
 		SmartDashboard.putData("Elevator", elevatorRear);
+		
 
 		// instantiate the command used for the autonomous period
 
