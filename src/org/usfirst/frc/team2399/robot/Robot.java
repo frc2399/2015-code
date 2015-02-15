@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
+//import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
@@ -8,6 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,6 +31,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	public static DriveTrain driveTrain;
+//	public static Button reduceSpeedButt;
 
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
@@ -86,7 +89,19 @@ public class Robot extends IterativeRobot {
 
 	// When Contact switches are pushed for at least 0.005 seconds, they will
 	// show up as Pressed on SmartDashboard.
+	
+//	public void reduceSpeedButt() {
+//		if (reduceSpeedButt.get() == true){
+//			WaitCommmand(0.005);
+//			x = .5 * x;
+//			y = .5 * y;
+//			twist = .5 * twist;
+//			driveTrain.driveFieldOriented(x, y, twist);
+//		}
+//	}
 
+	
+	
 	public void contactSwitchOne() {
 		if (contactSwitchOne.get() == true) {
 			WaitCommmand(0.005);

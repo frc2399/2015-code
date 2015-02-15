@@ -28,11 +28,12 @@ public class OI {
 	public Button slideDownFrontButt = new JoystickButton(driveStick, 3);
 	public Button slideUpRearButt = new JoystickButton(driveStick, 6);
 	public Button slideDownRearButt = new JoystickButton(driveStick, 4);
+	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
 
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
-	private OI() {
+	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
 
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
@@ -45,15 +46,15 @@ public class OI {
 	// doubles and booleans for joystick values
 	// these get the "speed" from how far the joystick is pushed
 	public double getForwardSpeed() {
-		return -driveStick.getY();
+		return driveStick.getY();
 	}
 
 	public double getSideSpeed() {
-		return -driveStick.getX();
+		return driveStick.getX();
 	}
 
 	public double getTwistSpeed() {
-		return -driveStick.getTwist();
+		return driveStick.getTwist();
 	}
 
 	// // CREATING BUTTONS
