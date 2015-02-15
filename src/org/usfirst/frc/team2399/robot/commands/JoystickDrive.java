@@ -6,6 +6,8 @@ import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,7 +19,8 @@ public class JoystickDrive extends Command {
 	// private instance of drive train and brings in drive train from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
-
+   // private Button reduceSpeedButt = Robot.reduceSpeedButt;
+    
 	public JoystickDrive() {
 
 		requires(Robot.driveTrain);
@@ -39,15 +42,21 @@ public class JoystickDrive extends Command {
 		double y;
 
 		// dead-bands set individually to their values
-		twist = deadband(Robot.oi.getTwistSpeed(), .1, .5);
-		x = deadband(Robot.oi.getSideSpeed(), .1, 1);
-		y = deadband(Robot.oi.getForwardSpeed(), .1, 1);
+		twist = deadband(Robot.oi.getTwistSpeed(), .5, .5);
+		x = deadband(Robot.oi.getSideSpeed(), .25, 1);
+		y = deadband(Robot.oi.getForwardSpeed(), .25, 1);
 		SmartDashboard.putNumber("X is: ", x);
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
 		
-
-		//driveTrain.driveFieldOriented(x, y, twist);
+//		if (reduceSpeedButt.get() == true){
+	//		x = .5 * x;
+		//	y = .5 * y;
+	//		twist = .5 * twist;
+	//	} 
+		
+		driveTrain.driveFieldOriented(x, y, twist);
+		//TODO: uncomment above line when deadband stuff is figured out
 
 		// System.out.println("is running");
 
