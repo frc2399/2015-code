@@ -19,6 +19,7 @@ public class RobotMap {
 	// elevator jags have been assigned to their ID's
 	public static final int ELEVATORFRONT_JAGUARID = 5;
 	public static final int ELEVATORREAR_JAGUARID = 1;
+	public static final int REDUCEHALFSPEED_JAGUARID = 2;
 	
 	// TODO change ContactSwitch ID's
 	public static final int CONTACT_SWITCH1ID = 0;

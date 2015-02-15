@@ -3,6 +3,7 @@ package org.usfirst.frc.team2399.robot;
 import org.usfirst.frc.team2399.robot.commands.ElevateDown;
 import org.usfirst.frc.team2399.robot.commands.ElevateUp;
 import org.usfirst.frc.team2399.robot.commands.GyroReset;
+import org.usfirst.frc.team2399.robot.commands.ReduceHalfSpeed;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Gyro;
@@ -34,6 +35,8 @@ public class OI {
 	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
+		
+		reduceSpeedButt.whenPressed(new ReduceHalfSpeed(Robot.driveTrain)); //TODO find the correct syntax and parameters
 
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
