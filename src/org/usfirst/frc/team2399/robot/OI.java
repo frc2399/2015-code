@@ -16,10 +16,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+
 	// new joystick
 	private Joystick driveStick = new Joystick(0);
-	
+
 	// reset gyro button
 	private Button resetGyroButt = new JoystickButton(driveStick, 12);
 
@@ -30,7 +30,7 @@ public class OI {
 	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
 	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
 	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
-	
+
 	private Button automaticLiftFrontButt = new JoystickButton(driveStick, 7);
 	private Button automaticLiftRearButt = new JoystickButton(driveStick, 8);
 
@@ -44,8 +44,11 @@ public class OI {
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
-		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(Robot.elevatorFront));
-		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(Robot.elevatorRear));
+
+		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorFront));
+		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorRear));
 
 	}
 

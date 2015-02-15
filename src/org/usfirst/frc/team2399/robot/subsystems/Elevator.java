@@ -31,7 +31,7 @@ public class Elevator extends Subsystem {
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
-	Elevator(int elevatorMotorNum, int leftOuterSwitchNum,
+	public Elevator(int elevatorMotorNum, int leftOuterSwitchNum,
 			int leftInnerSwitchNum, int rightInnerSwitchNum,
 			int rightOuterSwitchNum) {
 		this.elevatorMotor = new CANJaguar(elevatorMotorNum);
