@@ -2,6 +2,7 @@ package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.ElevateDown;
 import org.usfirst.frc.team2399.robot.commands.ElevateUp;
+import org.usfirst.frc.team2399.robot.commands.ElevateUpWhenTouchingTote;
 import org.usfirst.frc.team2399.robot.commands.GyroReset;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -29,6 +30,9 @@ public class OI {
 	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
 	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
 	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+	
+	private Button automaticLiftFrontButt = new JoystickButton(driveStick, 7);
+	private Button automaticLiftRearButt = new JoystickButton(driveStick, 8);
 
 	// established doubles so we can use them in other parts of the
 	// program
@@ -40,6 +44,8 @@ public class OI {
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
+		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(Robot.elevatorFront));
+		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(Robot.elevatorRear));
 
 	}
 

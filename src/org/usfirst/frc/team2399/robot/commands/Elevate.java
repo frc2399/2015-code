@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
 	// est variables for use
-	private double speed;
-	private Elevator elevator;
+	protected double speed;
+	protected Elevator elevator;
 	
 	
 	// protected so not affected by other commands, etc.

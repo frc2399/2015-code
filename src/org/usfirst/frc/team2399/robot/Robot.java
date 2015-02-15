@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	public static DriveTrain driveTrain;
-//	public static Button reduceSpeedButt;
+	// public static Button reduceSpeedButt;
 
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
@@ -39,24 +39,6 @@ public class Robot extends IterativeRobot {
 	public static Joystick joystick;
 
 	// established contact switches
-
-	public static DigitalInput frontContactSwitchOne = new DigitalInput(
-			RobotMap.FRONTCONTACT_SWITCH1ID);
-	public static DigitalInput frontContactSwitchTwo = new DigitalInput(
-			RobotMap.FRONTCONTACT_SWITCH2ID);
-	public static DigitalInput frontContactSwitchThree = new DigitalInput(
-			RobotMap.FRONTCONTACT_SWITCH3ID);
-	public static DigitalInput frontContactSwitchFour = new DigitalInput(
-			RobotMap.FRONTCONTACT_SWITCH4ID);
-	
-	public static DigitalInput rearContactSwitchOne = new DigitalInput(
-			RobotMap.REARCONTACT_SWITCH1ID);
-	public static DigitalInput rearContactSwitchTwo = new DigitalInput(
-			RobotMap.REARCONTACT_SWITCH2ID);
-	public static DigitalInput rearContactSwitchThree = new DigitalInput(
-			RobotMap.REARCONTACT_SWITCH3ID);
-	public static DigitalInput rearContactSwitchFour = new DigitalInput(
-			RobotMap.REARCONTACT_SWITCH4ID);
 
 
 	private Command autoncommand;
@@ -75,8 +57,14 @@ public class Robot extends IterativeRobot {
 
 		driveTrain = new DriveTrain();
 
-		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID);
-		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID);
+		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
+				RobotMap.FRONTCONTACT_SWITCH1ID,
+				RobotMap.FRONTCONTACT_SWITCH2ID,
+				RobotMap.FRONTCONTACT_SWITCH3ID,
+				RobotMap.FRONTCONTACT_SWITCH4ID);
+		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID,
+				RobotMap.REARCONTACT_SWITCH1ID, RobotMap.REARCONTACT_SWITCH2ID,
+				RobotMap.REARCONTACT_SWITCH3ID, RobotMap.REARCONTACT_SWITCH4ID);
 
 		oi = new OI();
 
@@ -87,7 +75,8 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Front Elevator", elevatorFront);
 		SmartDashboard.putData("Rear Elevator", elevatorRear);
-
+		
+		elevatorFront.putSwitchesToDashboard("Front");
 		// instantiate the command used for the autonomous period
 
 	}
@@ -99,19 +88,16 @@ public class Robot extends IterativeRobot {
 
 	// When Contact switches are pushed for at least 0.005 seconds, they will
 	// show up as Pressed on SmartDashboard.
-	
-//	public void reduceSpeedButt() {
-//		if (reduceSpeedButt.get() == true){
-//			WaitCommmand(0.005);
-//			x = .5 * x;
-//			y = .5 * y;
-//			twist = .5 * twist;
-//			driveTrain.driveFieldOriented(x, y, twist);
-//		}
-//	}
 
-	
-	
+	// public void reduceSpeedButt() {
+	// if (reduceSpeedButt.get() == true){
+	// WaitCommmand(0.005);
+	// x = .5 * x;
+	// y = .5 * y;
+	// twist = .5 * twist;
+	// driveTrain.driveFieldOriented(x, y, twist);
+	// }
+	// }
 
 	// TODO figure out what this is so we can write a better comment
 	public void disabledPeriodic() {
