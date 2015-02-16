@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -29,12 +30,18 @@ public class Elevator extends Subsystem {
 	private boolean positionValid;
 	private double upperLimit;
 	private double lowerLimit;
+	
+	private double positionOffset;
 
 	private Encoder elevatorEncoder;
 	private DigitalInput leftOuterSwitch;
 	private DigitalInput leftInnerSwitch;
 	private DigitalInput rightInnerSwitch;
 	private DigitalInput rightOuterSwitch;
+	
+	private int encoderCounts;
+	
+	private boolean enabled;
 
 	// sets elevator to one from Robot Map
 	// this was moved from RobotMap to here to fix an error- working fine now!
@@ -50,6 +57,7 @@ public class Elevator extends Subsystem {
 			double lowerLimit) {
 		elevatorMotor = new CANJaguar(elevatorMotorNum);
 		positionValid = false;
+		enabled = false;
 		// this. refers to the object's variables
 		if (upperLimit > lowerLimit) {
 			this.upperLimit = upperLimit;
@@ -62,34 +70,61 @@ public class Elevator extends Subsystem {
 			// makes sure upperLimit is actually the bigger and vice versa with
 			// lowerLimit
 			// kQuad tells it that it has a Quad encoder attached
-		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
-		elevatorMotor.enableControl();
-
+		this.encoderCounts = encoderCounts;
+		
+		positionOffset = 0;
+		
 		leftOuterSwitch = new DigitalInput(leftOuterSwitchNum);
 		leftInnerSwitch = new DigitalInput(leftInnerSwitchNum);
 		rightInnerSwitch = new DigitalInput(rightInnerSwitchNum);
 		rightOuterSwitch = new DigitalInput(rightOuterSwitchNum);
+		
+		checkLowerLimit();
 	}
+	private void checkLowerLimit()
+	{
+		// up is forward (+)
+		// down is reverse (-)
+		// this means that we are touching the bottom (reverse) limit switch
+		
+		
+		enabled = false;
+		if (elevatorMotor.getReverseLimitOK() == false && positionValid == false) {
+			
+			positionOffset = elevatorMotor.getPosition();
+			
+			positionValid = true;
+		}
+		
+		enabled = true;
+	}
+	
+	private void zeroJagEncoderCount()
+	{
+		elevatorMotor.set(0);
+		elevatorMotor.setPositionMode(CANJaguar.kQuadEncoder, encoderCounts, 0, 0, 0);
+		elevatorMotor.enableControl(0.0);
 
+		elevatorMotor.set(0.0);
+		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		elevatorMotor.enableControl();
+		elevatorMotor.set(0);
+	}
+	
 	// elevator motor is set to the up speed
 	// elevator depend on the motor thats been passed to it- now works for all
 	// of the motors
 	public void setSpeed(double elevatorSpeed) {
-		// up is forward (+)
-		// down is reverse (-)
-		// this means that we are touching the bottom (reverse) limit switch
-		if (elevatorMotor.getReverseLimitOK() == false) {
-			elevatorMotor.enableControl(0);
-			positionValid = true;
-		}
+		
+		checkLowerLimit();
 		if (positionValid == true) {
-			if (elevatorMotor.getSpeed() > 0) {
-				if (elevatorMotor.getPosition() > upperLimit) {
+			if (elevatorSpeed > 0) {
+				if (getPosition() > upperLimit) {
 					elevatorSpeed = 0;
 				}
 			}
-			if (elevatorMotor.getSpeed() < 0) {
-				if (elevatorMotor.getPosition() < lowerLimit)
+			if (elevatorSpeed < 0) {
+				if (getPosition() < lowerLimit)
 					elevatorSpeed = 0;
 			}
 
@@ -119,7 +154,18 @@ public class Elevator extends Subsystem {
 				rightOuterSwitch.get());
 
 	}
+	
+	public void putPositionToDashboard(String prefix)
+	{
+		SmartDashboard.putNumber(prefix + " Height", getPosition());
+		SmartDashboard.putBoolean(prefix + " Position Valid", positionValid);
+	}
 
+	
+	public double getPosition()
+	{
+		return elevatorMotor.getPosition() - positionOffset;
+	}
 	public boolean isTouchingTote() {
 		return leftOuterSwitch.get() && rightOuterSwitch.get()
 				&& !leftInnerSwitch.get() && !rightInnerSwitch.get();

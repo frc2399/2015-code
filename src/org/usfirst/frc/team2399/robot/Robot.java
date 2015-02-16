@@ -159,6 +159,8 @@ public class Robot extends IterativeRobot {
 		
 		elevatorFront.putSwitchesToDashboard("Front");
 		elevatorRear.putSwitchesToDashboard("Rear");
+		elevatorFront.putPositionToDashboard("Front");
+		elevatorRear.putPositionToDashboard("Rear");
 
 	}
 
