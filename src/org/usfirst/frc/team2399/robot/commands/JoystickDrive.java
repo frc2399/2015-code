@@ -24,7 +24,7 @@ public class JoystickDrive extends Command {
 
 	private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
 	
-	private boolean robotDrive = Robot.driveTrain.robotDrive;
+	private boolean robotDrive = Robot.driveTrain.robotDrive; //getting the booleans from DriveTrain to use in this program
 	private boolean fieldDrive = Robot.driveTrain.fieldDrive;
     //creating an instance of reduceSpeedButt
     //the code accesses the button as follows:
@@ -69,7 +69,7 @@ public class JoystickDrive extends Command {
 			double halfY = speedAdjust * y;
 			double halfTwist = speedAdjust * twist;
 			
-			if (robotDrive == true){
+			if (robotDrive == true){ //keeps the robot in the current mode--doesn't flip it into some other mode
 				driveTrain.driveRobotOriented(halfX, halfY, halfTwist);
 			}
 			if (fieldDrive == true){
@@ -80,7 +80,7 @@ public class JoystickDrive extends Command {
 			//to half of their original values
 	} else{ //if it isn't pressed then use the actual x y and twist values
 		
-		if (robotDrive == true){
+		if (robotDrive == true){ //keeps the robot in the same mode so it doesn't randomly change modes on the driver
 			driveTrain.driveRobotOriented(x, y, twist);
 		}
 		if (fieldDrive == true){
