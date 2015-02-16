@@ -90,7 +90,9 @@ public class Elevator extends Subsystem {
 		
 		enabled = false;
 		if (elevatorMotor.getReverseLimitOK() == false && positionValid == false) {
-			
+			//reverseLimitOK works with the bottom switches and makes sure they are correct (false)
+			//false until it touches the bottom switches
+			//makes sure the swithces are accurate
 			positionOffset = elevatorMotor.getPosition();
 			
 			positionValid = true;

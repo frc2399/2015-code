@@ -12,6 +12,7 @@ public class DriveTrainForward extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Gyro gyro;
 	private double twist;
+	private double lf, lb, rb, rf;
 
 	// private double a;
 	// private double v;
@@ -29,6 +30,10 @@ public class DriveTrainForward extends Command {
 
 	@Override
 	protected void initialize() {
+		lf = driveTrain.getLeftFrontPosition();
+		lb = driveTrain.getLeftBackPosition();
+		rf = driveTrain.getRightFrontPosition();
+		rb = driveTrain.getRightBackPosition();
 	}
 
 	@Override
@@ -38,14 +43,18 @@ public class DriveTrainForward extends Command {
 	// sp = your angle that you want to be at
 	// sp-pv = E
 	protected void execute() {
-		driveTrain.driveRobotOriented(0, 0.25,
-				(twist = 1 * (0 - gyro.getAngle())));
+	
+			driveTrain.driveRobotOriented(0, .25, (twist = 1 * (0 - gyro.getRate())));
+	
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return true;
+		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)<4) &&
+				(Math.abs(driveTrain.getLeftBackPosition()-lb)<4) &&
+				(Math.abs(driveTrain.getRightBackPosition()-rb)<4) &&
+				(Math.abs(driveTrain.getRightFrontPosition()-rf)<4);
 	}
 
 	@Override

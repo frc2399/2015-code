@@ -11,8 +11,8 @@ public class DriveForward extends CommandGroup {
 
 	public DriveForward() {
 		addSequential(new DriveTrainForward());
-		addSequential(new WaitCommand(2));
-		addSequential(new DriveTrainBackward());
+		//addSequential(new WaitCommand(2));
+		//addSequential(new DriveTrainBackward());
 
 		// Add Commands here:
 		/*

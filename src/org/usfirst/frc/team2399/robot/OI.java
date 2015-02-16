@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 
 	Joystick driveStick = new Joystick(1);// new joystick
-	Joystick twistStick = new Joystick(2);// TODO get right port number
+	Joystick twistStick = new Joystick(2);//
 
 
 	// reset gyro button
