@@ -54,7 +54,7 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Twist is: ", twist);
 	
 		if (reduceSpeedButt.get() == true){
-			double speedAdjust = .5;
+			double speedAdjust = .3;
 			//speedAdjust is the amount speed is divided by
 			double halfX = speedAdjust * x;
 			double halfY = speedAdjust * y;
