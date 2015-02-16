@@ -96,7 +96,15 @@ public class Elevator extends Subsystem {
 			positionValid = true;
 		}
 		
+		
 		enabled = true;
+	}
+	
+	public boolean hasReachedTop(){
+		return !elevatorMotor.getForwardLimitOK();
+	}
+	public boolean hasReachedBottom(){
+		return !elevatorMotor.getReverseLimitOK();
 	}
 	
 	private void zeroJagEncoderCount()

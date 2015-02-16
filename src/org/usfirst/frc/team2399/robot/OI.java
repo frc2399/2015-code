@@ -32,7 +32,15 @@ public class OI {
 	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
 	private Button robotOrientedButt = new JoystickButton(driveStick, 8);
 	private Button fieldOrientedButt = new JoystickButton(driveStick, 9);
-
+	
+	private Button upFrontLiftButt = new JoystickButton(twistStick, 4);
+	private Button downFrontLiftButt = new JoystickButton(twistStick, 5);
+	private Button upRearLiftButt = new JoystickButton(driveStick, 4);
+	private Button downRearLiftButt = new JoystickButton(driveStick, 5);
+	private Button liftTurboMode = new JoystickButton(twistStick, 1);
+	
+//driveStick port is 1 and is also known as the blue side of robot
+//twistStick port is 2 and is also known as the pink side of robot
 
 	double x;// est doubles so we can use them in other parts of the program
 	double y;
@@ -48,6 +56,11 @@ public class OI {
 		resetGyroButt.whenPressed(new GyroReset());		
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
+		upFrontLiftButt.whenPressed(new ElevateUp(Robot.elevatorFront));
+		downFrontLiftButt.whenPressed(new ElevateDown(Robot.elevatorFront));
+		upRearLiftButt.whenPressed(new ElevateUp(Robot.elevatorRear));
+		downRearLiftButt.whenPressed(new ElevateDown(Robot.elevatorRear));
+		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
@@ -82,6 +95,24 @@ public class OI {
 	public boolean getReduceSpeed() {
 		return reduceSpeedButt.get();
 	}
+	public boolean getLiftTurboMode(){
+		return liftTurboMode.get();
+	}
+	/*OTHER BOOLEANS
+	 * button for the front lift that makes it go to the top and stop
+	 * button for the front lift that makes it go to the bottom and stop
+	 * button for the bottom lift that makes it go to the top and stop
+	 * button for the bottom lift that makes it go to the bottom and stop
+	 * make each of them call commands?
+	 * that would involve making commands for each of them
+	 * but what's all of four commands that would say the same thing
+	 * the hard part would be figuring out what each would say
+	 * wait
+	 * could each of the buttons call the elevateUp or elevateDown command?
+	 * that would make it a lot easier
+	 * let's try that
+	 */
+	
 
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a

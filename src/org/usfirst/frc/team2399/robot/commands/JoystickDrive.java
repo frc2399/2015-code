@@ -73,6 +73,8 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
 		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
 		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
+		SmartDashboard.putData("gyro angle", driveTrain.getGyro());
+
 	}
 
 	protected void drive (double x, double y, double twist){

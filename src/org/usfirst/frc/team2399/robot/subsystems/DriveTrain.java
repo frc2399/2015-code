@@ -1,20 +1,13 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
-import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.RobotMap;
-import org.usfirst.frc.team2399.robot.commands.JoystickDrive;
+import org.usfirst.frc.team2399.robot.commands.*;
 
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 // subsytems are parts of the robot that move
 public class DriveTrain extends Subsystem {// extends DriveTrain
 
@@ -59,6 +52,9 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public double getRightBackSpeed(){
 		return(rightBack.getSpeed());
 	}
+	public double getGyroAngle(){
+		return(drivetrainGyro.getAngle());
+	}
 
 	public DriveTrain(int encoderCounts) {
 
@@ -85,14 +81,10 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		leftBack.enableControl();
 		rightBack.enableControl();
 
-
-		
-
 		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
 		// what the drivetrain encoder is
 
 		// drivetrainGyro = RobotMap.gyro;
-
 	}
 
 	public void resetGyro() {
@@ -102,13 +94,14 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	// prints out gyro values
 	// Gyro is rightside up
 	public void driveFieldOriented(double x, double y, double twist) {
-		//boolean fieldDrive = true; //this boolean is used in JoystickDrive
 		double gyroAngle = drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
 	}
+	public Gyro getGyro(){
+		return drivetrainGyro;
+	}
 
 	public void driveRobotOriented(double x, double y, double twist) {
-		//boolean robotDrive = true; //this boolean is used in JoystickDrive
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
 	// Put methods for controlling this subsystem here.
@@ -116,7 +109,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 
 	public void initDefaultCommand() {
 
-		setDefaultCommand(new JoystickDrive());
+		setDefaultCommand(new FieldOrientedDrive());
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}

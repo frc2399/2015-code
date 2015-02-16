@@ -42,8 +42,17 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	// set the speed to "speed"
 	protected void execute() {
-		elevator.setSpeed(speed);	
+		if (Robot.oi.getLiftTurboMode() == true){
+			double speedIncrease = 1.6;
+			double increasedSpeed = speed * speedIncrease;
+			elevator.setSpeed(increasedSpeed);
+		}
+		else {
+			elevator.setSpeed(speed);	
+		}
+		
 	}
+	
 
 	// Make this return true when this Command no longer needs to run execute()
 
