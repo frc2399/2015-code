@@ -104,17 +104,6 @@ public class Robot extends IterativeRobot {
 
 	}
 
-
-	// public void reduceSpeedButt() {
-	// if (reduceSpeedButt.get() == true){
-	// WaitCommmand(0.005);
-	// x = .5 * x;
-	// y = .5 * y;
-	// twist = .5 * twist;
-	// driveTrain.driveFieldOriented(x, y, twist);
-	// }
-	// }
-
 	// TODO figure out what this is so we can write a better comment
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();

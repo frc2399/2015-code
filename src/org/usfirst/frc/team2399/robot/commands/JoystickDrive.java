@@ -23,6 +23,9 @@ public class JoystickDrive extends Command {
 	private Joystick driveStick = Robot.joystick;
 
 	private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
+	
+	private boolean robotDrive = Robot.driveTrain.robotDrive;
+	private boolean fieldDrive = Robot.driveTrain.fieldDrive;
     //creating an instance of reduceSpeedButt
     //the code accesses the button as follows:
     //through Robot it gets to OI and finds the button in OI
@@ -65,27 +68,25 @@ public class JoystickDrive extends Command {
 			double halfX = speedAdjust * x;
 			double halfY = speedAdjust * y;
 			double halfTwist = speedAdjust * twist;
-			//TODO figure out a way that this works for robot and field oriented drive
-			//WITHOUT overriding the current mode (robot or field oriented)
-			//maybe ask the drive train what mode it's it--have an if statement so mode isn't overridden
-			driveTrain.driveFieldOriented(halfX, halfY, halfTwist);
+			
+			if (robotDrive == true){
+				driveTrain.driveRobotOriented(halfX, halfY, halfTwist);
+			}
+			if (fieldDrive == true){
+				driveTrain.driveFieldOriented(halfX, halfY, halfTwist);
+			}
 			//this says that if the button is pressed
 			//set the speed of the x y and twist
 			//to half of their original values
 	} else{ //if it isn't pressed then use the actual x y and twist values
 		
-		//SmartDashboard.putDouble("left front motor speed", leftFront.getSpeed());
-//		if (reduceSpeedButt.get() == true){
-	//		x = .5 * x;
-		//	y = .5 * y;
-	//		twist = .5 * twist;
-	//	} 
-		
-		driveTrain.driveFieldOriented(x, y, twist);
-		//driveTrain.driveRobotOriented(x, y, twist);
+		if (robotDrive == true){
+			driveTrain.driveRobotOriented(x, y, twist);
 		}
-		
-
+		if (fieldDrive == true){
+			driveTrain.driveFieldOriented(x, y, twist);
+		}
+	}
 		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
 		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
 		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
@@ -94,8 +95,9 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
 		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
 		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
-
 	}
+
+	
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
@@ -131,12 +133,4 @@ public class JoystickDrive extends Command {
 					.abs(input) - deadbandconstant)) / (1 - deadbandconstant))));
 		}
 	}
-//	protected boolean HalfSpeed(){
-//		if (reduceHalfSpeed.isPressed()){
-//			return true;
-//			
-//		}else{
-//			return false;
-//		}
-//	}
 }
