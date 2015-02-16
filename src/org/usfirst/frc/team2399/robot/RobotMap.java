@@ -21,17 +21,17 @@ public class RobotMap {
 	public static final int ELEVATORREAR_JAGUARID = 1;
 	public static final int REDUCEHALFSPEED_JAGUARID = 2;
 	
-	// TODO change ContactSwitch ID's
-	public static final int FRONTCONTACT_SWITCH1ID = 10;
-	public static final int FRONTCONTACT_SWITCH2ID = 11;
-	public static final int FRONTCONTACT_SWITCH3ID = 12;
-	public static final int FRONTCONTACT_SWITCH4ID = 13;
 
-	public static final int REARCONTACT_SWITCH1ID = 14;
-	public static final int REARCONTACT_SWITCH2ID = 15;
-	public static final int REARCONTACT_SWITCH3ID = 16;
-	public static final int REARCONTACT_SWITCH4ID = 17;
+	public static final int FRONTCONTACT_SWITCH1ID = 4;
+	public static final int FRONTCONTACT_SWITCH2ID = 5;
+	public static final int FRONTCONTACT_SWITCH3ID = 6;
+	public static final int FRONTCONTACT_SWITCH4ID = 7;
 	
+	public static final int REARCONTACT_SWITCH1ID = 0;
+	public static final int REARCONTACT_SWITCH2ID = 1;
+	public static final int REARCONTACT_SWITCH3ID = 2;
+	public static final int REARCONTACT_SWITCH4ID = 3;
+		
 	// DriveTrain motor Jaguar ID's
 	public static final int LEFTFRONT_JAGUARID = 4;
 	public static final int RIGHTFRONT_JAGUARID = 6;
@@ -42,6 +42,19 @@ public class RobotMap {
 	// Gyro established
 	public static final int GYRO_PORT = 0;
 	public static final Gyro gyro = new Gyro(GYRO_PORT);
+	
+	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 250;
+	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;
+	
+	
+	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 13.251;
+	public static final double FRONT_ELEVATOR_LOWER_LIMIT = 0;
+	
+	public static final double REAR_ELEVATOR_UPPER_LIMIT = 13.083;
+	public static final double REAR_ELEVATOR_LOWER_LIMIT = 0;
+	
+	
+	public static final int ENCODER_COUNTS_DRIVETRAIN = 250;
 
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.

@@ -2,8 +2,10 @@ package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -19,11 +21,15 @@ public class JoystickDrive extends Command {
 	// private instance of drive train and brings in drive train from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
-    private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
+
+	private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
     //creating an instance of reduceSpeedButt
     //the code accesses the button as follows:
     //through Robot it gets to OI and finds the button in OI
     //not sure why this is a thing but the code seems to be happy
+
+
+	private Joystick twistStick = Robot.twistStick;
     
 	public JoystickDrive() {
 
@@ -67,9 +73,27 @@ public class JoystickDrive extends Command {
 			//set the speed of the x y and twist
 			//to half of their original values
 	} else{ //if it isn't pressed then use the actual x y and twist values
+		
+		//SmartDashboard.putDouble("left front motor speed", leftFront.getSpeed());
+//		if (reduceSpeedButt.get() == true){
+	//		x = .5 * x;
+		//	y = .5 * y;
+	//		twist = .5 * twist;
+	//	} 
+		
 		driveTrain.driveFieldOriented(x, y, twist);
 		//driveTrain.driveRobotOriented(x, y, twist);
-	}
+		}
+		
+
+		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
+		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
+		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
+		SmartDashboard.putNumber("Right front motor speed", driveTrain.getRightFrontSpeed());
+		SmartDashboard.putNumber("Left back motor position", driveTrain.getLeftBackPosition());
+		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
+		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
+		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
 
 	}
 

@@ -30,8 +30,34 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	private CANJaguar rightBack;
 	// established jags/their motors as vales from RobotMap
 	// established new drive and invert motors; sync motors (this was a bug fix)
+	
 
-	public DriveTrain() {
+	public double getLeftFrontPosition(){
+		return (leftFront.getPosition());
+	}
+	public double getLeftFrontSpeed(){
+		return (leftFront.getSpeed());
+	}
+	public double getRightFrontPosition(){
+		return (rightFront.getPosition());
+	}
+	public double getRightFrontSpeed(){
+		return(rightFront.getSpeed());
+	}
+	public double getLeftBackPosition(){
+		return(leftBack.getPosition());
+	}
+	public double getLeftBackSpeed(){
+		return(leftBack.getSpeed());
+	}
+	public double getRightBackPosition(){
+		return(rightBack.getPosition());
+	}
+	public double getRightBackSpeed(){
+		return(rightBack.getSpeed());
+	}
+
+	public DriveTrain(int encoderCounts) {
 
 		leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 		rightFront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
@@ -39,11 +65,25 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		rightBack = new CANJaguar(RobotMap.RIGHTBACK_JAGUARID);
 
 		drive = new RobotDrive(leftFront, leftBack, rightFront, rightBack);
-
 		drive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
 		drive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
 
 		drive.setCANJaguarSyncGroup((byte) 7);
+		
+		// four lines below enable the encoders to work on the jags
+		leftFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		leftBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		
+		//four lines below put the jags into encoder control
+		leftFront.enableControl();
+		rightFront.enableControl();
+		leftBack.enableControl();
+		rightBack.enableControl();
+
+
+		
 
 		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
 		// what the drivetrain encoder is

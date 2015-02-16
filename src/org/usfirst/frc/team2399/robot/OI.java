@@ -2,6 +2,7 @@ package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.ElevateDown;
 import org.usfirst.frc.team2399.robot.commands.ElevateUp;
+import org.usfirst.frc.team2399.robot.commands.ElevateUpWhenTouchingTote;
 import org.usfirst.frc.team2399.robot.commands.GyroReset;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
@@ -16,23 +17,34 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
-	// new joystick
-	private Joystick driveStick = new Joystick(0);
-	
+
+	Joystick driveStick = new Joystick(1);// new joystick
+	Joystick twistStick = new Joystick(2);// TODO get right port number
+
+
 	// reset gyro button
-	private Button resetGyroButt = new JoystickButton(driveStick, 12);
+	private Button resetGyroButt = new JoystickButton(driveStick, 7);
 
 	// buttons for sliding up and down are assigned, could be reassigned for
 	// clarity.
-	private Button slideUpFrontButt = new JoystickButton(driveStick, 5);
-	private Button slideDownFrontButt = new JoystickButton(driveStick, 3);
-	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
-	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
-	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+
 	//made a button called reduceSpeedButt and mapped it to the joystick
 	//i made it public so I could use it in JoystickDrive
 	//probably shouldn't have done that but right now I don't know how to work around that
+	private Button slideUpFrontButt = new JoystickButton(driveStick, 3);
+	private Button slideDownFrontButt = new JoystickButton(driveStick, 2);
+	private Button slideUpRearButt = new JoystickButton(twistStick, 3);
+	private Button slideDownRearButt = new JoystickButton(twistStick, 2);
+	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+
+
+	double x;// est doubles so we can use them in other parts of the program
+	double y;
+	double twist;
+
+	private Button automaticLiftFrontButt = new JoystickButton(driveStick, 7);
+	private Button automaticLiftRearButt = new JoystickButton(driveStick, 8);
+
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
@@ -43,7 +55,13 @@ public class OI {
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
-		
+
+
+		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorFront));
+		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorRear));
+
 	}
 
 	// doubles and booleans for joystick values
@@ -57,7 +75,7 @@ public class OI {
 	}
 
 	public double getTwistSpeed() {
-		return driveStick.getTwist();
+		return twistStick.getX();
 	}
 	
 
