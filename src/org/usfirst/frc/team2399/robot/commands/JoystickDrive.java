@@ -19,21 +19,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class JoystickDrive extends Command {
 	// private instance of drive train and brings in drive train from Robot.Java
-	private DriveTrain driveTrain = Robot.driveTrain;
-	private Joystick driveStick = Robot.joystick;
-
-	private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
+	protected DriveTrain driveTrain = Robot.driveTrain;
 	
-	private boolean robotDrive = Robot.driveTrain.robotDrive; //getting the booleans from DriveTrain to use in this program
-	private boolean fieldDrive = Robot.driveTrain.fieldDrive;
-    //creating an instance of reduceSpeedButt
-    //the code accesses the button as follows:
-    //through Robot it gets to OI and finds the button in OI
-    //not sure why this is a thing but the code seems to be happy
-
-
-	private Joystick twistStick = Robot.twistStick;
-    
+	
+	    
 	public JoystickDrive() {
 
 		requires(Robot.driveTrain);
@@ -62,30 +51,19 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
 	
-		if (reduceSpeedButt.get() == true){
+		if (Robot.oi.getReduceSpeed() == true){
 			double speedAdjust = .3;
 			//speedAdjust is the amount speed is divided by
 			double halfX = speedAdjust * x;
 			double halfY = speedAdjust * y;
 			double halfTwist = speedAdjust * twist;
 			
-			if (robotDrive == true){ //keeps the robot in the current mode--doesn't flip it into some other mode
-				driveTrain.driveRobotOriented(halfX, halfY, halfTwist);
-			}
-			if (fieldDrive == true){
-				driveTrain.driveFieldOriented(halfX, halfY, halfTwist);
-			}
+			drive(halfX, halfY, halfTwist);
 			//this says that if the button is pressed
 			//set the speed of the x y and twist
 			//to half of their original values
 	} else{ //if it isn't pressed then use the actual x y and twist values
-		
-		if (robotDrive == true){ //keeps the robot in the same mode so it doesn't randomly change modes on the driver
-			driveTrain.driveRobotOriented(x, y, twist);
-		}
-		if (fieldDrive == true){
-			driveTrain.driveFieldOriented(x, y, twist);
-		}
+			drive(x, y, twist);
 	}
 		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
 		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
@@ -97,7 +75,9 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
 	}
 
-	
+	protected void drive (double x, double y, double twist){
+		driveTrain.driveRobotOriented(x, y, twist);
+	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {

@@ -1,16 +1,10 @@
 package org.usfirst.frc.team2399.robot;
 
-import org.usfirst.frc.team2399.robot.commands.ElevateDown;
-import org.usfirst.frc.team2399.robot.commands.ElevateUp;
-import org.usfirst.frc.team2399.robot.commands.ElevateUpWhenTouchingTote;
-import org.usfirst.frc.team2399.robot.commands.GyroReset;
-import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team2399.robot.commands.*;
 
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -36,6 +30,8 @@ public class OI {
 	private Button slideUpRearButt = new JoystickButton(twistStick, 3);
 	private Button slideDownRearButt = new JoystickButton(twistStick, 2);
 	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+	private Button robotOrientedButt = new JoystickButton(driveStick, 8);
+	private Button fieldOrientedButt = new JoystickButton(driveStick, 9);
 
 
 	double x;// est doubles so we can use them in other parts of the program
@@ -50,7 +46,9 @@ public class OI {
 	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());		
-
+		robotOrientedButt.whenPressed(new JoystickDrive());
+		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
+		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
@@ -61,6 +59,9 @@ public class OI {
 				Robot.elevatorFront));
 		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
 				Robot.elevatorRear));
+		
+		
+		
 
 	}
 
@@ -78,6 +79,9 @@ public class OI {
 		return twistStick.getX();
 	}
 	
+	public boolean getReduceSpeed() {
+		return reduceSpeedButt.get();
+	}
 
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a

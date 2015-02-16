@@ -102,13 +102,13 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	// prints out gyro values
 	// Gyro is rightside up
 	public void driveFieldOriented(double x, double y, double twist) {
-		boolean fieldDrive = true; //this boolean is used in JoystickDrive
+		//boolean fieldDrive = true; //this boolean is used in JoystickDrive
 		double gyroAngle = drivetrainGyro.getAngle();
 		drive.mecanumDrive_Cartesian(x, y, twist, gyroAngle);
 	}
 
 	public void driveRobotOriented(double x, double y, double twist) {
-		boolean robotDrive = true; //this boolean is used in JoystickDrive
+		//boolean robotDrive = true; //this boolean is used in JoystickDrive
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
 	// Put methods for controlling this subsystem here.
