@@ -17,19 +17,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
 
-	Joystick driveStick = new Joystick(0);// new joystick
-	Joystick twistStick = new Joystick(1);// TODO get right port number
+	Joystick driveStick = new Joystick(1);// new joystick
+	Joystick twistStick = new Joystick(2);// TODO get right port number
 
 
 	// reset gyro button
-	private Button resetGyroButt = new JoystickButton(driveStick, 12);
+	private Button resetGyroButt = new JoystickButton(driveStick, 7);
 
 	// buttons for sliding up and down are assigned, could be reassigned for
 	// clarity.
-	private Button slideUpFrontButt = new JoystickButton(driveStick, 5);
-	private Button slideDownFrontButt = new JoystickButton(driveStick, 3);
-	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
-	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
+	private Button slideUpFrontButt = new JoystickButton(driveStick, 3);
+	private Button slideDownFrontButt = new JoystickButton(driveStick, 2);
+	private Button slideUpRearButt = new JoystickButton(twistStick, 3);
+	private Button slideDownRearButt = new JoystickButton(twistStick, 2);
 	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
 
 
@@ -69,7 +69,7 @@ public class OI {
 	}
 
 	public double getTwistSpeed() {
-		return twistStick.getTwist();
+		return twistStick.getX();
 	}
 
 	// // CREATING BUTTONS
