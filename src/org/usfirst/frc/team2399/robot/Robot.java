@@ -4,7 +4,7 @@ import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 //import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
-
+import org.usfirst.frc.team2399.robot.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -111,7 +111,7 @@ public class Robot extends IterativeRobot {
 //	}
 
 	
-	
+//	
 	public void frontContactSwitchOne() {
 		if (frontContactSwitchOne.get() == true) {
 			WaitCommmand(0.005);

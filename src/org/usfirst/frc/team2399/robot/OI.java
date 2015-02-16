@@ -29,20 +29,21 @@ public class OI {
 	private Button slideDownFrontButt = new JoystickButton(driveStick, 3);
 	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
 	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
-	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+	public Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+	//made a button called reduceSpeedButt and mapped it to the joystick
+	//i made it public so I could use it in JoystickDrive
+	//probably shouldn't have done that but right now I don't know how to work around that
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
 	public OI() {
-		resetGyroButt.whenPressed(new GyroReset());
-		reduceSpeedButt.whenPressed(new ToggleSpeed());
-		
-		//reduceSpeedButt.whenPressed(new ReduceHalfSpeed(Robot.driveTrain)); //TODO find the correct syntax and parameters, and ask about it
+		resetGyroButt.whenPressed(new GyroReset());		
 
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
+		
 	}
 
 	// doubles and booleans for joystick values

@@ -22,11 +22,15 @@ public class RobotMap {
 	public static final int REDUCEHALFSPEED_JAGUARID = 2;
 	
 	// TODO change ContactSwitch ID's
-	public static final int CONTACT_SWITCH1ID = 0;
-	public static final int CONTACT_SWITCH2ID = 1;
-	public static final int CONTACT_SWITCH3ID = 2;
-	public static final int CONTACT_SWITCH4ID = 3;
+	public static final int FRONTCONTACT_SWITCH1ID = 10;
+	public static final int FRONTCONTACT_SWITCH2ID = 11;
+	public static final int FRONTCONTACT_SWITCH3ID = 12;
+	public static final int FRONTCONTACT_SWITCH4ID = 13;
 
+	public static final int REARCONTACT_SWITCH1ID = 14;
+	public static final int REARCONTACT_SWITCH2ID = 15;
+	public static final int REARCONTACT_SWITCH3ID = 16;
+	public static final int REARCONTACT_SWITCH4ID = 17;
 	
 	// DriveTrain motor Jaguar ID's
 	public static final int LEFTFRONT_JAGUARID = 4;

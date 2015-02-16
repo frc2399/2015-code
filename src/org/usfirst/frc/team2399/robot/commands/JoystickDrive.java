@@ -19,7 +19,11 @@ public class JoystickDrive extends Command {
 	// private instance of drive train and brings in drive train from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
-   // private Button reduceSpeedButt = Robot.reduceSpeedButt;
+    private Button reduceSpeedButt = Robot.oi.reduceSpeedButt; 
+    //creating an instance of reduceSpeedButt
+    //the code accesses the button as follows:
+    //through Robot it gets to OI and finds the button in OI
+    //not sure why this is a thing but the code seems to be happy
     
 	public JoystickDrive() {
 
@@ -48,18 +52,24 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("X is: ", x);
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
-		
 	
-//		if (reduceSpeedButt.get() == true){
-	//		x = .5 * x;
-		//	y = .5 * y;
-	//		twist = .5 * twist;
-	//	} 
-		
+		if (reduceSpeedButt.get() == true){
+			double speedAdjust = .5;
+			//speedAdjust is the amount speed is divided by
+			double halfX = speedAdjust * x;
+			double halfY = speedAdjust * y;
+			double halfTwist = speedAdjust * twist;
+			//TODO figure out a way that this works for robot and field oriented drive
+			//WITHOUT overriding the current mode (robot or field oriented)
+			//maybe ask the drive train what mode it's it--have an if statement so mode isn't overridden
+			driveTrain.driveFieldOriented(halfX, halfY, halfTwist);
+			//this says that if the button is pressed
+			//set the speed of the x y and twist
+			//to half of their original values
+	} else{ //if it isn't pressed then use the actual x y and twist values
 		driveTrain.driveFieldOriented(x, y, twist);
-		//TODO: uncomment above line when deadband stuff is figured out
-
-		// System.out.println("is running");
+		//driveTrain.driveRobotOriented(x, y, twist);
+	}
 
 	}
 
@@ -97,12 +107,12 @@ public class JoystickDrive extends Command {
 					.abs(input) - deadbandconstant)) / (1 - deadbandconstant))));
 		}
 	}
-	protected boolean HalfSpeed(){
-		if (reduceHalfSpeed.isPressed()){
-			return true;
-			
-		}else{
-			return false;
-		}
-	}
+//	protected boolean HalfSpeed(){
+//		if (reduceHalfSpeed.isPressed()){
+//			return true;
+//			
+//		}else{
+//			return false;
+//		}
+//	}
 }

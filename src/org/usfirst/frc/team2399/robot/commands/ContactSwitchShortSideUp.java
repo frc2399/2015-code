@@ -15,19 +15,19 @@ public class ContactSwitchShortSideUp extends CommandGroup {
 	private Elevator elevatorFront = Robot.elevatorFront;
 	private Elevator elevatorRear = Robot.elevatorRear;
 	
-	private DigitalInput contactSwitchOne = Robot.contactSwitchOne;
-	private DigitalInput contactSwitchFour = Robot.contactSwitchFour;
+//	private DigitalInput contactSwitchOne = Robot.contactSwitchOne;
+//	private DigitalInput contactSwitchFour = Robot.contactSwitchFour;
 
 	// this will cause the lift to automatically go up when the contact switches
 	// 1 and 4 are pressed on the short side of the tote
 	// TODO see if this automatically activates in teleop.
-
-	public ContactSwitchShortSideUp() {
-		if (contactSwitchOne.get() == true && contactSwitchFour.get() == true) {
-			addSequential(new ElevateUp(Robot.elevatorFront));
-			addSequential(new WaitCommand(2));
-			addSequential(new ElevateNot(Robot.elevatorFront));
-		}
+//
+//	public ContactSwitchShortSideUp() {
+//		if (contactSwitchOne.get() == true && contactSwitchFour.get() == true) {
+//			addSequential(new ElevateUp(Robot.elevatorFront));
+//			addSequential(new WaitCommand(2));
+//			addSequential(new ElevateNot(Robot.elevatorFront));
+//		}
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
@@ -44,5 +44,5 @@ public class ContactSwitchShortSideUp extends CommandGroup {
 		// e.g. if Command1 requires chassis, and Command2 requires arm,
 		// a CommandGroup containing them would require both the chassis and the
 		// arm.
-	}
+	//}
 }

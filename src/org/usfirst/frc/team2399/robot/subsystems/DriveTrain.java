@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
+import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.commands.JoystickDrive;
 
@@ -7,6 +8,7 @@ import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,10 +28,6 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	private CANJaguar rightFront;
 	private CANJaguar leftBack;
 	private CANJaguar rightBack;
-	private float FULL_SPEED =1;
-	private double HALF_SPEED =.5;
-	private double Speed = FULL_SPEED;
-
 	// established jags/their motors as vales from RobotMap
 	// established new drive and invert motors; sync motors (this was a bug fix)
 
@@ -66,9 +64,9 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	}
 
 	public void driveRobotOriented(double x, double y, double twist) {
+		
 		drive.mecanumDrive_Cartesian(x, y, twist, 0);
 	}
-
 	// Put methods for controlling this subsystem here.
 	// Call these from Commands.
 
@@ -78,49 +76,4 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
-	//TODO find out the true values for full speed and half speed (modified).
-	public double ToggleSpeed(){
-		if(Speed == 0){
-			return Speed = HALF_SPEED;
-		}else{
-			return Speed = FULL_SPEED;
-		}
-		
-	}
-
-	// reset encoders to 0
-	// don't need to start like in 2013 bc encoders now do that automatically
-	// TODO REDO WITH CORRECT ENCODER CODE
-	// public void resetEncoders(){
-	// leftFrontEncoder.reset();
-	// rightBackEncoder.reset();
-	// leftBackEncoder.reset();
-	// rightBackEncoder.reset();
-	// }
-
-	// //get distance
-	// public double getleftFrontEncoder(){
-	// SmartDashboard.putDouble("leftFrontEncoder",
-	// leftFrontEncoder.getDistance());
-	// return leftFrontEncoder.getDistance();
-	// }
-	//
-	// public double getrightFrontEncoder(){
-	// SmartDashboard.putDouble("rightFrontEncoder",
-	// rightFrontEncoder.getDistance());
-	// return rightFrontEncoder.getDistance();
-	// }
-	//
-	// public double getleftBackEncoder(){
-	// SmartDashboard.putDouble("leftBackEncoder",
-	// leftBackEncoder.getDistance());
-	// return leftBackEncoder.getDistance();
-	// }
-	//
-	// public double getrightBackEncoder(){
-	// SmartDashboard.putDouble("rightBackEncoder",
-	// rightBackEncoder.getDistance());
-	// return rightBackEncoder.getDistance();
-	// return statement are like the end of a sentence
-	// if code is unreachable, put it above the return statement
 }
