@@ -24,7 +24,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 
 
 	public DriveTrain(CANJaguar driveTrainMotor) {
-		this.driveTrainMotor = driveTrainMotor;
+		//this.driveTrainMotor = driveTrainMotor;
 	}
 	
 

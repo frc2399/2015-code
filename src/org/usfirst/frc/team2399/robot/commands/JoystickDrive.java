@@ -17,6 +17,7 @@ public class JoystickDrive extends Command {
 	// private instance of drivetrain and brings in drivetrain from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
+	private Joystick twistStick = Robot.twistStick;
 
 	public JoystickDrive() {
 

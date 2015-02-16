@@ -18,6 +18,7 @@ public class OI {
 	// buttons have been assigned (elevators and gyro reset have been tested)
 
 	Joystick driveStick = new Joystick(0);// new joystick
+	Joystick twistStick = new Joystick(1);// TODO get right port number
 
 	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
@@ -25,13 +26,12 @@ public class OI {
 
 	Button slideUpFrontButt = new JoystickButton(driveStick, 3);
 	Button slideDownFrontButt = new JoystickButton(driveStick, 4);
-	Button slideUpRearButt = new JoystickButton(driveStick, 12);
-	Button slideDownRearButt = new JoystickButton(driveStick, 13);
-	//Button slideUpRightButt = new JoystickButton(driveStick, 6);
-	//Button slideDownRightButt = new JoystickButton(driveStick, 7);
-	//Button slideUpLeftButt = new JoystickButton(driveStick, 8);
-	//Button slideDownLeftButt = new JoystickButton(driveStick, 9);
-	
+	Button slideUpRearButt = new JoystickButton(twistStick, 3);
+	Button slideDownRearButt = new JoystickButton(twistStick, 4);
+	// Button slideUpRightButt = new JoystickButton(driveStick, 6);
+	// Button slideDownRightButt = new JoystickButton(driveStick, 7);
+	// Button slideUpLeftButt = new JoystickButton(driveStick, 8);
+	// Button slideDownLeftButt = new JoystickButton(driveStick, 9);
 
 	double x;// est doubles so we can use them in other parts of the program
 	double y;
@@ -44,10 +44,10 @@ public class OI {
 		slideDownFrontButt.whileHeld(new ElevateDown());
 		slideUpRearButt.whileHeld(new ElevateUp());
 		slideDownRearButt.whileHeld(new ElevateDown());
-		//slideUpRightButt.whileHeld(new ElevateUp());
-		//slideDownRightButt.whileHeld(new ElevateDown());
-		//slideUpLeftButt.whileHeld(new ElevateUp());
-		//slideDownLeftButt.whileHeld(new ElevateDown());
+		// slideUpRightButt.whileHeld(new ElevateUp());
+		// slideDownRightButt.whileHeld(new ElevateDown());
+		// slideUpLeftButt.whileHeld(new ElevateUp());
+		// slideDownLeftButt.whileHeld(new ElevateDown());
 
 	}
 
@@ -69,7 +69,7 @@ public class OI {
 	}
 
 	public double getTwistSpeed() {
-		return driveStick.getTwist();
+		return twistStick.getTwist();
 	}
 
 	public static double getForwardSpeed1() {

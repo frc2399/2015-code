@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevatorLeft;
 	public static Joystick joystick;
 	public static Gyro gyro;
+	public static Joystick twistStick;
 	
 	private Command autoncommand;
 
