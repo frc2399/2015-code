@@ -2,6 +2,7 @@ package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.ElevateDown;
 import org.usfirst.frc.team2399.robot.commands.ElevateUp;
+import org.usfirst.frc.team2399.robot.commands.ElevateUpWhenTouchingTote;
 import org.usfirst.frc.team2399.robot.commands.GyroReset;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -15,67 +16,60 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	// buttons have been assigned (elevators and gyro reset have been tested)
 
 	Joystick driveStick = new Joystick(0);// new joystick
 	Joystick twistStick = new Joystick(1);// TODO get right port number
 
-	Button resetGyroButt = new JoystickButton(driveStick, 5);
 
-	Button strafeButt = new JoystickButton(driveStick, 2);
+	// reset gyro button
+	private Button resetGyroButt = new JoystickButton(driveStick, 12);
 
-	Button slideUpFrontButt = new JoystickButton(driveStick, 3);
-	Button slideDownFrontButt = new JoystickButton(driveStick, 4);
-	Button slideUpRearButt = new JoystickButton(twistStick, 3);
-	Button slideDownRearButt = new JoystickButton(twistStick, 4);
-	// Button slideUpRightButt = new JoystickButton(driveStick, 6);
-	// Button slideDownRightButt = new JoystickButton(driveStick, 7);
-	// Button slideUpLeftButt = new JoystickButton(driveStick, 8);
-	// Button slideDownLeftButt = new JoystickButton(driveStick, 9);
+	// buttons for sliding up and down are assigned, could be reassigned for
+	// clarity.
+	private Button slideUpFrontButt = new JoystickButton(driveStick, 5);
+	private Button slideDownFrontButt = new JoystickButton(driveStick, 3);
+	private Button slideUpRearButt = new JoystickButton(driveStick, 6);
+	private Button slideDownRearButt = new JoystickButton(driveStick, 4);
+	private Button reduceSpeedButt = new JoystickButton(driveStick, 1);
+
 
 	double x;// est doubles so we can use them in other parts of the program
 	double y;
 	double twist;
 
+	private Button automaticLiftFrontButt = new JoystickButton(driveStick, 7);
+	private Button automaticLiftRearButt = new JoystickButton(driveStick, 8);
+
+	// established doubles so we can use them in other parts of the
+	// program
 	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());
-		slideUpFrontButt.whileHeld(new ElevateUp());
-		slideDownFrontButt.whileHeld(new ElevateDown());
-		slideUpRearButt.whileHeld(new ElevateUp());
-		slideDownRearButt.whileHeld(new ElevateDown());
-		// slideUpRightButt.whileHeld(new ElevateUp());
-		// slideDownRightButt.whileHeld(new ElevateDown());
-		// slideUpLeftButt.whileHeld(new ElevateUp());
-		// slideDownLeftButt.whileHeld(new ElevateDown());
+
+		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
+		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
+		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
+		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
+
+		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorFront));
+		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
+				Robot.elevatorRear));
 
 	}
 
 	// doubles and booleans for joystick values
+	// these get the "speed" from how far the joystick is pushed
 	public double getForwardSpeed() {
-		return driveStick.getY();
+		return -driveStick.getY();
 	}
 
 	public double getSideSpeed() {
-		return driveStick.getX();
-	}
-
-	public boolean shouldStrafe() {
-		if (strafeButt.get() == true) {
-			return true;
-		} else {
-			return false;
-		}
+		return -driveStick.getX();
 	}
 
 	public double getTwistSpeed() {
 		return twistStick.getTwist();
-	}
-
-	public static double getForwardSpeed1() {
-		return 0;
-		// TODO Auto-generated method stub
-
 	}
 
 	// // CREATING BUTTONS

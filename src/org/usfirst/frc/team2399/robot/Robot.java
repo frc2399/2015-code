@@ -1,12 +1,16 @@
 package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
+//import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,65 +24,108 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
-//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
-//new public static elevators here/ they have been assigned to their ID's from RobotMap
-//have also been added to SmartDash
+
 // THIS CLASS HAS REPLACED COMMANDBASE/COMMANDS
 public class Robot extends IterativeRobot {
-	// est static variables
+	// established static variables
+
 	public static OI oi;
+
 	public static DriveTrain driveTrain;
+	// public static Button reduceSpeedButt;
+
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
-	public static Elevator elevatorRight;
-	public static Elevator elevatorLeft;
 	public static Joystick joystick;
 	public static Gyro gyro;
 	public static Joystick twistStick;
 	
+	public static CANJaguar leftFront;
+
+	// established contact switches
+
+
 	private Command autoncommand;
 
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-	
-	//if you want to take out an auton mode, comment out autoncommand = new
-	//gyro deleted bc assigned to driveTrain
+
+	// if you want to take out an auton mode, comment out autoncommand = new
+
 	public void robotInit() {
-		// est new instances of drivetrain and elevator
-		driveTrain = new DriveTrain();
-		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUAR);
-		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUAR);
-		elevatorRight = new Elevator(RobotMap.ELEVATORRIGHT_JAGUAR);
-		elevatorLeft = new Elevator(RobotMap.ELEVATORLEFT_JAGUAR);
-		oi = new OI();// oi orange juice
-		autoncommand= new DriveAutoZone();
 
-		// smartdash values for drivetrain and elevator
-		SmartDashboard.putData("Drive Train", driveTrain);// smartdash values
-		SmartDashboard.putData("Elevator", elevatorFront);
-		SmartDashboard.putData("Elevator", elevatorRear);
-		SmartDashboard.putData("Elevator", elevatorRight);
-		SmartDashboard.putData("Elevator", elevatorLeft);
+		// established new instances of drivetrain, elevator, OI and an
+		// autonomus command
 
-	
+		driveTrain = new DriveTrain(RobotMap.ENCODER_COUNTS_DRIVETRAIN);
 
-		// frontLeft = new drivetrainMotor
-		// instantiate the command used for the autonomous period
+
+		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
+									RobotMap.FRONTCONTACT_SWITCH1ID,
+									RobotMap.FRONTCONTACT_SWITCH2ID,
+									RobotMap.FRONTCONTACT_SWITCH3ID,
+									RobotMap.FRONTCONTACT_SWITCH4ID,
+									RobotMap.ENCODER_COUNTS_FRONT_ELEVATOR,
+									RobotMap.FRONT_ELEVATOR_UPPER_LIMIT,
+									RobotMap.FRONT_ELEVATOR_LOWER_LIMIT);
+
+		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID, 
+									RobotMap.REARCONTACT_SWITCH1ID, 
+									RobotMap.REARCONTACT_SWITCH2ID,
+									RobotMap.REARCONTACT_SWITCH3ID, 
+									RobotMap.REARCONTACT_SWITCH4ID,
+									RobotMap.ENCODER_COUNTS_REAR_ELEVATOR,
+									RobotMap.REAR_ELEVATOR_UPPER_LIMIT,
+									RobotMap.REAR_ELEVATOR_LOWER_LIMIT);
+		//leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
+
+
+		oi = new OI();
+
+		autoncommand = new DriveAutoZone();
+
+		// smartdashboard values for drivetrain and elevator
+		SmartDashboard.putData("Drive Train", driveTrain);
+
+
+		SmartDashboard.putData("Front Elevator", elevatorFront);
+		SmartDashboard.putData("Rear Elevator", elevatorRear);
+		
+				// instantiate the command used for the autonomous period
+
 
 	}
 
+	// established wait command for later use
+	private void WaitCommmand(double d) {
+
+	}
+
+	// When Contact switches are pushed for at least 0.005 seconds, they will
+	// show up as Pressed on SmartDashboard.
+
+	// public void reduceSpeedButt() {
+	// if (reduceSpeedButt.get() == true){
+	// WaitCommmand(0.005);
+	// x = .5 * x;
+	// y = .5 * y;
+	// twist = .5 * twist;
+	// driveTrain.driveFieldOriented(x, y, twist);
+	// }
+	// }
+
+	// TODO figure out what this is so we can write a better comment
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
+	// schedule the autonomous command (example)
 	public void autonomousInit() {
-		if (autoncommand != null){
+		if (autoncommand != null) {
 			autoncommand.start();
 		}
-	
-		// schedule the autonomous command (example)
 
 	}
 
@@ -110,6 +157,12 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		elevatorFront.putSwitchesToDashboard("Front");
+		elevatorRear.putSwitchesToDashboard("Rear");
+		elevatorFront.putPositionToDashboard("Front");
+		elevatorRear.putPositionToDashboard("Rear");
+
 	}
 
 	/**

@@ -8,42 +8,166 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+//object: collection of both variables and methods
+//methods: a set of steps
+//instance variables: data contained within that object
 /**
  *
  */
-//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
-//sets this instance of elevatorMotor to the public instance of elevatorMotor
-//this code is much simpler and it's very nice
-//ALL LIMIT SWITCH THINGS HAVE BEEN REMOVED BC JAGS DO IT FOR US
+// sets this instance of elevatorMotor to the public instance of elevatorMotor
+// this code is much simpler and it's very nice
+// All limit switch code has been removed, because limit switches stop Jags
+// automatically when pressed.
 public class Elevator extends Subsystem {
-	//private instances of drive, elevatormotor/encoder
+	// private instances of drive, elevatormotor/encoder
 	private RobotDrive drive;
 	private CANJaguar elevatorMotor;
+
+	private boolean positionValid;
+	private double upperLimit;
+	private double lowerLimit;
+	
+	private double positionOffset;
+
 	private Encoder elevatorEncoder;
+	private DigitalInput leftOuterSwitch;
+	private DigitalInput leftInnerSwitch;
+	private DigitalInput rightInnerSwitch;
+	private DigitalInput rightOuterSwitch;
 	
-	//sets elevator to one from Robot Map
-	//this was moved from RobotMap to here to fix an error- working fine now!
-	//this refers to the current instance of the class
-	public Elevator(CANJaguar elevatorMotor) {
-		this.elevatorMotor = elevatorMotor;
+	private int encoderCounts;
+	
+	private boolean enabled;
+
+	// sets elevator to one from Robot Map
+	// this was moved from RobotMap to here to fix an error- working fine now!
+	// this refers to the current instance of the class
+	// encoder position is a double
+	public Elevator(int elevatorMotorNum, 
+			int leftOuterSwitchNum,
+			int leftInnerSwitchNum, 
+			int rightInnerSwitchNum,
+			int rightOuterSwitchNum, 
+			int encoderCounts, 
+			double upperLimit,
+			double lowerLimit) {
+		elevatorMotor = new CANJaguar(elevatorMotorNum);
+		positionValid = false;
+		enabled = false;
+		// this. refers to the object's variables
+		if (upperLimit > lowerLimit) {
+			this.upperLimit = upperLimit;
+			this.lowerLimit = lowerLimit;
+		} else {
+			this.upperLimit = lowerLimit;
+			this.lowerLimit = upperLimit;
+		} // this if block checks to make sure that the two limit values are
+			// correct
+			// makes sure upperLimit is actually the bigger and vice versa with
+			// lowerLimit
+			// kQuad tells it that it has a Quad encoder attached
+		this.encoderCounts = encoderCounts;
+		
+		positionOffset = 0;
+		
+		leftOuterSwitch = new DigitalInput(leftOuterSwitchNum);
+		leftInnerSwitch = new DigitalInput(leftInnerSwitchNum);
+		rightInnerSwitch = new DigitalInput(rightInnerSwitchNum);
+		rightOuterSwitch = new DigitalInput(rightOuterSwitchNum);
+		
+		checkLowerLimit();
+	}
+	private void checkLowerLimit()
+	{
+		// up is forward (+)
+		// down is reverse (-)
+		// this means that we are touching the bottom (reverse) limit switch
+		
+		
+		enabled = false;
+		if (elevatorMotor.getReverseLimitOK() == false && positionValid == false) {
+			
+			positionOffset = elevatorMotor.getPosition();
+			
+			positionValid = true;
+		}
+		
+		enabled = true;
 	}
 	
-	//elevator motor is set to the up speed 
-	//elevator depend on the motor thats been passed to it- now works for all of the motors
-	public void setSpeed(double elevatorUpSpeed) {
-		elevatorMotor.set(elevatorUpSpeed);
+	private void zeroJagEncoderCount()
+	{
+		elevatorMotor.set(0);
+		elevatorMotor.setPositionMode(CANJaguar.kQuadEncoder, encoderCounts, 0, 0, 0);
+		elevatorMotor.enableControl(0.0);
+
+		elevatorMotor.set(0.0);
+		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		elevatorMotor.enableControl();
+		elevatorMotor.set(0);
 	}
+	
+	// elevator motor is set to the up speed
+	// elevator depend on the motor thats been passed to it- now works for all
+	// of the motors
+	public void setSpeed(double elevatorSpeed) {
+		
+		checkLowerLimit();
+		if (positionValid == true) {
+			if (elevatorSpeed > 0) {
+				if (getPosition() > upperLimit) {
+					elevatorSpeed = 0;
+				}
+			}
+			if (elevatorSpeed < 0) {
+				if (getPosition() < lowerLimit)
+					elevatorSpeed = 0;
+			}
+
+		}
+		elevatorMotor.set(elevatorSpeed);
+	}
+
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 
-	//default command is no movement
+	// default command is no movement
 	public void initDefaultCommand() {
 
-		setDefaultCommand(new ElevateNot());
+		setDefaultCommand(new ElevateNot(this));
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
+	public void putSwitchesToDashboard(String prefix) {
+		SmartDashboard.putBoolean(prefix + " Left Outer Switch Pressed",
+				leftOuterSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Left Inner Switch Pressed",
+				leftInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Inner Switch Pressed",
+				rightInnerSwitch.get());
+		SmartDashboard.putBoolean(prefix + " Right Outer Switch Pressed",
+				rightOuterSwitch.get());
+
+	}
+	
+	public void putPositionToDashboard(String prefix)
+	{
+		SmartDashboard.putNumber(prefix + " Height", getPosition());
+		SmartDashboard.putBoolean(prefix + " Position Valid", positionValid);
+	}
+
+	
+	public double getPosition()
+	{
+		return elevatorMotor.getPosition() - positionOffset;
+	}
+	public boolean isTouchingTote() {
+		return leftOuterSwitch.get() && rightOuterSwitch.get()
+				&& !leftInnerSwitch.get() && !rightInnerSwitch.get();
+	}
 }

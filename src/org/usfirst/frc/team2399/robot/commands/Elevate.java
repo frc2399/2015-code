@@ -11,27 +11,24 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  *
  */
-//THIS HAS NEW STUFF. YOU SHOULD LOOK AT THE THING
-//pulls new values from Robot.java/ests private instances and sets speeds
-//PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
+// pulls new values from Robot.java/ests private instances and sets speeds
+// PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
-	//est variables for use 
-	private double speed;
-	private Elevator elevatorFront = Robot.elevatorFront;
-	private Elevator elevatorRear = Robot.elevatorRear;
-	private Elevator elevatorRight = Robot.elevatorRight;
-	private Elevator elevatorLeft = Robot.elevatorLeft;
-
-	//protected so not affected by other commands, etc.
-	protected Elevate(double speed) {
-		//makes sure we can interrupt it
+	// est variables for use
+	protected double speed;
+	protected Elevator elevator;
+	
+	
+	// protected so not affected by other commands, etc.
+	protected Elevate(Elevator elevator, double speed) {
+		// makes sure we can interrupt it
 		setInterruptible(true);
-
-		requires(Robot.elevatorFront);
-		requires(Robot.elevatorRear);
-		requires(Robot.elevatorRight);
-		requires(Robot.elevatorLeft);
-		this.speed = speed;//TODO ask why we need to set it like this, I can't remember rn
+		this.elevator = elevator;
+		requires(elevator);
+		
+		
+		this.speed = speed;// TODO ask why we need to set it like this, I can't
+							// remember rn
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -43,12 +40,9 @@ public abstract class Elevate extends Command {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	//set the speed to "speed"
+	// set the speed to "speed"
 	protected void execute() {
-		elevatorFront.setSpeed(speed);
-		elevatorRear.setSpeed(speed);
-		elevatorRight.setSpeed(speed);
-		elevatorLeft.setSpeed(speed);
+		elevator.setSpeed(speed);	
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -61,8 +55,8 @@ public abstract class Elevate extends Command {
 	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
-	
-	protected boolean isFinished(){
+
+	protected boolean isFinished() {
 		return true;
 	}
 }

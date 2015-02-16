@@ -2,23 +2,29 @@ package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-
 public class JoystickDrive extends Command {
-	// private instance of drivetrain and brings in drivetrain from Robot.Java
+	// private instance of drive train and brings in drive train from Robot.Java
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Joystick driveStick = Robot.joystick;
-	private Joystick twistStick = Robot.twistStick;
 
+	private Joystick twistStick = Robot.twistStick;
+   // private Button reduceSpeedButt = Robot.reduceSpeedButt;
+    
 	public JoystickDrive() {
 
 		requires(Robot.driveTrain);
@@ -39,12 +45,31 @@ public class JoystickDrive extends Command {
 		double x;
 		double y;
 
-		// deadbands set individually to their values
-		twist = deadband(Robot.oi.getTwistSpeed(), .25, .25);
-		x = deadband(Robot.oi.getSideSpeed(), .05, 1);
-		y = deadband(Robot.oi.getForwardSpeed(), .05, 1);
-
+		// dead-bands set individually to their values
+		twist = deadband(Robot.oi.getTwistSpeed(), .5, .5);
+		x = deadband(Robot.oi.getSideSpeed(), .25, 1);
+		y = deadband(Robot.oi.getForwardSpeed(), .25, 1);
+		SmartDashboard.putNumber("X is: ", x);
+		SmartDashboard.putNumber("Y is: ", y);
+		SmartDashboard.putNumber("Twist is: ", twist);
+		
+		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
+		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
+		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
+		SmartDashboard.putNumber("Right front motor speed", driveTrain.getRightFrontSpeed());
+		SmartDashboard.putNumber("Left back motor position", driveTrain.getLeftBackPosition());
+		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
+		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
+		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
+		//SmartDashboard.putDouble("left front motor speed", leftFront.getSpeed());
+//		if (reduceSpeedButt.get() == true){
+	//		x = .5 * x;
+		//	y = .5 * y;
+	//		twist = .5 * twist;
+	//	} 
+		
 		driveTrain.driveFieldOriented(x, y, twist);
+		//TODO: uncomment above line when deadband stuff is figured out
 
 		// System.out.println("is running");
 
@@ -64,12 +89,12 @@ public class JoystickDrive extends Command {
 	protected void interrupted() {
 	}
 
-	// est constant deadbandpercent so different calcs can be made for different motions individually
-	//est deadbandscale so twist motor power can be scaled (makes turns less jerky)
-	//ask drivers if they want the scaling on a switch/button (later)
-	//scaling for drive as well that can be turned on and off
-	
-
+	// establishes constant deadbandpercent so different calculations can be
+	// made for different motions individually.
+	// established deadbandscale so twist motor power can be scaled (makes turns
+	// less jerky)
+	// TODO ask drivers if they want the scaling on a switch/button (later)
+	// scaling for drive as well that can be turned on and off
 
 	public static double deadband(double input, double deadbandpercent,
 			double deadbandscale) {
