@@ -1,18 +1,22 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-//THIS IS NEW. YOU SHOULD LOOK AT THE THING
-//please read the comments below- they explain what's going on in the code
-public class DriveAutoZone extends CommandGroup {
-    
-    public  DriveAutoZone() {
-    	addSequential(new GyroReset());
-    	addSequential(new DriveForwardAutoZone());
-    	
+public class DriveBackwardFinish extends CommandGroup {
+	private DriveTrain driveTrain = Robot.driveTrain;
+
+	public DriveBackwardFinish() {
+		requires(Robot.driveTrain);
+		
+		addSequential(new DriveTrainBackwardFinish());
+		addSequential(new WaitCommand(2));
+		addSequential(new StopDrive());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

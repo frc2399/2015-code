@@ -5,11 +5,10 @@ import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class StrafeRight extends Command {
-	private DriveTrain driveTrain = Robot.driveTrain;
+public class DriveTrainBackwardFinish extends Command {
+	
+	public DriveTrain driveTrain = Robot.driveTrain;
+	
 	
 	public double getLeftFrontPosition(){
 		return (leftFront.getPosition());
@@ -36,7 +35,9 @@ public class StrafeRight extends Command {
 		return(rightBack.getSpeed());
 	}
 
-	public StrafeRight(int encoderCounts) {
+	
+	
+	public DriveTrainBackwardFinish(int encoderCounts) {
 		requires(Robot.driveTrain);
 		
 		leftFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
@@ -49,35 +50,42 @@ public class StrafeRight extends Command {
 		leftBack.enableControl();
 		rightBack.enableControl();
 		
-		leftFront.setPosition(12);
-		rightFront.setPosition(12);
-		leftBack.setPosition(12);
-		rightBack.setPosition(12);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		//TODO set actual values (they probably won't be 12)
+		leftFront.setPosition(-12);
+		rightFront.setPosition(-12);
+		leftBack.setPosition(-12);
+		rightBack.setPosition(-12);
+		
+		
 	}
 
-	// Called just before this Command runs the first time
+	@Override
 	protected void initialize() {
+		// TODO Auto-generated method stub
+
 	}
 
-	// Called repeatedly when this Command is scheduled to run
+	@Override
 	protected void execute() {
-		driveTrain.driveRobotOriented(.25, 0, 0);
-
+		driveTrain.driveRobotOriented(0, -0.25, 0);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
+	@Override
 	protected boolean isFinished() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	// Called once after isFinished returns true
+	@Override
 	protected void end() {
+		// TODO Auto-generated method stub
+
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
+	@Override
 	protected void interrupted() {
+		// TODO Auto-generated method stub
+
 	}
+
 }

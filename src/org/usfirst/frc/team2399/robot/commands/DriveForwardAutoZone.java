@@ -1,18 +1,18 @@
 package org.usfirst.frc.team2399.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-//THIS IS NEW. YOU SHOULD LOOK AT THE THING
-//please read the comments below- they explain what's going on in the code
-public class DriveAutoZone extends CommandGroup {
+public class DriveForwardAutoZone extends CommandGroup {
     
-    public  DriveAutoZone() {
-    	addSequential(new GyroReset());
-    	addSequential(new DriveForwardAutoZone());
-    	
+    public  DriveForwardAutoZone() {
+    	addSequential(new DriveTrainFowardAutoZone());
+		//addSequential(new WaitCommand(2));
+		addSequential(new StopDrive());//
+
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

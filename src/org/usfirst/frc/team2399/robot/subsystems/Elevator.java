@@ -55,6 +55,7 @@ public class Elevator extends Subsystem {
 			int encoderCounts, 
 			double upperLimit,
 			double lowerLimit) {
+		
 		elevatorMotor = new CANJaguar(elevatorMotorNum);
 		positionValid = false;
 		enabled = false;

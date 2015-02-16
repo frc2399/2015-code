@@ -8,10 +8,36 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
-public class DriveTrainForward extends Command {
+public class DriveTrainForwardTote extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Gyro gyro;
 	private double twist;
+	
+	public double getLeftFrontPosition(){
+		return (leftFront.getPosition());
+	}
+	public double getLeftFrontSpeed(){
+		return (leftFront.getSpeed());
+	}
+	public double getRightFrontPosition(){
+		return (rightFront.getPosition());
+	}
+	public double getRightFrontSpeed(){
+		return(rightFront.getSpeed());
+	}
+	public double getLeftBackPosition(){
+		return(leftBack.getPosition());
+	}
+	public double getLeftBackSpeed(){
+		return(leftBack.getSpeed());
+	}
+	public double getRightBackPosition(){
+		return(rightBack.getPosition());
+	}
+	public double getRightBackSpeed(){
+		return(rightBack.getSpeed());
+	}
+
 
 	// private double a;
 	// private double v;
@@ -22,8 +48,22 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward() {
+	public DriveTrainForwardTote(int encoderCounts) {
 		requires(Robot.driveTrain);
+		leftFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightFront.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		leftBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		rightBack.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		
+		leftFront.enableControl();
+		rightFront.enableControl();
+		leftBack.enableControl();
+		rightBack.enableControl();
+		
+		leftFront.setPosition(12);
+		rightFront.setPosition(12);
+		leftBack.setPosition(12);
+		rightBack.setPosition(12);
 		// acceleromter = new Accelerometer(RobotMap.accelerometer);
 	}
 

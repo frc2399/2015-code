@@ -23,6 +23,7 @@ public class PickUpTote extends CommandGroup {
 	public PickUpTote() {
 		addSequential(new ElevateUp(Robot.elevatorFront));
 		addSequential(new WaitCommand(2));
+		addSequential(new ElevateUpWhenTouchingTote(2));
 		addSequential(new ElevateNot(Robot.elevatorFront));
 		// Add Commands here:
 		// e.g. addSequential(new Command1());

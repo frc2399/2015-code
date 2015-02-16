@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
+
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
@@ -7,12 +10,15 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  *
  */
 // applies to AutoTote and DriveAutoZone
-public class DriveForward extends CommandGroup {
-
-	public DriveForward() {
-		addSequential(new DriveTrainForward());
+public class DriveForwardTote extends CommandGroup {
+	private DriveTrain driveTrain = Robot.driveTrain;
+	
+	public DriveForwardTote() {
+		requires(Robot.driveTrain);
+		
+		addSequential(new DriveTrainForwardTote());
 		addSequential(new WaitCommand(2));
-		addSequential(new DriveTrainBackward());
+		addSequential(new StopDrive());//
 
 		// Add Commands here:
 		/*
