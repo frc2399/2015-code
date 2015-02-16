@@ -56,10 +56,11 @@ public class OI {
 		resetGyroButt.whenPressed(new GyroReset());		
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
-		upFrontLiftButt.whenPressed(new ElevateUp(Robot.elevatorFront));
-		downFrontLiftButt.whenPressed(new ElevateDown(Robot.elevatorFront));
-		upRearLiftButt.whenPressed(new ElevateUp(Robot.elevatorRear));
-		downRearLiftButt.whenPressed(new ElevateDown(Robot.elevatorRear));
+		
+		upFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
+		downFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
+		upRearLiftButt.whenPressed(new ElevateToTop(Robot.elevatorRear));
+		downRearLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorRear));
 		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
