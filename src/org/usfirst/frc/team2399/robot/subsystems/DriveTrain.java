@@ -57,6 +57,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	}
 
 	public DriveTrain(int encoderCounts) {
+		//This connects the stuff from robot. java inside of DriveTrain and makes it the same as encoderCounts and they both = 250
 
 		leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 		rightFront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
