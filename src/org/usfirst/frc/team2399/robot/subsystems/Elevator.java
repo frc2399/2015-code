@@ -79,6 +79,9 @@ public class Elevator extends Subsystem {
 		rightInnerSwitch = new DigitalInput(rightInnerSwitchNum);
 		rightOuterSwitch = new DigitalInput(rightOuterSwitchNum);
 		
+		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
+		elevatorMotor.enableControl();
+		
 		checkLowerLimit();
 	}
 	private void checkLowerLimit()
