@@ -33,10 +33,10 @@ public class OI {
 	private Button robotOrientedButt = new JoystickButton(driveStick, 8);
 	private Button fieldOrientedButt = new JoystickButton(driveStick, 9);
 	
-	private Button upFrontLiftButt = new JoystickButton(twistStick, 4);
-	private Button downFrontLiftButt = new JoystickButton(twistStick, 5);
-	private Button upRearLiftButt = new JoystickButton(driveStick, 4);
-	private Button downRearLiftButt = new JoystickButton(driveStick, 5);
+	private Button automaticUpFrontLiftButt = new JoystickButton(driveStick, 4);
+	private Button automaticDownFrontLiftButt = new JoystickButton(driveStick, 5);
+	private Button automaticUpRearLiftButt = new JoystickButton(twistStick, 4);
+	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 	
 //driveStick port is 1 and is also known as the blue side of robot
@@ -57,10 +57,10 @@ public class OI {
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
 		
-		upFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
-		downFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
-		upRearLiftButt.whenPressed(new ElevateToTop(Robot.elevatorRear));
-		downRearLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorRear));
+		automaticUpFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
+		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
+		automaticUpRearLiftButt.whenPressed(new ElevateToTop(Robot.elevatorRear));
+		automaticDownRearLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorRear));
 		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
