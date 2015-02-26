@@ -36,7 +36,7 @@ public class RobotMap {
 	public static final int LEFTFRONT_JAGUARID = 4;
 	public static final int RIGHTFRONT_JAGUARID = 6;
 	public static final int LEFTBACK_JAGUARID = 2;
-	public static final int RIGHTBACK_JAGUARID = 8;
+	public static final int RIGHTBACK_JAGUARID = 7;
 
 	
 	// Gyro established
