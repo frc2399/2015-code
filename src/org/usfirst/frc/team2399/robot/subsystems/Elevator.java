@@ -170,8 +170,9 @@ public class Elevator extends Subsystem {
 	
 	public void putPositionToDashboard(String prefix)
 	{
-		SmartDashboard.putNumber(prefix + " Height", getPosition());
-		SmartDashboard.putBoolean(prefix + " Position Valid", positionValid);
+		SmartDashboard.putNumber(prefix + " Elevator Height (turns)", getPosition());
+		SmartDashboard.putBoolean(prefix + " Elevator Position Valid", positionValid);
+		SmartDashboard.putNumber(prefix + " Elevator Height (inches)", getPosition() * 1.194 * Math.PI + 8.5);
 	}
 
 	
