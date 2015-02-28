@@ -106,10 +106,10 @@ public class Elevator extends Subsystem {
 	}
 	
 	public boolean hasReachedTop(){
-		return !elevatorMotor.getForwardLimitOK();
+		return !elevatorMotor.getForwardLimitOK() || hitUpperSoftLimit();
 	}
 	public boolean hasReachedBottom(){
-		return !elevatorMotor.getReverseLimitOK();
+		return !elevatorMotor.getReverseLimitOK() || hitLowerSoftLimit();
 	}
 	
 	private void zeroJagEncoderCount()
@@ -132,12 +132,12 @@ public class Elevator extends Subsystem {
 		checkLowerLimit();
 		if (positionValid == true) {
 			if (elevatorSpeed > 0) {
-				if (getPosition() > upperLimit) {
+				if (hitUpperSoftLimit()) {
 					elevatorSpeed = 0;
 				}
 			}
 			if (elevatorSpeed < 0) {
-				if (getPosition() < lowerLimit)
+				if (hitLowerSoftLimit())
 					elevatorSpeed = 0;
 			}
 
@@ -175,6 +175,13 @@ public class Elevator extends Subsystem {
 		SmartDashboard.putNumber(prefix + " Elevator Height (inches)", getPosition() * 1.194 * Math.PI + 8.5);
 	}
 
+	public boolean hitUpperSoftLimit() {
+		return getPosition() > upperLimit;
+	}
+	
+	public boolean hitLowerSoftLimit() {
+		return getPosition() < lowerLimit;
+	}
 	
 	public double getPosition()
 	{
