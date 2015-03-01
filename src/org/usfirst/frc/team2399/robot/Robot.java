@@ -94,6 +94,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Front Elevator", elevatorFront);
 		SmartDashboard.putData("Rear Elevator", elevatorRear);
 		
+		
+		
 				// instantiate the command used for the autonomous period
 
 
@@ -150,7 +152,7 @@ public class Robot extends IterativeRobot {
 		elevatorRear.putSwitchesToDashboard("Rear");
 		elevatorFront.putPositionToDashboard("Front");
 		elevatorRear.putPositionToDashboard("Rear");
-
+		
 	}
 
 	/**

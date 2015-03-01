@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -11,18 +13,22 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoTote extends CommandGroup {
 
 	public AutoTote() {
+		//check and see if contact switches will work for this
 		addSequential(new GyroReset());
+		addSequential(new ElevateToBottom(Robot.elevatorFront));
+		addSequential(new DriveForward());
+		addSequential(new ElevateToBottom(Robot.elevatorFront));
+		addSequential(new ElevateToTop(Robot.elevatorFront));
+		addSequential(new DriveBackward());
+		addSequential(new ElevateToBottom(Robot.elevatorFront));
+		addSequential(new DriveBackward());
+		
 
 		// TODO add elevator reset
 		// TODO add encoders for more accurate driving
-
-		addSequential(new DriveForward());
-		addSequential(new PickUpTote());
-		addSequential(new DriveBackward());
-		addSequential(new PutDownTote());
-		addSequential(new DriveBackward());
 		// drive forward
-		// pickup tote
+		// pickup tote when contact switches are depressed
+		//pickup tote to top of elevator
 		// drive backwards
 		// put down tote
 		// drive backwards

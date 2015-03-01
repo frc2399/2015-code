@@ -47,7 +47,7 @@ public class RobotMap {
 	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;
 	
 	
-	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 13.251;
+	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 9.6;
 	public static final double FRONT_ELEVATOR_LOWER_LIMIT = 0;
 	
 	public static final double REAR_ELEVATOR_UPPER_LIMIT = 13.083;
