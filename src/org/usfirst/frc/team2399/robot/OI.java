@@ -82,11 +82,11 @@ public class OI {
 	// doubles and booleans for joystick values
 	// these get the "speed" from how far the joystick is pushed
 	public double getForwardSpeed() {
-		return -driveStick.getY();
+		return driveStick.getY();
 	}
 
 	public double getSideSpeed() {
-		return -driveStick.getX();
+		return driveStick.getX();
 	}
 
 	public double getTwistSpeed() {
