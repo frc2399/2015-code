@@ -41,7 +41,6 @@ public class RobotMap {
 	
 	// Gyro established
 	public static final int GYRO_PORT = 0;
-	public static final Gyro gyro = new Gyro(GYRO_PORT);
 	
 	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 250;
 	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;

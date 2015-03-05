@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.AutoTote;
 import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 //import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
@@ -61,6 +62,8 @@ public class Robot extends IterativeRobot {
 		// autonomus command
 
 		driveTrain = new DriveTrain(RobotMap.ENCODER_COUNTS_DRIVETRAIN);
+		
+		gyro = new Gyro(RobotMap.GYRO_PORT);
 
 
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
