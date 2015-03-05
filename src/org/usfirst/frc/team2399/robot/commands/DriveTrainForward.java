@@ -45,7 +45,7 @@ public class DriveTrainForward extends Command {
 	// sp-pv = E
 	protected void execute() {
 	
-			driveTrain.driveRobotOriented(0, .25, (twist = 1 * (0 - gyro.getRate())));
+			driveTrain.driveRobotOriented(0, .25, 0);
 	
 	}
 
