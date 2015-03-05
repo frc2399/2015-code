@@ -60,12 +60,12 @@ public class Robot extends IterativeRobot {
 
 		// established new instances of drivetrain, elevator, OI and an
 		// autonomus command
-
-		driveTrain = new DriveTrain(RobotMap.ENCODER_COUNTS_DRIVETRAIN);
-		
 		gyro = new Gyro(RobotMap.GYRO_PORT);
 
 
+		driveTrain = new DriveTrain(RobotMap.ENCODER_COUNTS_DRIVETRAIN, gyro);
+		
+		
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
 									RobotMap.FRONTCONTACT_SWITCH1ID,
 									RobotMap.FRONTCONTACT_SWITCH2ID,

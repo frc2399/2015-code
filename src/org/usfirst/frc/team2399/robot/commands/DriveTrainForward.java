@@ -25,6 +25,7 @@ public class DriveTrainForward extends Command {
 
 	public DriveTrainForward() {
 		requires(Robot.driveTrain);
+		gyro = driveTrain.getGyro();
 		// acceleromter = new Accelerometer(RobotMap.accelerometer);
 	}
 

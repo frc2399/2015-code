@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 	public boolean fieldDrive = false;
 
 	private RobotDrive drive;
-	private Gyro drivetrainGyro = new Gyro(0);
+	private Gyro drivetrainGyro;
 
 	private CANJaguar leftFront;
 	private CANJaguar rightFront;
@@ -56,7 +56,7 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		return(drivetrainGyro.getAngle());
 	}
 
-	public DriveTrain(int encoderCounts) {
+	public DriveTrain(int encoderCounts, Gyro g) {
 
 		leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
 		rightFront = new CANJaguar(RobotMap.RIGHTFRONT_JAGUARID);
@@ -80,6 +80,8 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		rightFront.enableControl();
 		leftBack.enableControl();
 		rightBack.enableControl();
+		
+		drivetrainGyro = g;
 
 		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
 		// what the drivetrain encoder is
