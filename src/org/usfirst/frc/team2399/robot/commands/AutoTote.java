@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -16,11 +18,10 @@ public class AutoTote extends CommandGroup {
 		// TODO add elevator reset
 		// TODO add encoders for more accurate driving
 
-		addSequential(new DriveForward());
 		addSequential(new PickUpTote());
-		addSequential(new DriveBackward());
-		addSequential(new PutDownTote());
-		addSequential(new DriveBackward());
+		addSequential(new DriveTrainForward(2.75, .25));
+		addSequential(new ElevateToBottom(Robot.elevatorRear));
+		addSequential(new DriveTrainForward(.25, 25));
 		// drive forward
 		// pickup tote
 		// drive backwards

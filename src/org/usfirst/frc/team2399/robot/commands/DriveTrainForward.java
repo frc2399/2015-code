@@ -13,6 +13,7 @@ public class DriveTrainForward extends Command {
 	private Gyro gyro;
 	private double twist;
 	private double lf, lb, rb, rf;
+	private double distance, speed;
 
 	// private double a;
 	// private double v;
@@ -23,9 +24,12 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward() {
+	public DriveTrainForward(double distance, double speed) {
 		requires(Robot.driveTrain);
 		gyro = driveTrain.getGyro();
+		this.distance = distance;  //the instance of distance being passed 
+		//through as a parameter is equal to the private variable distance
+		this.speed = speed;
 		// acceleromter = new Accelerometer(RobotMap.accelerometer);
 	}
 
@@ -45,17 +49,17 @@ public class DriveTrainForward extends Command {
 	// sp-pv = E
 	protected void execute() {
 	
-			driveTrain.driveRobotOriented(0, .25, 0);
+			driveTrain.driveRobotOriented(0, speed, 0);
 	
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)>2.75) &&
-				(Math.abs(driveTrain.getLeftBackPosition()-lb)>2.75) &&
-				(Math.abs(driveTrain.getRightBackPosition()-rb)>2.75) &&
-				(Math.abs(driveTrain.getRightFrontPosition()-rf)>2.75);
+		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)>distance) &&
+				(Math.abs(driveTrain.getLeftBackPosition()-lb)>distance) &&
+				(Math.abs(driveTrain.getRightBackPosition()-rb)>distance) &&
+				(Math.abs(driveTrain.getRightFrontPosition()-rf)>distance);
 	}
 
 	@Override

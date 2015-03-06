@@ -16,7 +16,7 @@ public class Auto3Tote extends CommandGroup {
 		// TODO use optical encoder to determine height and distance for more
 		// accurate driving
 
-		addSequential(new DriveForward());
+		addSequential(new DriveTrainForward(2.75, .25));
 		addSequential(new PickUpTote());
 
 		addSequential(new StrafeRight());
@@ -35,9 +35,9 @@ public class Auto3Tote extends CommandGroup {
 		// go forwards
 
 		addSequential(new PickUpTote());
-		addSequential(new DriveBackward());
+		addSequential(new DriveTrainForward(.25, -.25));
 		addSequential(new PutDownTote());
-		addSequential(new DriveBackward());
+		addSequential(new DriveTrainForward(.25, -.25));
 
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
