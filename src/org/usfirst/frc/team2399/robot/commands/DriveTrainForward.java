@@ -24,8 +24,9 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward(double distance, double speed) {
+	public DriveTrainForward(double distance, double speed, double timeout) {
 		requires(Robot.driveTrain);
+		setTimeout(timeout);
 		gyro = driveTrain.getGyro();
 		this.distance = distance;  //the instance of distance being passed 
 		//through as a parameter is equal to the private variable distance
@@ -65,12 +66,14 @@ public class DriveTrainForward extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
+		driveTrain.driveRobotOriented(0, 0, 0);
 
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
+		driveTrain.driveRobotOriented(0, 0, 0);
 
 	}
 
