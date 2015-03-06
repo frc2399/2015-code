@@ -181,7 +181,7 @@ public class Elevator extends Subsystem {
 		return elevatorMotor.getPosition() - positionOffset;
 	}
 	public boolean isTouchingTote() {
-		return leftOuterSwitch.get() && rightOuterSwitch.get()
-				&& !leftInnerSwitch.get() && !rightInnerSwitch.get();
+		return !leftOuterSwitch.get() && !rightOuterSwitch.get()
+				&& leftInnerSwitch.get() && rightInnerSwitch.get();
 	}
 }

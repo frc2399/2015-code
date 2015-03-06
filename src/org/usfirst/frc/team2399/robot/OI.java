@@ -46,8 +46,8 @@ public class OI {
 	double y;
 	double twist;
 
-	private Button automaticLiftFrontButt = new JoystickButton(driveStick, 7);
-	private Button automaticLiftRearButt = new JoystickButton(driveStick, 8);
+	private Button automaticLiftFrontButt = new JoystickButton(twistStick, 8);
+	private Button automaticLiftRearButt = new JoystickButton(twistStick, 9);
 
 	// established doubles so we can use them in other parts of the
 	// program
