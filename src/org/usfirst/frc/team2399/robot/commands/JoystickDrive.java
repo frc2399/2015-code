@@ -52,7 +52,7 @@ public class JoystickDrive extends Command {
 		SmartDashboard.putNumber("Twist is: ", twist);
 	
 		if (Robot.oi.getReduceSpeed() == true){
-			double speedAdjust = .3;
+			double speedAdjust = .5;
 			//speedAdjust is the amount speed is divided by
 			double halfX = speedAdjust * x;
 			double halfY = speedAdjust * y;
