@@ -44,9 +44,9 @@ public class JoystickDrive extends Command {
 		double y;
 
 		// dead-bands set individually to their values
-		twist = deadband(Robot.oi.getTwistSpeed(), .5, .5);
-		x = deadband(Robot.oi.getSideSpeed(), .25, 1);
-		y = deadband(Robot.oi.getForwardSpeed(), .25, 1);
+		twist = cubic(Robot.oi.getTwistSpeed()) * .5;
+		x = cubic(Robot.oi.getSideSpeed());
+		y = cubic(Robot.oi.getForwardSpeed());
 		SmartDashboard.putNumber("X is: ", x);
 		SmartDashboard.putNumber("Y is: ", y);
 		SmartDashboard.putNumber("Twist is: ", twist);
@@ -114,5 +114,11 @@ public class JoystickDrive extends Command {
 			return (deadbandscale * (input / (Math.abs(input)) * (((Math
 					.abs(input) - deadbandconstant)) / (1 - deadbandconstant))));
 		}
+	}
+	
+	public static double cubic(double input){
+		double newInput = input * input * input;
+		return newInput;
+		
 	}
 }
