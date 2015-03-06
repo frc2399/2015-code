@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.AutoBin;
 import org.usfirst.frc.team2399.robot.commands.AutoTote;
 import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 //import org.usfirst.frc.team2399.robot.OI;

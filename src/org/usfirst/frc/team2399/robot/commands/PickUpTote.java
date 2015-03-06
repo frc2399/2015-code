@@ -20,9 +20,9 @@ public class PickUpTote extends CommandGroup {
 	private Elevator elevatorFront = Robot.elevatorFront;
 	private Elevator elevatorRear = Robot.elevatorRear;
 	
-	public PickUpTote() {
+	public PickUpTote(int wait) {
 		addSequential(new ElevateUp(Robot.elevatorFront));
-		addSequential(new WaitCommand(2));
+		addSequential(new WaitCommand(wait));
 		addSequential(new ElevateNot(Robot.elevatorFront));
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
