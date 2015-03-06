@@ -52,10 +52,10 @@ public class DriveTrainForward extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)>4) &&
-				(Math.abs(driveTrain.getLeftBackPosition()-lb)>4) &&
-				(Math.abs(driveTrain.getRightBackPosition()-rb)>4) &&
-				(Math.abs(driveTrain.getRightFrontPosition()-rf)>4);
+		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)>3.75) &&
+				(Math.abs(driveTrain.getLeftBackPosition()-lb)>3.75) &&
+				(Math.abs(driveTrain.getRightBackPosition()-rb)>3.75) &&
+				(Math.abs(driveTrain.getRightFrontPosition()-rf)>3.75);
 	}
 
 	@Override
