@@ -17,11 +17,12 @@ public class AutoTote extends CommandGroup {
 
 		// TODO add elevator reset
 		// TODO add encoders for more accurate driving
+		addSequential(new DriveTrainForward(.15, -.25));
 
 		addSequential(new PickUpTote());
-		addSequential(new DriveTrainForward(2.75, .25));
-		addSequential(new ElevateToBottom(Robot.elevatorRear));
-		addSequential(new DriveTrainForward(.25, 25));
+		addSequential(new DriveTrainForward(3, .25));
+		addSequential(new ElevateToBottom(Robot.elevatorFront));
+		//addSequential(new DriveTrainForward(.25, .25));
 		// drive forward
 		// pickup tote
 		// drive backwards

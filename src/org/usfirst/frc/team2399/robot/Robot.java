@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
 
 		oi = new OI();
 
-		autoncommand = new DriveAutoZone();
+		autoncommand = new AutoTote();
 
 		// smartdashboard values for drivetrain and elevator
 		SmartDashboard.putData("Drive Train", driveTrain);
