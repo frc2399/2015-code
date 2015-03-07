@@ -11,9 +11,10 @@ public class AutoBin extends CommandGroup {
     
     public  AutoBin() {
     	
-    	addSequential(new DriveTrainForward(.15, -.25, 2));
+    	addSequential(new DriveTrainForward(.15, -.25, 0, 2));
 		addSequential(new PickUpTote(3));
-		addSequential(new DriveTrainForward(3.3, .25, 10));
+		addSequential(new DriveTrainForward(3.3, .25, 0, 10));
+		
 		addSequential(new ElevateToBottom(Robot.elevatorFront));
         // Add Commands here:
         // e.g. addSequential(new Command1());

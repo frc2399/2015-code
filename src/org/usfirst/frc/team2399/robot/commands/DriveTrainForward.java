@@ -24,13 +24,14 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward(double distance, double speed, double timeout) {
+	public DriveTrainForward(double distance, double speed, double twist, double timeout) {
 		requires(Robot.driveTrain);
 		setTimeout(timeout);
 		gyro = driveTrain.getGyro();
 		this.distance = distance;  //the instance of distance being passed 
 		//through as a parameter is equal to the private variable distance
 		this.speed = speed;
+		this.twist = twist;
 		// acceleromter = new Accelerometer(RobotMap.accelerometer);
 	}
 

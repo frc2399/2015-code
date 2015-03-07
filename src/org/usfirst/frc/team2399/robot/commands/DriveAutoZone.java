@@ -11,7 +11,7 @@ public class DriveAutoZone extends CommandGroup {
     
     public  DriveAutoZone() {
     	addSequential(new GyroReset());
-    	addSequential(new DriveTrainForward(2.75, .25, 7));
+    	addSequential(new DriveTrainForward(2.75, .25, 7.0, 0));
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
