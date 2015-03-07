@@ -92,12 +92,12 @@ public class Robot extends IterativeRobot {
 		autoncommand = new AutoTote();
 
 		// smartdashboard values for drivetrain and elevator
-		SmartDashboard.putData("Drive Train", driveTrain);
-
-
-		SmartDashboard.putData("Front Elevator", elevatorFront);
-		SmartDashboard.putData("Rear Elevator", elevatorRear);
-		
+//		SmartDashboard.putData("Drive Train", driveTrain);
+//
+//
+//		SmartDashboard.putData("Front Elevator", elevatorFront);
+//		SmartDashboard.putData("Rear Elevator", elevatorRear);
+//		
 				// instantiate the command used for the autonomous period
 
 

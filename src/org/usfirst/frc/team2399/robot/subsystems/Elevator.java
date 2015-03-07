@@ -157,22 +157,22 @@ public class Elevator extends Subsystem {
 	}
 
 	public void putSwitchesToDashboard(String prefix) {
-		SmartDashboard.putBoolean(prefix + " Left Outer Switch Pressed",
-				leftOuterSwitch.get());
-		SmartDashboard.putBoolean(prefix + " Left Inner Switch Pressed",
-				leftInnerSwitch.get());
-		SmartDashboard.putBoolean(prefix + " Right Inner Switch Pressed",
-				rightInnerSwitch.get());
-		SmartDashboard.putBoolean(prefix + " Right Outer Switch Pressed",
-				rightOuterSwitch.get());
+//		SmartDashboard.putBoolean(prefix + " Left Outer Switch Pressed",
+//				leftOuterSwitch.get());
+//		SmartDashboard.putBoolean(prefix + " Left Inner Switch Pressed",
+//				leftInnerSwitch.get());
+//		SmartDashboard.putBoolean(prefix + " Right Inner Switch Pressed",
+//				rightInnerSwitch.get());
+//		SmartDashboard.putBoolean(prefix + " Right Outer Switch Pressed",
+//				rightOuterSwitch.get());
 
 	}
 	
 	public void putPositionToDashboard(String prefix)
 	{
-		SmartDashboard.putNumber(prefix + " Elevator Height (turns)", getPosition());
-		SmartDashboard.putBoolean(prefix + " Elevator Position Valid", positionValid);
-		SmartDashboard.putNumber(prefix + " Elevator Height (inches)", getPosition() * 1.194 * Math.PI + 8.5);
+//		SmartDashboard.putNumber(prefix + " Elevator Height (turns)", getPosition());
+//		SmartDashboard.putBoolean(prefix + " Elevator Position Valid", positionValid);
+//		SmartDashboard.putNumber(prefix + " Elevator Height (inches)", getPosition() * 1.194 * Math.PI + 8.5);
 	}
 
 	

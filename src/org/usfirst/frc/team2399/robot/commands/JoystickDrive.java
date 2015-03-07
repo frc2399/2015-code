@@ -47,9 +47,9 @@ public class JoystickDrive extends Command {
 		twist = cubic(Robot.oi.getTwistSpeed()) * .5;
 		x = cubic(Robot.oi.getSideSpeed());
 		y = cubic(Robot.oi.getForwardSpeed());
-		SmartDashboard.putNumber("X is: ", x);
-		SmartDashboard.putNumber("Y is: ", y);
-		SmartDashboard.putNumber("Twist is: ", twist);
+		//SmartDashboard.putNumber("X is: ", x);
+		//SmartDashboard.putNumber("Y is: ", y);
+		//SmartDashboard.putNumber("Twist is: ", twist);
 	
 		if (Robot.oi.getReduceSpeed() == true){
 			double speedAdjust = .5;
@@ -65,15 +65,15 @@ public class JoystickDrive extends Command {
 	} else{ //if it isn't pressed then use the actual x y and twist values
 			drive(x, y, twist);
 	}
-		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
-		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
-		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
-		SmartDashboard.putNumber("Right front motor speed", driveTrain.getRightFrontSpeed());
-		SmartDashboard.putNumber("Left back motor position", driveTrain.getLeftBackPosition());
-		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
-		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
-		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
-		SmartDashboard.putData("gyro angle", driveTrain.getGyro());
+//		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
+//		SmartDashboard.putNumber("Left front speed", driveTrain.getLeftFrontSpeed());
+//		SmartDashboard.putNumber("Right front motor position", driveTrain.getRightFrontPosition());
+//		SmartDashboard.putNumber("Right front motor speed", driveTrain.getRightFrontSpeed());
+//		SmartDashboard.putNumber("Left back motor position", driveTrain.getLeftBackPosition());
+//		SmartDashboard.putNumber("Left back motor speed", driveTrain.getLeftBackSpeed());
+//		SmartDashboard.putNumber("Right back motor position", driveTrain.getRightBackPosition());
+//		SmartDashboard.putNumber("Right back motor speed", driveTrain.getRightBackSpeed());
+//		SmartDashboard.putData("gyro angle", driveTrain.getGyro());
 
 	}
 
