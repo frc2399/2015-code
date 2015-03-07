@@ -39,6 +39,8 @@ public class OI {
 	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 	
+	private Button getFrontBinButt = new JoystickButton(twistStick, 12413);
+	private Button getRearBinButt = new JoystickButton(twistStick, 2399);
 //driveStick port is 1 and is also known as the blue side of robot
 //twistStick port is 2 and is also known as the pink side of robot
 
@@ -61,6 +63,9 @@ public class OI {
 		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
 		automaticUpRearLiftButt.whenPressed(new ElevateToTop(Robot.elevatorRear));
 		automaticDownRearLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorRear));
+		
+		getFrontBinButt.whenPressed(new GetBin(Robot.elevatorFront));
+		getRearBinButt.whenPressed(new GetBin(Robot.elevatorRear));
 		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));

@@ -41,6 +41,8 @@ public class Elevator extends Subsystem {
 	
 	private int encoderCounts;
 	
+	private double goTo;
+	
 	private boolean enabled;
 
 	// sets elevator to one from Robot Map
@@ -58,6 +60,7 @@ public class Elevator extends Subsystem {
 		elevatorMotor = new CANJaguar(elevatorMotorNum);
 		positionValid = false;
 		enabled = false;
+		
 		// this. refers to the object's variables
 		if (upperLimit > lowerLimit) {
 			this.upperLimit = upperLimit;
@@ -111,6 +114,9 @@ public class Elevator extends Subsystem {
 	public boolean hasReachedBottom(){
 		return !elevatorMotor.getReverseLimitOK();
 	}
+//	public boolean hasReachedBin(){
+//		return false;
+//	}
 	
 	private void zeroJagEncoderCount()
 	{
@@ -143,6 +149,29 @@ public class Elevator extends Subsystem {
 
 		}
 		elevatorMotor.set(elevatorSpeed);
+	}
+	public double setPosition(Elevator elevator, double position){  //takes elevator and a position
+		position = goTo; //goTo is where we want to go
+		return goTo;
+//		/*this method should set the encoder value to 
+//		 * this LITERALLY SETS THE OUTPUT TO THE INPUT THAT WAS PASSED IN
+//		 * WHY DID I WRITE THIS
+//		 * WHY
+//		 *  - A Programmer's Lament, by Lauren Egts
+		
+	}
+	public boolean atPos(Elevator elevator, double position){
+		if (elevatorEncoder.get() > Math.abs(goTo)){ //if where we are is greater 
+			//then where we want to be then stop
+			return false;
+		} else {  //if we still have space to go then move
+			return true;
+		}
+	}
+	
+	public double whereAt (){
+		//return elevatorMotor.getPosition();  
+		return elevatorEncoder.get(); //gets the position of the encoder
 	}
 
 	// Put methods for controlling this subsystem
