@@ -16,7 +16,8 @@ public class GetBin extends Elevate{
 	private CANJaguar elevatorMotor;
 	
 	public GetBin(Elevator elevator) {
-		super(elevator, .5);
+		super(elevator, .5); //calls the arguments in because Elevate is the command it is based off of
+		//needs the same arguments as Elevate
 		this.elevator = elevator; //creating an instance of elevator
 		double currentPos = elevator.whereAt(); //where we are at now
 		double whereTo = elevator.getPosition() * 1.194 * Math.PI + 32.5;
