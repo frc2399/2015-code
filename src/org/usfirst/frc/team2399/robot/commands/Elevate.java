@@ -1,12 +1,10 @@
 package org.usfirst.frc.team2399.robot.commands;
 
-import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.Robot;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  *
@@ -14,6 +12,14 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // pulls new values from Robot.java/ests private instances and sets speeds
 // PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
+	public class ContactButt {
+
+		public ContactButt() {
+			// TODO Auto-generated constructor stub
+		}
+
+	}
+
 	// est variables for use
 	protected double speed;
 	protected Elevator elevator;

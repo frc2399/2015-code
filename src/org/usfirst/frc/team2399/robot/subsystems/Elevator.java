@@ -1,16 +1,10 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
-import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.commands.ElevateNot;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //object: collection of both variables and methods
 //methods: a set of steps
@@ -24,7 +18,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // automatically when pressed.
 public class Elevator extends Subsystem {
 	// private instances of drive, elevatormotor/encoder
-	private RobotDrive drive;
 	private CANJaguar elevatorMotor;
 
 	private boolean positionValid;
@@ -33,7 +26,6 @@ public class Elevator extends Subsystem {
 	
 	private double positionOffset;
 
-	private Encoder elevatorEncoder;
 	private DigitalInput leftOuterSwitch;
 	private DigitalInput leftInnerSwitch;
 	private DigitalInput rightInnerSwitch;
