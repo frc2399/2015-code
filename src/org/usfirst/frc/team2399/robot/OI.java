@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.*;
+import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
@@ -39,6 +40,7 @@ public class OI {
 	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 	
+	private Button frontToteButt = new JoystickButton(twistStick, 2399);
 //driveStick port is 1 and is also known as the blue side of robot
 //twistStick port is 2 and is also known as the pink side of robot
 
@@ -74,9 +76,7 @@ public class OI {
 		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
 				Robot.elevatorRear));
 		
-		
-		
-
+	//	frontToteButt.whenPressed(Elevator.contactTote(Robot.elevatorFront));
 	}
 
 	// doubles and booleans for joystick values

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2399.robot.subsystems;
 
+import org.usfirst.frc.team2399.robot.RobotMap;
 import org.usfirst.frc.team2399.robot.commands.ElevateNot;
 
 import edu.wpi.first.wpilibj.CANJaguar;
@@ -33,6 +34,7 @@ public class Elevator extends Subsystem {
 	
 	private int encoderCounts;
 	
+	private double toteSpot;
 	private boolean enabled;
 
 	// sets elevator to one from Robot Map
@@ -50,6 +52,8 @@ public class Elevator extends Subsystem {
 		elevatorMotor = new CANJaguar(elevatorMotorNum);
 		positionValid = false;
 		enabled = false;
+		
+		toteSpot = RobotMap.TOTESPOT;
 		// this. refers to the object's variables
 		if (upperLimit > lowerLimit) {
 			this.upperLimit = upperLimit;
@@ -122,20 +126,9 @@ public class Elevator extends Subsystem {
 	public void setSpeed(double elevatorSpeed) {
 		
 		checkLowerLimit();
-		if (positionValid == true) {
-			if (elevatorSpeed > 0) {
-				if (getPosition() > upperLimit) {
-					elevatorSpeed = 0;
-				}
-			}
-			if (elevatorSpeed < 0) {
-				if (getPosition() < lowerLimit)
-					elevatorSpeed = 0;
-			}
-
-		}
+		enforceLimits(elevatorSpeed);
 		elevatorMotor.set(elevatorSpeed);
-	}
+}
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -175,5 +168,24 @@ public class Elevator extends Subsystem {
 	public boolean isTouchingTote() {
 		return !leftOuterSwitch.get() && !rightOuterSwitch.get()
 				&& leftInnerSwitch.get() && rightInnerSwitch.get();
+	}
+	public double enforceLimits(double elevatorSpeed){
+		if (positionValid == true) {
+			if (elevatorSpeed > 0) {
+				if (getPosition() > upperLimit) {
+					elevatorSpeed = 0;
+				}
+			}
+			if (elevatorSpeed < 0) {
+				if (getPosition() < lowerLimit)
+					elevatorSpeed = 0;
+			}
+		}
+		return elevatorSpeed;
+	}
+	public void contactTote(Elevator elevator){
+		if(isTouchingTote() == true && getPosition() < toteSpot){
+			elevatorMotor.set(toteSpot);
+		}
 	}
 }

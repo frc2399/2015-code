@@ -25,6 +25,8 @@ public class RobotMap {
 	public static final int REARCONTACT_SWITCH2ID = 1;
 	public static final int REARCONTACT_SWITCH3ID = 2;
 	public static final int REARCONTACT_SWITCH4ID = 3;
+	
+	public static final double TOTESPOT = .25;
 		
 	// DriveTrain motor Jaguar ID's
 	public static final int LEFTFRONT_JAGUARID = 4;
