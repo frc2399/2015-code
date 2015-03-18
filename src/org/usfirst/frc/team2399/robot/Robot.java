@@ -32,7 +32,6 @@ public class Robot extends IterativeRobot {
 	// public static Button reduceSpeedButt;
 
 	public static Elevator elevatorFront;
-	public static Elevator elevatorRear;
 	public static Joystick joystick;
 	public static Gyro gyro;
 	public static Joystick twistStick;
@@ -70,17 +69,7 @@ public class Robot extends IterativeRobot {
 									RobotMap.FRONT_ELEVATOR_UPPER_LIMIT,
 									RobotMap.FRONT_ELEVATOR_LOWER_LIMIT);
 
-		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID, 
-									RobotMap.REARCONTACT_SWITCH1ID, 
-									RobotMap.REARCONTACT_SWITCH2ID,
-									RobotMap.REARCONTACT_SWITCH3ID, 
-									RobotMap.REARCONTACT_SWITCH4ID,
-									RobotMap.ENCODER_COUNTS_REAR_ELEVATOR,
-									RobotMap.REAR_ELEVATOR_UPPER_LIMIT,
-									RobotMap.REAR_ELEVATOR_LOWER_LIMIT);
-		//leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
-
-
+		
 		oi = new OI();
 
 		autoncommand = new AutoTote();
@@ -145,9 +134,7 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		elevatorFront.putSwitchesToDashboard("Front");
-		elevatorRear.putSwitchesToDashboard("Rear");
 		elevatorFront.putPositionToDashboard("Front");
-		elevatorRear.putPositionToDashboard("Rear");
 
 	}
 

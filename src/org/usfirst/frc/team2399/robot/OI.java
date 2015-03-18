@@ -61,20 +61,15 @@ public class OI {
 		
 		automaticUpFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
 		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
-		automaticUpRearLiftButt.whenPressed(new ElevateToTop(Robot.elevatorRear));
-		automaticDownRearLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorRear));
 		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
-		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
-		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
 
 
 		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(
 				Robot.elevatorFront));
-		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
-				Robot.elevatorRear));
+
 		
 	//	frontToteButt.whenPressed(Elevator.contactTote(Robot.elevatorFront));
 	}

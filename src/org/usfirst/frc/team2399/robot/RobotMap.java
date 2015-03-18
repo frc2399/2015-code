@@ -32,17 +32,17 @@ public class RobotMap {
 	public static final int LEFTFRONT_JAGUARID = 4;
 	public static final int RIGHTFRONT_JAGUARID = 6;
 	public static final int LEFTBACK_JAGUARID = 2;
-	public static final int RIGHTBACK_JAGUARID = 7;
+	public static final int RIGHTBACK_JAGUARID = 8;
 
 	
 	// Gyro established
 	public static final int GYRO_PORT = 0;
 	
-	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 250;
+	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 360;
 	public static final int ENCODER_COUNTS_REAR_ELEVATOR = 250;
 	
 	
-	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 13.251;
+	public static final double FRONT_ELEVATOR_UPPER_LIMIT = 9.5;
 	public static final double FRONT_ELEVATOR_LOWER_LIMIT = 0;
 	
 	public static final double REAR_ELEVATOR_UPPER_LIMIT = 13.083;
