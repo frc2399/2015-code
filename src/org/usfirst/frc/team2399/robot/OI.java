@@ -6,6 +6,7 @@ import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -50,6 +51,7 @@ public class OI {
 
 	private Button automaticLiftFrontButt = new JoystickButton(twistStick, 9);
 	private Button automaticLiftRearButt = new JoystickButton(twistStick, 8);
+
 
 	// established doubles so we can use them in other parts of the
 	// program
