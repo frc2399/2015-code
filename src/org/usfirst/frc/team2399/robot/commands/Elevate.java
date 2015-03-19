@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 // pulls new values from Robot.java/ests private instances and sets speeds
 // PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
+
 	// est variables for use
 	protected double speed;
 	protected Elevator elevator;
