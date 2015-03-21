@@ -89,6 +89,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		autoncommand = new AutoTote();
+		
+		cam0 = CameraServer.getInstance();
+		cam0.setQuality(25);
+		cam0.setSize(100);
+		cam0.startAutomaticCapture();
 
 		// smartdashboard values for drivetrain and elevator
 //		SmartDashboard.putData("Drive Train", driveTrain);
@@ -132,8 +137,6 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		cam0.setQuality(50);
-		cam0.startAutomaticCapture();
 	}
 
 	/**
