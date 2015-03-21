@@ -165,6 +165,12 @@ public class Elevator extends Subsystem {
 	{
 		return elevatorMotor.getPosition() - positionOffset;
 	}
+	public double getPositionInches(){
+		return getPosition() * 1.194 * Math.PI + 8.5; //returns the current position as measured in inches
+	}
+	public boolean isPositionValid(){
+		return positionValid; //returns the balue of positionValid
+	}
 	public boolean isTouchingTote() {
 		return !leftOuterSwitch.get() && !rightOuterSwitch.get()
 				&& leftInnerSwitch.get() && rightInnerSwitch.get();
