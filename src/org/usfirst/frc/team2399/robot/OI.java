@@ -35,10 +35,10 @@ public class OI {
 	private Button robotOrientedButt = new JoystickButton(driveStick, 8);
 	private Button fieldOrientedButt = new JoystickButton(driveStick, 9);
 	
-	private Button automaticUpFrontLiftButt = new JoystickButton(driveStick, 4);
-	private Button automaticDownFrontLiftButt = new JoystickButton(driveStick, 5);
-	private Button automaticUpRearLiftButt = new JoystickButton(twistStick, 4);
-	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
+//	private Button automaticUpFrontLiftButt = new JoystickButton(driveStick, 4);
+//	private Button automaticDownFrontLiftButt = new JoystickButton(driveStick, 5);
+//	private Button automaticUpRearLiftButt = new JoystickButton(twistStick, 4);
+//	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 
 	private Button frontTwoToteButt = new JoystickButton(twistStick, 7);
@@ -63,8 +63,8 @@ public class OI {
 		
 		frontTwoToteButt.whenPressed(new ElevateToHeight(Robot.elevatorFront, 26));
 		
-		automaticUpFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
-		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
+//		automaticUpFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
+//		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));
 		
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
