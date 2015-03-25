@@ -6,6 +6,7 @@ import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -39,8 +40,8 @@ public class OI {
 	private Button automaticUpRearLiftButt = new JoystickButton(twistStick, 4);
 	private Button automaticDownRearLiftButt = new JoystickButton(twistStick, 5);
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
-	
-	private Button frontToteButt = new JoystickButton(twistStick, 2399);
+
+	private Button frontTwoToteButt = new JoystickButton(twistStick, 7);
 //driveStick port is 1 and is also known as the blue side of robot
 //twistStick port is 2 and is also known as the pink side of robot
 
@@ -51,6 +52,7 @@ public class OI {
 	private Button automaticLiftFrontButt = new JoystickButton(twistStick, 9);
 	private Button automaticLiftRearButt = new JoystickButton(twistStick, 8);
 
+
 	// established doubles so we can use them in other parts of the
 	// program
 	// buttons for gyro reset, elevator up and down
@@ -58,6 +60,8 @@ public class OI {
 		resetGyroButt.whenPressed(new GyroReset());		
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
+		
+		frontTwoToteButt.whenPressed(new ElevateToHeight(Robot.elevatorFront, 26));
 		
 		automaticUpFrontLiftButt.whenPressed(new ElevateToTop(Robot.elevatorFront));
 		automaticDownFrontLiftButt.whenPressed(new ElevateToBottom(Robot.elevatorFront));

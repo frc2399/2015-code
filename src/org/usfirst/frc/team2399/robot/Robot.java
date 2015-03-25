@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.CameraServer;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -37,7 +40,9 @@ public class Robot extends IterativeRobot {
 	public static Joystick twistStick;
 	
 	public static CANJaguar leftFront;
-
+	
+	public static CameraServer cam0;
+//all of the above thingies don't need to be static
 	// established contact switches
 
 
@@ -73,6 +78,11 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		autoncommand = new AutoTote();
+		
+		cam0 = CameraServer.getInstance();
+		cam0.setQuality(25);
+		cam0.setSize(100);
+		cam0.startAutomaticCapture();
 
 		// smartdashboard values for drivetrain and elevator
 //		SmartDashboard.putData("Drive Train", driveTrain);
@@ -116,7 +126,6 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-
 	}
 
 	/**
