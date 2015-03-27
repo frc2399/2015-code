@@ -1,6 +1,9 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.AutoBin;
+import org.usfirst.frc.team2399.robot.commands.AutoStrafe;
 import org.usfirst.frc.team2399.robot.commands.AutoTote;
+import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 //import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
@@ -96,8 +99,8 @@ public class Robot extends IterativeRobot {
 
 
 		oi = new OI();
+		
 
-		autoncommand = new AutoTote();
 		
 		cam0 = CameraServer.getInstance();
 		cam0.setQuality(25);
@@ -125,9 +128,28 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
+	/*
+	 * autoToteSelect = new DigitalInput(RobotMap.AUTO_TOTE_SELECT_INPUT);
+		   autoBinSelect = new DigitalInput(RobotMap.AUTO_BIN_SELECT_INPUT);
+		   autoDriveSelect = new DigitalInput(RobotMap.AUTO_DRIVE_AUTOZONE_SELECT_INPUT);
+		   autoStrafeSelect = new DigitalInput(RobotMap.AUTO_STRAFE_SELECT_INPUT);
+		  (non-Javadoc)
+	 * @see edu.wpi.first.wpilibj.IterativeRobot#autonomousInit()
+	 */
 
 	// schedule the autonomous command (example)
 	public void autonomousInit() {
+		if (autoToteSelect.get() == true){
+			autoncommand = new AutoTote();
+		} else if (autoBinSelect.get() == true){
+			autoncommand = new AutoBin();
+		} else if (autoDriveSelect.get() == true){
+			autoncommand = new DriveAutoZone();
+		} else if (autoStrafeSelect.get() == true){
+			autoncommand = new AutoStrafe();
+		} else {
+			autoncommand = null;
+		}
 		if (autoncommand != null) {
 			autoncommand.start();
 		}
