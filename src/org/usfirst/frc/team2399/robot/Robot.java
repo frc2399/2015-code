@@ -90,10 +90,10 @@ public class Robot extends IterativeRobot {
 
 		autoncommand = new AutoTote();
 		
-		cam0 = CameraServer.getInstance();
-		cam0.setQuality(25);
-		cam0.setSize(100);
-		cam0.startAutomaticCapture();
+//		cam0 = CameraServer.getInstance();
+//		cam0.setQuality(25);
+//		cam0.setSize(100);
+//		cam0.startAutomaticCapture();
 
 		// smartdashboard values for drivetrain and elevator
 //		SmartDashboard.putData("Drive Train", driveTrain);
