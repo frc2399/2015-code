@@ -19,7 +19,7 @@ public class AutoTote extends CommandGroup {
 		// TODO add encoders for more accurate driving
 		addSequential(new DriveTrainForward(.15, -.25, 2));
 
-		addSequential(new PickUpTote(2));
+		addSequential(new ElevateUpForTime(Robot.elevatorFront, 2));
 		addSequential(new DriveTrainForward(3.3, .25, 10));
 		addSequential(new ElevateToBottom(Robot.elevatorFront));
 		//addSequential(new DriveTrainForward(.25, .25));

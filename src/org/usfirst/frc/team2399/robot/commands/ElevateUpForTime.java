@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  *
  */
 // applies to AutoTote and DriveAutoZone
-public class PickUpTote extends CommandGroup {
+public class ElevateUpForTime extends CommandGroup {
 	private Elevator elevatorFront = Robot.elevatorFront;
 	private Elevator elevatorRear = Robot.elevatorRear;
 	
-	public PickUpTote(int wait) {
-		addSequential(new ElevateUp(Robot.elevatorFront));
+	public ElevateUpForTime(Elevator elevator, int wait) {
+		addSequential(new ElevateUp(elevator));
 		addSequential(new WaitCommand(wait));
-		addSequential(new ElevateNot(Robot.elevatorFront));
+		addSequential(new ElevateNot(elevator));
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

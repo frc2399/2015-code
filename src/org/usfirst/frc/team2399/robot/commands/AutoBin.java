@@ -11,9 +11,12 @@ public class AutoBin extends CommandGroup {
     
     public  AutoBin() {
     	
-    	addSequential(new DriveTrainForward(.15, -.25, 2));
-		addSequential(new PickUpTote(3));
-		addSequential(new DriveTrainForward(3.3, .25, 10));
+    	addSequential(new DriveTrainForward(.15, .25, 2));
+    	//opposite side of the robot, going forwards to get bin
+		addSequential(new ElevateUpForTime(Robot.elevatorRear, 3));
+		addSequential(new DriveTrainForward(3.3, -.25, 10));
+		//going backwards into the auto zone
+		//this program goes the opposite directions as AutoTote because it is a different robot side
 		addSequential(new ElevateToBottom(Robot.elevatorFront));
         // Add Commands here:
         // e.g. addSequential(new Command1());
