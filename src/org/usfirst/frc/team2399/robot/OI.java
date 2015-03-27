@@ -75,10 +75,6 @@ public class OI {
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
 
 
-		automaticLiftFrontButt.whileHeld(new ElevateUpWhenTouchingTote(
-				Robot.elevatorFront));
-		automaticLiftRearButt.whileHeld(new ElevateUpWhenTouchingTote(
-				Robot.elevatorRear));
 		
 	//	frontToteButt.whenPressed(Elevator.contactTote(Robot.elevatorFront));
 	}
