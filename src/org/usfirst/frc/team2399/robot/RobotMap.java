@@ -15,17 +15,6 @@ public class RobotMap {
 	public static final int ELEVATORREAR_JAGUARID = 1;
 	public static final int REDUCEHALFSPEED_JAGUARID = 2;
 	
-
-	public static final int FRONTCONTACT_SWITCH1ID = 4;
-	public static final int FRONTCONTACT_SWITCH2ID = 5;
-	public static final int FRONTCONTACT_SWITCH3ID = 6;
-	public static final int FRONTCONTACT_SWITCH4ID = 7;
-	
-	public static final int REARCONTACT_SWITCH1ID = 0;
-	public static final int REARCONTACT_SWITCH2ID = 1;
-	public static final int REARCONTACT_SWITCH3ID = 2;
-	public static final int REARCONTACT_SWITCH4ID = 3;
-	
 	public static final double TOTESPOT = .25;
 		
 	// DriveTrain motor Jaguar ID's

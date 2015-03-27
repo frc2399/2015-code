@@ -67,19 +67,11 @@ public class Robot extends IterativeRobot {
 		
 		
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
-									RobotMap.FRONTCONTACT_SWITCH1ID,
-									RobotMap.FRONTCONTACT_SWITCH2ID,
-									RobotMap.FRONTCONTACT_SWITCH3ID,
-									RobotMap.FRONTCONTACT_SWITCH4ID,
 									RobotMap.ENCODER_COUNTS_FRONT_ELEVATOR,
 									RobotMap.FRONT_ELEVATOR_UPPER_LIMIT,
 									RobotMap.FRONT_ELEVATOR_LOWER_LIMIT);
 
 		elevatorRear = new Elevator(RobotMap.ELEVATORREAR_JAGUARID, 
-									RobotMap.REARCONTACT_SWITCH1ID, 
-									RobotMap.REARCONTACT_SWITCH2ID,
-									RobotMap.REARCONTACT_SWITCH3ID, 
-									RobotMap.REARCONTACT_SWITCH4ID,
 									RobotMap.ENCODER_COUNTS_REAR_ELEVATOR,
 									RobotMap.REAR_ELEVATOR_UPPER_LIMIT,
 									RobotMap.REAR_ELEVATOR_LOWER_LIMIT);
