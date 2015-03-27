@@ -7,13 +7,13 @@ import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 import org.usfirst.frc.team2399.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 
@@ -39,6 +39,12 @@ public class Robot extends IterativeRobot {
 	public static Joystick joystick;
 	public static Gyro gyro;
 	public static Joystick twistStick;
+	
+	public static DigitalInput autoToteSelect;
+	public static DigitalInput autoBinSelect;
+	public static DigitalInput autoDriveSelect;
+	public static DigitalInput autoStrafeSelect;
+	//defining the digital inputs
 	
 	public static CANJaguar leftFront;
 	
@@ -76,6 +82,17 @@ public class Robot extends IterativeRobot {
 									RobotMap.REAR_ELEVATOR_UPPER_LIMIT,
 									RobotMap.REAR_ELEVATOR_LOWER_LIMIT);
 		//leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
+		/*
+		 * AUTO_STRAFE_SELECT_INPUT; //TO DO INPUT NUMBERS
+	public static final int AUTO_TOTE_SELECT_INPUT; 
+	public static final int AUTO_BIN_SELECT_INPUT; 
+	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT
+		 */ 
+		   autoToteSelect = new DigitalInput(RobotMap.AUTO_TOTE_SELECT_INPUT);
+		   autoBinSelect = new DigitalInput(RobotMap.AUTO_BIN_SELECT_INPUT);
+		   autoDriveSelect = new DigitalInput(RobotMap.AUTO_DRIVE_AUTOZONE_SELECT_INPUT);
+		   autoStrafeSelect = new DigitalInput(RobotMap.AUTO_STRAFE_SELECT_INPUT);
+		  
 
 
 		oi = new OI();
