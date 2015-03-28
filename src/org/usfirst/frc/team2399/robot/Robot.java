@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -139,13 +140,13 @@ public class Robot extends IterativeRobot {
 
 	// schedule the autonomous command (example)
 	public void autonomousInit() {
-		if (autoToteSelect.get() == true){
+		if (autoToteSelect.get() == false){
 			autoncommand = new AutoTote();
-		} else if (autoBinSelect.get() == true){
+		} else if (autoBinSelect.get() == false){
 			autoncommand = new AutoBin();
-		} else if (autoDriveSelect.get() == true){
+		} else if (autoDriveSelect.get() == false){
 			autoncommand = new DriveAutoZone();
-		} else if (autoStrafeSelect.get() == true){
+		} else if (autoStrafeSelect.get() == false){
 			autoncommand = new AutoStrafe();
 		} else {
 			autoncommand = null;
@@ -164,6 +165,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
+		new WaitCommand(.0001); //added a 1 milisecond delay when teleop starts to get the DS laptop
+		//to reduce CPU usage of the DS laptop when teleop starts so we don't lose comms
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
