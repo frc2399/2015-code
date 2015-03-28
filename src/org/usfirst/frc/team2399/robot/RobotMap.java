@@ -16,10 +16,10 @@ public class RobotMap {
 	public static final int REDUCEHALFSPEED_JAGUARID = 2;
 	
 
-	public static final int AUTO_STRAFE_SELECT_INPUT; //TO DO INPUT NUMBERS
-	public static final int AUTO_TOTE_SELECT_INPUT; 
-	public static final int AUTO_BIN_SELECT_INPUT; 
-	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT; 
+	public static final int AUTO_STRAFE_SELECT_INPUT = 2; //TO DO INPUT NUMBERS
+	public static final int AUTO_TOTE_SELECT_INPUT = 0; 
+	public static final int AUTO_BIN_SELECT_INPUT = 1; 
+	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT = 3; 
 	
 	
 	public static final double TOTESPOT = .25;
