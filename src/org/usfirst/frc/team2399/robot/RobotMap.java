@@ -21,8 +21,6 @@ public class RobotMap {
 	public static final int AUTO_BIN_SELECT_INPUT = 1; 
 	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT = 3; 
 	
-	
-	public static final double TOTESPOT = .25;
 		
 	// DriveTrain motor Jaguar ID's
 	public static final int LEFTFRONT_JAGUARID = 4;

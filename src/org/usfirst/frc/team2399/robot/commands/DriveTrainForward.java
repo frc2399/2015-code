@@ -3,12 +3,11 @@ package org.usfirst.frc.team2399.robot.commands;
 import org.usfirst.frc.team2399.robot.subsystems.*;
 import org.usfirst.frc.team2399.robot.Robot;
 
-import edu.wpi.first.wpilibj.Gyro;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveTrainForward extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
-	private Gyro gyro;
 	private double twist;
 	private double lf, lb, rb, rf;
 	private double distance, speed;
@@ -25,7 +24,6 @@ public class DriveTrainForward extends Command {
 	public DriveTrainForward(double distance, double speed, double twist, double timeout) {
 		requires(Robot.driveTrain);
 		setTimeout(timeout);
-		gyro = driveTrain.getGyro();
 		this.distance = distance;  //the instance of distance being passed 
 		//through as a parameter is equal to the private variable distance
 		this.twist = twist;

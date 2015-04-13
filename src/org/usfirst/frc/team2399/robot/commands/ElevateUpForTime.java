@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2399.robot.commands;
 
-import org.usfirst.frc.team2399.robot.Robot;
+
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
  */
 // applies to AutoTote and DriveAutoZone
 public class ElevateUpForTime extends CommandGroup {
-	private Elevator elevatorFront = Robot.elevatorFront;
-	private Elevator elevatorRear = Robot.elevatorRear;
 	
 	public ElevateUpForTime(Elevator elevator, int wait) {
 		addSequential(new ElevateUp(elevator));

@@ -83,10 +83,6 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		
 		drivetrainGyro = g;
 
-		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
-		// what the drivetrain encoder is
-
-		// drivetrainGyro = RobotMap.gyro;
 	}
 
 	public void resetGyro() {
