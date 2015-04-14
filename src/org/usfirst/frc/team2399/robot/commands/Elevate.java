@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-// pulls new values from Robot.java/ests private instances and sets speeds
-// PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
 	public class ContactButt {
 
@@ -20,7 +18,6 @@ public abstract class Elevate extends Command {
 
 	}
 
-	// est variables for use
 	protected double speed;
 	protected Elevator elevator;
 	
@@ -33,8 +30,7 @@ public abstract class Elevate extends Command {
 		requires(elevator);
 		
 		
-		this.speed = speed;// TODO ask why we need to set it like this, I can't
-							// remember rn
+		this.speed = speed;
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

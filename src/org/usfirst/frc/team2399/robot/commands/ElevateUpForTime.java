@@ -16,6 +16,7 @@ public class ElevateUpForTime extends CommandGroup {
 		addSequential(new ElevateUp(elevator));
 		addSequential(new WaitCommand(wait));
 		addSequential(new ElevateNot(elevator));
+		
 		// Add Commands here:
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());

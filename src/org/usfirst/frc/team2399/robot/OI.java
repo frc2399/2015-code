@@ -13,19 +13,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 
-	Joystick driveStick = new Joystick(1);// new joystick
-	Joystick twistStick = new Joystick(2);//
+	Joystick driveStick = new Joystick(1);
+	Joystick twistStick = new Joystick(2);
 
-
-	// reset gyro button
 	private Button resetGyroButt = new JoystickButton(driveStick, 7);
 
-	// buttons for sliding up and down are assigned, could be reassigned for
-	// clarity.
-
-	//made a button called reduceSpeedButt and mapped it to the joystick
-	//i made it public so I could use it in JoystickDrive
-	//probably shouldn't have done that but right now I don't know how to work around that
 	private Button slideUpFrontButt = new JoystickButton(driveStick, 3);
 	private Button slideDownFrontButt = new JoystickButton(driveStick, 2);
 	private Button slideUpRearButt = new JoystickButton(twistStick, 3);
@@ -37,16 +29,13 @@ public class OI {
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 
 	private Button frontTwoToteButt = new JoystickButton(twistStick, 7);
-//driveStick port is 1 and is also known as the blue side of robot
-//twistStick port is 2 and is also known as the pink side of robot
+	//driveStick port is 1 and is also known as the blue side of robot
+	//twistStick port is 2 and is also known as the pink side of robot
 
-	double x;// est doubles so we can use them in other parts of the program
+	double x;
 	double y;
 	double twist;
 
-	// established doubles so we can use them in other parts of the
-	// program
-	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());		
 		robotOrientedButt.whenPressed(new JoystickDrive());
@@ -59,13 +48,8 @@ public class OI {
 		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
 		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
 
-
-		
-	//	frontToteButt.whenPressed(Elevator.contactTote(Robot.elevatorFront));
 	}
 
-	// doubles and booleans for joystick values
-	// these get the "speed" from how far the joystick is pushed
 	public double getForwardSpeed() {
 		return -driveStick.getY();
 	}

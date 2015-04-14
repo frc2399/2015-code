@@ -21,7 +21,7 @@ public class ElevateToHeight extends Elevate {
     protected void initialize() {
     	double currentPos = elevator.getPositionInches(); //getting the current position
     	if (currentPos < height){
-    		speed = .65; //figure out if we have a positive or a negative speed aka going up or down
+    		speed = .65; 
     	} else { 
     		speed = -.65;
     	}

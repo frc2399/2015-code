@@ -7,23 +7,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-
-
-// please read the comments below- they explain what's going on in the code
 public class AutoTote extends CommandGroup {
 
 	public AutoTote() {
 		addSequential(new GyroReset());
-
-		// TODO add elevator reset
-		// TODO add encoders for more accurate driving
 		addSequential(new DriveDistanceStraight(.15, -.25, 0, 2));
-
 		addSequential(new ElevateUpForTime(Robot.elevatorFront, 2));
 		addSequential(new DriveDistanceStraight(3.2, .25, 0, 10));
 		addSequential(new DriveDistanceStraight(.50, .125, 87, 3));
 		addSequential(new ElevateToBottom(Robot.elevatorFront));
 		//addSequential(new DriveTrainForward(.25, .25));
+		
+		
 		// drive forward
 		// pickup tote
 		// drive backwards

@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
+
 // sets this instance of elevatorMotor to the public instance of elevatorMotor
-// this code is much simpler and it's very nice
 // All limit switch code has been removed, because limit switches stop Jags
 // automatically when pressed.
 public class Elevator extends Subsystem {
-	// private instances of drive, elevatormotor/encoder
+	
 	private CANJaguar elevatorMotor;
 
 	private boolean positionValid;
@@ -26,10 +26,7 @@ public class Elevator extends Subsystem {
 
 	private double positionOffset;
 
-	
-
-	// sets elevator to one from Robot Map
-	// this was moved from RobotMap to here to fix an error- working fine now!
+	// elevator was moved from RobotMap to here to fix an error- working fine now!
 	// this refers to the current instance of the class
 	// encoder position is a double
 	public Elevator(int elevatorMotorNum, int encoderCounts, double upperLimit,
@@ -44,11 +41,12 @@ public class Elevator extends Subsystem {
 		} else {
 			this.upperLimit = lowerLimit;
 			this.lowerLimit = upperLimit;
-		} // this if block checks to make sure that the two limit values are
-			// correct
-			// makes sure upperLimit is actually the bigger and vice versa with
-			// lowerLimit
-			// kQuad tells it that it has a Quad encoder attached
+		} 
+		// this if block checks to make sure that the two limit values are
+		// correct
+		// makes sure upperLimit is actually the bigger and vice versa with
+		// lowerLimit
+		// kQuad tells it that it has a Quad encoder attached
 
 		positionOffset = 0;
 
@@ -85,7 +83,7 @@ public class Elevator extends Subsystem {
 	}
 
 	// elevator motor is set to the up speed
-	// elevator depend on the motor thats been passed to it- now works for all
+	// elevator depends on the motor thats been passed to it- now works for all
 	// of the motors
 	public void setSpeed(double elevatorSpeed) {
 
@@ -119,7 +117,7 @@ public class Elevator extends Subsystem {
 	}
 
 	public double getPositionInches() {
-		return getPosition() * 1.194 * Math.PI + 8.5; // returns the current
+		return getPosition() * 1.194 * Math.PI + 8.5; 	// returns the current
 														// position as measured
 														// in inches
 	}

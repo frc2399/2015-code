@@ -27,12 +27,10 @@ import edu.wpi.first.wpilibj.CameraServer;
 
 // THIS CLASS HAS REPLACED COMMANDBASE/COMMANDS
 public class Robot extends IterativeRobot {
-	// established static variables
 
 	public static OI oi;
 
 	public static DriveTrain driveTrain;
-	// public static Button reduceSpeedButt;
 
 	public static Elevator elevatorFront;
 	public static Elevator elevatorRear;
@@ -44,12 +42,11 @@ public class Robot extends IterativeRobot {
 	public static DigitalInput autoBinSelect;
 	public static DigitalInput autoDriveSelect;
 	public static DigitalInput autoStrafeSelect;
-	//defining the digital inputs
 	
 	
 	public static CameraServer cam0;
-//all of the above thingies don't need to be static
-	// established contact switches
+	//TODO Ask for clarification on: all of the above thingies don't need to be static
+	
 
 
 	private Command autoncommand;
@@ -63,8 +60,6 @@ public class Robot extends IterativeRobot {
 
 	public void robotInit() {
 
-		// established new instances of drivetrain, elevator, OI and an
-		// autonomus command
 		gyro = new Gyro(RobotMap.GYRO_PORT);
 
 
@@ -139,7 +134,8 @@ public class Robot extends IterativeRobot {
 
 	//TODO figure out if this is actually doing what we want it to do
 	public void teleopInit() {
-		new WaitCommand(.0001); //added a 1 milisecond delay when teleop starts to get the DS laptop
+		new WaitCommand(.0001); 
+		//added a 1 milisecond delay when teleop starts to get the DS laptop
 		//to reduce CPU usage of the DS laptop when teleop starts so we don't lose comms
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to

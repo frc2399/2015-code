@@ -34,7 +34,6 @@ public class JoystickDrive extends Command {
 		double x;
 		double y;
 
-		// dead-bands set individually to their values
 		twist = cubic(Robot.oi.getTwistSpeed()) * .5;
 		x = cubic(Robot.oi.getSideSpeed());
 		y = cubic(Robot.oi.getForwardSpeed());
@@ -50,10 +49,13 @@ public class JoystickDrive extends Command {
 			double halfTwist = speedAdjust * twist;
 			
 			drive(halfX, halfY, halfTwist);
-			//this says that if the button is pressed
+			//this says that if the button is pressed,
 			//set the speed of the x y and twist
 			//to half of their original values
-	} else{ //if it isn't pressed then use the actual x y and twist values
+	} 
+		else
+		{ 
+			//if it isn't pressed then use the actual x y and twist values
 			drive(x, y, twist);
 	}
 //		SmartDashboard.putNumber("Left Front motor position", driveTrain.getLeftFrontPosition());
@@ -90,9 +92,9 @@ public class JoystickDrive extends Command {
 	// made for different motions individually.
 	// established deadbandscale so twist motor power can be scaled (makes turns
 	// less jerky)
-	// TODO ask drivers if they want the scaling on a switch/button (later)
-	// scaling for drive as well that can be turned on and off
+	// scaling for drive that can be turned on and off
 
+	// dead-bands set individually to their values
 	public static double deadband(double input, double deadbandpercent,
 			double deadbandscale) {
 		double deadbandconstant = deadbandpercent;
