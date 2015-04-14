@@ -6,7 +6,7 @@ import org.usfirst.frc.team2399.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveTrainForward extends Command {
+public class DriveDistanceStraight extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private double twist;
 	private double lf, lb, rb, rf;
@@ -21,7 +21,7 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward(double distance, double speed, double twist, double timeout) {
+	public DriveDistanceStraight(double distance, double speed, double twist, double timeout) {
 		requires(Robot.driveTrain);
 		setTimeout(timeout);
 		this.distance = distance;  //the instance of distance being passed 
