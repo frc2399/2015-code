@@ -3,7 +3,7 @@ package org.usfirst.frc.team2399.robot;
 import org.usfirst.frc.team2399.robot.commands.AutoBin;
 import org.usfirst.frc.team2399.robot.commands.AutoStrafe;
 import org.usfirst.frc.team2399.robot.commands.AutoTote;
-import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
+import org.usfirst.frc.team2399.robot.commands.AutoDrive;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 import org.usfirst.frc.team2399.robot.RobotMap;
@@ -118,7 +118,7 @@ public class Robot extends IterativeRobot {
 		} else if (autoBinSelect.get() == false){
 			autoncommand = new AutoBin();
 		} else if (autoDriveSelect.get() == false){
-			autoncommand = new DriveAutoZone();
+			autoncommand = new AutoDrive();
 		} else if (autoStrafeSelect.get() == false){
 			autoncommand = new AutoStrafe();
 		} else {
