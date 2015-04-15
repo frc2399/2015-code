@@ -10,8 +10,10 @@ tmp/
 *.swp
 *~.nib
 
+.classpath
 .settings/
 .loadpath
+sysProps.xml
 
 # External tool builders
 .externalToolBuilders/
