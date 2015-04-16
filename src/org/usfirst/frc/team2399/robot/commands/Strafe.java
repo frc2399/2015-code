@@ -8,10 +8,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StrafeRight extends Command {
+public class Strafe extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
+	private double speed;
 
-	public StrafeRight() {
+	public Strafe(double speed) {
+		this.speed = speed;
 		requires(Robot.driveTrain);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -23,13 +25,13 @@ public class StrafeRight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		driveTrain.driveRobotOriented(.25, 0, 0);
+		driveTrain.driveRobotOriented(speed, 0, 0);
 
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 	// Called once after isFinished returns true

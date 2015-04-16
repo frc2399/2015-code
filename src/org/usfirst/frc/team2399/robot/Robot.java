@@ -1,19 +1,23 @@
 package org.usfirst.frc.team2399.robot;
 
+import org.usfirst.frc.team2399.robot.commands.AutoBin;
+import org.usfirst.frc.team2399.robot.commands.AutoStrafe;
 import org.usfirst.frc.team2399.robot.commands.AutoTote;
+import org.usfirst.frc.team2399.robot.commands.DriveAutoZone;
 //import org.usfirst.frc.team2399.robot.OI;
 import org.usfirst.frc.team2399.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 import org.usfirst.frc.team2399.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.CameraServer;
 
@@ -38,6 +42,12 @@ public class Robot extends IterativeRobot {
 	public static Joystick joystick;
 	public static Gyro gyro;
 	public static Joystick twistStick;
+	
+	public static DigitalInput autoToteSelect;
+	public static DigitalInput autoBinSelect;
+	public static DigitalInput autoDriveSelect;
+	public static DigitalInput autoStrafeSelect;
+	//defining the digital inputs
 	
 	public static CANJaguar leftFront;
 	
@@ -66,18 +76,28 @@ public class Robot extends IterativeRobot {
 		
 		
 		elevatorFront = new Elevator(RobotMap.ELEVATORFRONT_JAGUARID,
-									RobotMap.FRONTCONTACT_SWITCH1ID,
-									RobotMap.FRONTCONTACT_SWITCH2ID,
-									RobotMap.FRONTCONTACT_SWITCH3ID,
-									RobotMap.FRONTCONTACT_SWITCH4ID,
 									RobotMap.ENCODER_COUNTS_FRONT_ELEVATOR,
 									RobotMap.FRONT_ELEVATOR_UPPER_LIMIT,
 									RobotMap.FRONT_ELEVATOR_LOWER_LIMIT);
 
-		
-		oi = new OI();
+		//leftFront = new CANJaguar(RobotMap.LEFTFRONT_JAGUARID);
+		/*
+		 * AUTO_STRAFE_SELECT_INPUT; //TO DO INPUT NUMBERS
+	public static final int AUTO_TOTE_SELECT_INPUT; 
+	public static final int AUTO_BIN_SELECT_INPUT; 
+	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT
+		 */ 
+		   autoToteSelect = new DigitalInput(RobotMap.AUTO_TOTE_SELECT_INPUT);
+		   autoBinSelect = new DigitalInput(RobotMap.AUTO_BIN_SELECT_INPUT);
+		   autoDriveSelect = new DigitalInput(RobotMap.AUTO_DRIVE_AUTOZONE_SELECT_INPUT);
+		   autoStrafeSelect = new DigitalInput(RobotMap.AUTO_STRAFE_SELECT_INPUT);
+		  
 
-		autoncommand = new AutoTote();
+
+
+		oi = new OI();
+		
+
 		
 		cam0 = CameraServer.getInstance();
 		cam0.setQuality(25);
@@ -105,9 +125,28 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
+	/*
+	 * autoToteSelect = new DigitalInput(RobotMap.AUTO_TOTE_SELECT_INPUT);
+		   autoBinSelect = new DigitalInput(RobotMap.AUTO_BIN_SELECT_INPUT);
+		   autoDriveSelect = new DigitalInput(RobotMap.AUTO_DRIVE_AUTOZONE_SELECT_INPUT);
+		   autoStrafeSelect = new DigitalInput(RobotMap.AUTO_STRAFE_SELECT_INPUT);
+		  (non-Javadoc)
+	 * @see edu.wpi.first.wpilibj.IterativeRobot#autonomousInit()
+	 */
 
 	// schedule the autonomous command (example)
 	public void autonomousInit() {
+		if (autoToteSelect.get() == false){
+			autoncommand = new AutoTote();
+		} else if (autoBinSelect.get() == false){
+			autoncommand = new AutoBin();
+		} else if (autoDriveSelect.get() == false){
+			autoncommand = new DriveAutoZone();
+		} else if (autoStrafeSelect.get() == false){
+			autoncommand = new AutoStrafe();
+		} else {
+			autoncommand = null;
+		}
 		if (autoncommand != null) {
 			autoncommand.start();
 		}
@@ -122,6 +161,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
+		new WaitCommand(.0001); //added a 1 milisecond delay when teleop starts to get the DS laptop
+		//to reduce CPU usage of the DS laptop when teleop starts so we don't lose comms
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove

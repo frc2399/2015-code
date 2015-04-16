@@ -27,11 +27,6 @@ public class Elevator extends Subsystem {
 	
 	private double positionOffset;
 
-	private DigitalInput leftOuterSwitch;
-	private DigitalInput leftInnerSwitch;
-	private DigitalInput rightInnerSwitch;
-	private DigitalInput rightOuterSwitch;
-	
 	private int encoderCounts;
 	
 	private double toteSpot;
@@ -42,10 +37,6 @@ public class Elevator extends Subsystem {
 	// this refers to the current instance of the class
 	// encoder position is a double
 	public Elevator(int elevatorMotorNum, 
-			int leftOuterSwitchNum,
-			int leftInnerSwitchNum, 
-			int rightInnerSwitchNum,
-			int rightOuterSwitchNum, 
 			int encoderCounts, 
 			double upperLimit,
 			double lowerLimit) {
@@ -69,11 +60,6 @@ public class Elevator extends Subsystem {
 		this.encoderCounts = encoderCounts;
 		
 		positionOffset = 0;
-		
-		leftOuterSwitch = new DigitalInput(leftOuterSwitchNum);
-		leftInnerSwitch = new DigitalInput(leftInnerSwitchNum);
-		rightInnerSwitch = new DigitalInput(rightInnerSwitchNum);
-		rightOuterSwitch = new DigitalInput(rightOuterSwitchNum);
 		
 		elevatorMotor.setPercentMode(CANJaguar.kQuadEncoder, encoderCounts);
 		elevatorMotor.enableControl();
@@ -171,10 +157,6 @@ public class Elevator extends Subsystem {
 	public boolean isPositionValid(){
 		return positionValid; //returns the balue of positionValid
 	}
-	public boolean isTouchingTote() {
-		return !leftOuterSwitch.get() && !rightOuterSwitch.get()
-				&& leftInnerSwitch.get() && rightInnerSwitch.get();
-	}
 	public double enforceLimits(double elevatorSpeed){
 		if (positionValid == true) {
 			if (elevatorSpeed > 0) {
@@ -189,9 +171,5 @@ public class Elevator extends Subsystem {
 		}
 		return elevatorSpeed;
 	}
-	public void contactTote(Elevator elevator){
-		if(isTouchingTote() == true && getPosition() < toteSpot){
-			elevatorMotor.set(toteSpot);
-		}
-	}
+	
 }
