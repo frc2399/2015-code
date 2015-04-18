@@ -28,9 +28,13 @@ public class OI {
 	
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 
-	private Button frontTwoToteButt = new JoystickButton(twistStick, 7);
-	//driveStick port is 1 and is also known as the blue side of robot
-	//twistStick port is 2 and is also known as the pink side of robot
+	private Button frontThreeToteButt = new JoystickButton(twistStick, 10);
+	//^ is not currently being used
+	
+	//driveStick port is 1 and is also known as the blue side of robot (front)
+	//twistStick port is 2 and is also known as the pink side of robot (rear)
+	//tote height: 13 in
+	
 
 	double x;
 	double y;
@@ -41,15 +45,15 @@ public class OI {
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
 		
-		frontTwoToteButt.whenPressed(new ElevateToHeight(Robot.elevatorFront, 26));
+		frontThreeToteButt.whenPressed(new ElevateToHeight(Robot.elevatorRear, 41));
 		
-		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
-		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
-		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear));
-		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear));
+		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront, liftTurboMode));
+		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront, liftTurboMode));
+		slideUpRearButt.whileHeld(new ElevateUp(Robot.elevatorRear, liftTurboMode));
+		slideDownRearButt.whileHeld(new ElevateDown(Robot.elevatorRear, liftTurboMode));
 
 	}
-
+	
 	public double getForwardSpeed() {
 		return -driveStick.getY();
 	}
@@ -61,12 +65,11 @@ public class OI {
 	public double getTwistSpeed() {
 		return twistStick.getX();
 	}
+	//methods to tell if reduce speed button or turbo button have been pressed
+
 	
 	public boolean getReduceSpeed() {
 		return reduceSpeedButt.get();
-	}
-	public boolean getLiftTurboMode(){
-		return liftTurboMode.get();
 	}
 	/*OTHER BOOLEANS
 	 * button for the front lift that makes it go to the top and stop

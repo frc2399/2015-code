@@ -3,6 +3,7 @@ package org.usfirst.frc.team2399.robot.commands;
 
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
@@ -13,7 +14,7 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class ElevateUpForTime extends CommandGroup {
 	
 	public ElevateUpForTime(Elevator elevator, int wait) {
-		addSequential(new ElevateUp(elevator));
+		addSequential(new ElevateUp(elevator, null));
 		addSequential(new WaitCommand(wait));
 		addSequential(new ElevateNot(elevator));
 		

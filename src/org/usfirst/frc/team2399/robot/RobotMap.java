@@ -11,6 +11,9 @@ package org.usfirst.frc.team2399.robot;
 public class RobotMap {
 	// all caps and underscores is recommended
 	
+	public static final double LIFT_DEFAULT_SPEED = 0.65;
+	public static final double LIFT_TURBO_SPEED = 1.0;
+	
 	//Elevator motor Jaguar ID's
 	public static final int ELEVATORFRONT_JAGUARID = 5;
 	public static final int ELEVATORREAR_JAGUARID = 1;

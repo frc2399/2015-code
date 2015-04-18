@@ -17,7 +17,7 @@ public class AutoBin extends CommandGroup {
 		addSequential(new DriveDistanceStraight(3.3, -.25, 0, 10));
 		//going backwards into the auto zone
 		//this program goes the opposite directions as AutoTote because it is a different robot side
-		addSequential(new ElevateToBottom(Robot.elevatorRear));
+		addSequential(new ElevateToBottom(Robot.elevatorRear, null));
 		
         // Add Commands here:
         // e.g. addSequential(new Command1());

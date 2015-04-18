@@ -15,7 +15,7 @@ public class AutoTote extends CommandGroup {
 		addSequential(new ElevateUpForTime(Robot.elevatorFront, 2));
 		addSequential(new DriveDistanceStraight(3.2, .25, 0, 10));
 		addSequential(new DriveDistanceStraight(.50, .125, 87, 3));
-		addSequential(new ElevateToBottom(Robot.elevatorFront));
+		addSequential(new ElevateToBottom(Robot.elevatorFront, null));
 		//addSequential(new DriveTrainForward(.25, .25));
 		
 		
