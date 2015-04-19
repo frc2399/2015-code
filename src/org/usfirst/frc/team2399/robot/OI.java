@@ -45,7 +45,8 @@ public class OI {
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
 		
-		frontThreeToteButt.whenPressed(new ElevateToHeight(Robot.elevatorRear, 41));
+
+		frontThreeToteButt.whenPressed(new ElevateToHeight(Robot.elevatorRear, 41, LiftSpeeds.turboOnly()));
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront, liftTurboMode));
 		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront, liftTurboMode));

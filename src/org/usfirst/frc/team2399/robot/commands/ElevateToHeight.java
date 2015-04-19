@@ -1,29 +1,36 @@
 package org.usfirst.frc.team2399.robot.commands;
 
+import org.usfirst.frc.team2399.robot.LiftSpeeds;
 import org.usfirst.frc.team2399.robot.subsystems.Elevator;
+
+import edu.wpi.first.wpilibj.buttons.Button;
 
 
 
 /**
  *
  */
-public class ElevateToHeight extends Elevate {
+public class ElevateToHeight extends ElevateTwoSpeeds {
 	private double height;
 
     public ElevateToHeight(Elevator elevator, double height) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	super(elevator, 0); 
+    	super(elevator, UP); 
     	this.height = height; //the variable height is equal to the parameter height
     }
 
+    public ElevateToHeight(Elevator elevator, double height, LiftSpeeds liftSpeeds){
+    	super(elevator, UP, liftSpeeds);
+    	this.height = height;
+    }
     // Called just before this Command runs the first time
     protected void initialize() {
     	double currentPos = elevator.getPositionInches(); //getting the current position
     	if (currentPos < height){
-    		speed = .65; 
+    		setDirection(UP); 
     	} else { 
-    		speed = -.65;
+    		setDirection(DOWN);
     	}
     }
 

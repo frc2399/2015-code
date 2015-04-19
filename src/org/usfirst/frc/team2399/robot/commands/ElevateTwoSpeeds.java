@@ -18,12 +18,23 @@ public class ElevateTwoSpeeds extends Elevate {
 	public ElevateTwoSpeeds(Elevator elevator, Button turboButt, boolean direction) {
 		this(elevator, turboButt, direction, LiftSpeeds.defaultSpeeds());
 	}
-		
+
 	public ElevateTwoSpeeds(Elevator elevator, Button turboButt, boolean direction, LiftSpeeds speeds) {
 		super(elevator, 0);
 		this.turboButt = turboButt;
 		this.direction = direction;
 		liftSpeed = speeds;
+	}
+	
+	public ElevateTwoSpeeds(Elevator elevator, boolean direction, LiftSpeeds speeds){
+		super(elevator, 0);
+		this.direction = direction;
+		liftSpeed = speeds;
+		turboButt = null;
+	}
+	
+	public ElevateTwoSpeeds(Elevator elevator, boolean direction){
+		this(elevator, direction, LiftSpeeds.defaultSpeeds());
 	}
 
 	protected void execute() {
@@ -42,6 +53,10 @@ public class ElevateTwoSpeeds extends Elevate {
 		}
 		
 		super.execute();
+	}
+	
+	protected void setDirection(boolean newDirection){
+		direction = newDirection;
 	}
 
 }
