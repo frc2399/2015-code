@@ -10,7 +10,9 @@ package org.usfirst.frc.team2399.robot;
 
 public class RobotMap {
 	// all caps and underscores is recommended
-	// elevator jags have been assigned to their ID's
+	
+	
+	//Elevator motor Jaguar ID's
 	public static final int ELEVATORFRONT_JAGUARID = 5;
 	public static final int ELEVATORREAR_JAGUARID = 1;
 	public static final int REDUCEHALFSPEED_JAGUARID = 2;
@@ -21,8 +23,6 @@ public class RobotMap {
 	public static final int AUTO_BIN_SELECT_INPUT = 1; 
 	public static final int AUTO_DRIVE_AUTOZONE_SELECT_INPUT = 3; 
 	
-	
-	public static final double TOTESPOT = .25;
 		
 	// DriveTrain motor Jaguar ID's
 	public static final int LEFTFRONT_JAGUARID = 4;
@@ -31,7 +31,6 @@ public class RobotMap {
 	public static final int RIGHTBACK_JAGUARID = 7;
 
 	
-	// Gyro established
 	public static final int GYRO_PORT = 0;
 	
 	public static final int ENCODER_COUNTS_FRONT_ELEVATOR = 360;

@@ -1,12 +1,11 @@
 package org.usfirst.frc.team2399.robot;
 
 import org.usfirst.frc.team2399.robot.commands.*;
-import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.CameraServer;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -14,19 +13,11 @@ import edu.wpi.first.wpilibj.CameraServer;
  */
 public class OI {
 
-	Joystick driveStick = new Joystick(1);// new joystick
-	Joystick twistStick = new Joystick(2);//
+	Joystick driveStick = new Joystick(1);
+	Joystick twistStick = new Joystick(2);
 
-
-	// reset gyro button
 	private Button resetGyroButt = new JoystickButton(driveStick, 7);
 
-	// buttons for sliding up and down are assigned, could be reassigned for
-	// clarity.
-
-	//made a button called reduceSpeedButt and mapped it to the joystick
-	//i made it public so I could use it in JoystickDrive
-	//probably shouldn't have done that but right now I don't know how to work around that
 	private Button slideUpFrontButt = new JoystickButton(driveStick, 3);
 	private Button slideDownFrontButt = new JoystickButton(driveStick, 2);
 	private Button slideUpRearButt = new JoystickButton(twistStick, 3);
@@ -38,40 +29,32 @@ public class OI {
 
 	private Button liftTurboMode = new JoystickButton(twistStick, 1);
 
-	private Button frontTwoToteButt = new JoystickButton(twistStick, 7);
-//driveStick port is 1 and is also known as the blue side of robot
-//twistStick port is 2 and is also known as the pink side of robot
+	private Button frontThreeToteButt = new JoystickButton(twistStick, 10);
+	//^ is not currently being used
+	
+	//driveStick port is 1 and is also known as the blue side of robot (front)
+	//twistStick port is 2 and is also known as the pink side of robot (rear)
+	//tote height: 13 in
+	
 
-	double x;// est doubles so we can use them in other parts of the program
+	double x;
 	double y;
 	double twist;
 
-	private Button automaticLiftFrontButt = new JoystickButton(twistStick, 9);
-	private Button automaticLiftRearButt = new JoystickButton(twistStick, 8);
-
-
-	// established doubles so we can use them in other parts of the
-	// program
-	// buttons for gyro reset, elevator up and down
 	public OI() {
 		resetGyroButt.whenPressed(new GyroReset());		
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
 		
-		frontTwoToteButt.whenPressed(new ElevateToHeight(Robot.elevatorFront, 26));
+
+
+		frontThreeToteButt.whenPressed(new ElevateToHeight(Robot.elevatorFront, 41, LiftSpeeds.turboOnly()));
 		
-
-		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront));
-		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront));
-
-
-
+		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront, liftTurboMode));
+		slideDownFrontButt.whileHeld(new ElevateDown(Robot.elevatorFront, liftTurboMode));
 		
-	//	frontToteButt.whenPressed(Elevator.contactTote(Robot.elevatorFront));
 	}
-
-	// doubles and booleans for joystick values
-	// these get the "speed" from how far the joystick is pushed
+	
 	public double getForwardSpeed() {
 		return driveStick.getY();
 		//changed value into forward instead of backward
@@ -85,12 +68,11 @@ public class OI {
 	public double getTwistSpeed() {
 		return twistStick.getX();
 	}
+	//methods to tell if reduce speed button or turbo button have been pressed
+
 	
 	public boolean getReduceSpeed() {
 		return reduceSpeedButt.get();
-	}
-	public boolean getLiftTurboMode(){
-		return liftTurboMode.get();
 	}
 	/*OTHER BOOLEANS
 	 * button for the front lift that makes it go to the top and stop

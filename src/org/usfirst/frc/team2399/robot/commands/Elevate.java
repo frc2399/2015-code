@@ -5,36 +5,22 @@ import org.usfirst.frc.team2399.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-
 /**
  *
  */
-// pulls new values from Robot.java/ests private instances and sets speeds
-// PLEASE NOTE: LIMIT SWITCHES HAVE BEEN REMOVED BC JAGS CAN DO IT FOR US
 public abstract class Elevate extends Command {
-	public class ContactButt {
 
-		public ContactButt() {
-			// TODO Auto-generated constructor stub
-		}
-
-	}
-
-	// est variables for use
 	protected double speed;
 	protected Elevator elevator;
-	
-	
+
 	// protected so not affected by other commands, etc.
 	protected Elevate(Elevator elevator, double speed) {
 		// makes sure we can interrupt it
 		setInterruptible(true);
 		this.elevator = elevator;
 		requires(elevator);
-		
-		
-		this.speed = speed;// TODO ask why we need to set it like this, I can't
-							// remember rn
+
+		this.speed = speed;
 
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -48,17 +34,9 @@ public abstract class Elevate extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	// set the speed to "speed"
 	protected void execute() {
-		if (Robot.oi.getLiftTurboMode() == true){
-			double speedIncrease = 1.6;
-			double increasedSpeed = speed * speedIncrease;
-			elevator.setSpeed(increasedSpeed);
-		}
-		else {
-			elevator.setSpeed(speed);	
-		}
-		
+		elevator.setSpeed(speed);
+
 	}
-	
 
 	// Make this return true when this Command no longer needs to run execute()
 

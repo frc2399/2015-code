@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 // subsytems are parts of the robot that move
-public class DriveTrain extends Subsystem {// extends DriveTrain
+public class DriveTrain extends Subsystem {
 
-	// encoders, jags, and drive est; new Gyro at port 0
-	// TODO will need to put correct encoder code in
+	//new Gyro at port 0
+	//TODO is this needed with one established in RobotMap @ port 0?
 	
 	public boolean robotDrive = false;
 	public boolean fieldDrive = false;
@@ -83,10 +83,6 @@ public class DriveTrain extends Subsystem {// extends DriveTrain
 		
 		drivetrainGyro = g;
 
-		// drivetrainEncoder = RobotMap.MOTOR_ENCODER;
-		// what the drivetrain encoder is
-
-		// drivetrainGyro = RobotMap.gyro;
 	}
 
 	public void resetGyro() {

@@ -3,12 +3,10 @@ package org.usfirst.frc.team2399.robot.commands;
 import org.usfirst.frc.team2399.robot.subsystems.*;
 import org.usfirst.frc.team2399.robot.Robot;
 
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveTrainForward extends Command {
+public class DriveDistanceStraight extends Command {
 	private DriveTrain driveTrain = Robot.driveTrain;
-	private Gyro gyro;
 	private double twist;
 	private double lf, lb, rb, rf;
 	private double distance, speed;
@@ -22,12 +20,13 @@ public class DriveTrainForward extends Command {
 	// private Accelerometer acceleromter;
 	// private Timer timer;
 
-	public DriveTrainForward(double distance, double speed, double twist, double timeout) {
+	public DriveDistanceStraight(double distance, double speed, double twist,
+			double timeout) {
 		requires(Robot.driveTrain);
 		setTimeout(timeout);
-		gyro = driveTrain.getGyro();
-		this.distance = distance;  //the instance of distance being passed 
-		//through as a parameter is equal to the private variable distance
+		this.distance = distance;
+		// the instance of distance being passed
+		// through as a parameter is equal to the private variable distance
 		this.twist = twist;
 		this.speed = speed;
 		// acceleromter = new Accelerometer(RobotMap.accelerometer);
@@ -42,24 +41,25 @@ public class DriveTrainForward extends Command {
 	}
 
 	@Override
+	
 	// x = 0, y = 25% power, twist = kp * (sp-pv)
 	// kp = a number that we need to figure out (keeps robot straight)
 	// pv = gyro angle (the angle that you are actually at)
 	// sp = your angle that you want to be at
 	// sp-pv = E
 	protected void execute() {
-	
-			driveTrain.driveRobotOriented(0, speed, twist);
-	
+
+		driveTrain.driveRobotOriented(0, speed, twist);
+
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (Math.abs(driveTrain.getLeftFrontPosition()-lf)>distance) &&
-				(Math.abs(driveTrain.getLeftBackPosition()-lb)>distance) &&
-				(Math.abs(driveTrain.getRightBackPosition()-rb)>distance) &&
-				(Math.abs(driveTrain.getRightFrontPosition()-rf)>distance);
+		return (Math.abs(driveTrain.getLeftFrontPosition() - lf) > distance)
+				&& (Math.abs(driveTrain.getLeftBackPosition() - lb) > distance)
+				&& (Math.abs(driveTrain.getRightBackPosition() - rb) > distance)
+				&& (Math.abs(driveTrain.getRightFrontPosition() - rf) > distance);
 	}
 
 	@Override
