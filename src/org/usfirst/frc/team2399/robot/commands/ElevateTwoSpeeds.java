@@ -18,7 +18,16 @@ public class ElevateTwoSpeeds extends Elevate {
 	public ElevateTwoSpeeds(Elevator elevator, Button turboButt, boolean direction) {
 		this(elevator, turboButt, direction, LiftSpeeds.defaultSpeeds());
 	}
-		
+	
+	// In order to allow limited access to set the direction of the elevator,
+	// we'll add a setter method that can only be accessed from subclasses of
+	// ElevateTwoSpeeds.  
+	
+	// Can anyone write such a setter method?  Remember, the three keywords for
+	// describing accessibility of a setter method:
+	// public, private and protected
+	
+	
 	public ElevateTwoSpeeds(Elevator elevator, Button turboButt, boolean direction, LiftSpeeds speeds) {
 		super(elevator, 0);
 		this.turboButt = turboButt;

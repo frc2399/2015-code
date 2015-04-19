@@ -45,6 +45,9 @@ public class OI {
 		robotOrientedButt.whenPressed(new JoystickDrive());
 		fieldOrientedButt.whenPressed(new FieldOrientedDrive());
 		
+		// in order to be able to use our LiftSpeeds stuff, we need to convert
+		// ElevatoToHeight to us ElevateTwoSpeeds instead of Elevate as its
+		// superclass
 		frontThreeToteButt.whenPressed(new ElevateToHeight(Robot.elevatorRear, 41));
 		
 		slideUpFrontButt.whileHeld(new ElevateUp(Robot.elevatorFront, liftTurboMode));
